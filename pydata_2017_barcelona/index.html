@@ -17,20 +17,14 @@
 			background-color:#000000;
 		}
 	</style>
-</head>
-<body class="shower list">
-	<header class="caption">
-		<h1>Extending Jupyter with Google Cloud Storage file system backend</h1>
-		<p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p>
-	</header>
-	<section class="slide atom" id="cover">
-		<h2>Extending Jupyter with Google Cloud Storage file system backend</h2>
-		<p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p>
-		<img src="pictures/cover.png" alt="" class="cover">
-		<style>
+	<style>
 		  .slide::after {
 				display: none;
 			}
+		  #cover img {
+			  width: 100%;
+			  filter:blur(2px);
+		  }
 		  #cover a {
 				background: none !important;
 			}
@@ -41,22 +35,51 @@
 			.atom h2 {
 				color: #FFF;
 			}
-			#cover h2 {
+			#coverbg {
 				margin:30px 0 0;
-				color: #FFF;
+				width: 80%;
+				opacity: 1;
 				text-align:center;
-				font-size:70px;
+				z-index: 150 !important;
+				position: absolute;
+				align-content: center;
+			}
+			#coverbg h2 {
+				font-size:60px !important;
 			}
 			#cover p {
 				margin:10px 0 0;
 				text-align:center;
 				font-style:italic;
 				font-size:20px;
+
 			}
-	    #cover p a {
+		  	#cover p a {
 		    color: #FFF;
-	    }
+	    	}
+			#overlay_image {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			width: 100%;
+			height: 100%;
+			background: #33526c;
+			opacity: 0.6;
+			z-index: 100;
+			}
 		</style>
+</head>
+<body class="shower list">
+	<header class="caption">
+		<h1>Extending Jupyter with Google Cloud Storage file system backend</h1>
+		<p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p>
+	</header>
+	<section class="slide atom" id="cover">
+		<div id="coverbg"><h2>Extending Jupyter with Google Cloud Storage file system backend</h2>
+			<p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p></div>
+		<div id="overlay_image"></div>
+		<img src="pictures/jgscm_landing.webp" alt="background" class="cover">
+
 	</section>
 
 		<section class="slide atom">
@@ -116,6 +139,9 @@
 			<li>Easy deployment</li>
 			<li>Persistent notebooks from the box</li>
 			<li>As result -> Less pain</li>
+			<li>why we use google cloud</li>
+			<li>use as reference for s3</li>
+			<li>make life of community easier</li>
 		</ol>
 	</section>
 
@@ -382,9 +408,14 @@
 			<dd>- 2 classes.</dd>
 			<dd>- at least 17 methods.</dd>
 			<dt>What to use:</dt>
-			<dd>- 3 classes.</dd>
-			<dd>- 19 methods.</dd>
+			<dd>- 3 classes out of ....</dd>
+			<dd>- 19 methods out of ....</dd>
 		</dl>
+	</section>
+
+	<section class="slide atom">
+		<h2>Jupyter:</h2>
+		<h2>TODO: file / folder model</h2>
 	</section>
 
 	<section class="slide atom">
@@ -393,7 +424,8 @@
 			<li>Initialization</li>
 			<li>Navigation</li>
 			<li>Create file / folder</li>
-			<li>Remove file / folder</li>
+			<li>Delete file / folder</li>
+			<li>Rename file / folder</li>
 			<li>Open file</li>
 		</ul>
 	</section>
@@ -419,21 +451,136 @@
 	</section>
 
 	<section class="slide atom">
+		<h2>Workflow: Initialization</h2>
 		<h2>Google Cloud Keyfile</h2>
 		<div id="keyfile">
-			<img src="pictures/keyfile-credentials.png">
+			<img src="pictures/keyfile-credentials.png" height="400">
 		</div>
 
 		<style>
 			#keyfile {
-				float: right;
+				float: left;
 				display: flex;
-				flex-direction: column;
-			}
-			#keyfile > a {
-				text-align: center;
+				flex-direction: row;
 			}
 		</style>
+	</section>
+
+	<section class="slide atom">
+		<h2>Workflow: Initialization</h2>
+		<h2>Jupyter</h2>
+		<ul>Usually you'd need to edit <code>~/.jupyter/jupyter_notebook_config.py</code>
+			<li>Point to jgscm:
+				<ul  class="inside">
+					<li><code>c.NotebookApp.contents_manager_class = 'jgscm.GoogleStorageContentManager'</code></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+
+	<section class="slide atom">
+		<h2>Workflow: Initialization</h2>
+		<h2>Jupyter</h2>
+		<ul>
+			<li>Not default Google Cloud settings:
+				<ul  class="inside">
+					<li><code>c.GoogleStorageContentManager.project = 'project'</code></li>
+					<li><code>c.GoogleStorageContentManager.keyfile = '/path/to/keyfile.json'</code></li>
+				</ul>
+			</li>
+			<li>Default path for Google Cloud:
+				<ul  class="inside">
+					<li><code>c.GoogleStorageContentManager.default_path = 'path/without/starting/slash'</code></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+
+	<section class="slide atom">
+		<h2>Workflow: Initialization</h2>
+		<h2>Jupyter</h2>
+		<ul>
+			<li>Default path for Google Cloud:
+				<ul  class="inside">
+					<li><code>c.GoogleStorageContentManager.default_path = 'path/without/starting/slash'</code></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+
+	<section class="slide atom">
+		<h2>Workflow: Initialization</h2>
+		<h2>Jupyter</h2>
+		<ul>
+			<li>Debug:
+				<ul  class="inside">
+					<li><code>c.Application.log_level = "DEBUG"</code></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+
+	<section class="slide atom">
+		<h2>Workflow:</h2>
+		<h2>Navigation</h2>
+		<ul>Explanation how the data from GS is shown in Jupyter
+			<li>ContentsManager.get -> model of default_path</li>
+		</ul>
+	</section>
+
+	<section class="slide atom">
+		<h2>Workflow:</h2>
+		<h2>Create file / folder</h2>
+		<ul>Explanation how new file / ipython notebook / folder is created in GS from Jupyter
+			<li>Check available names</li>
+			<li>Create file / folder model</li>
+			<li>run_pre_save_hook</li>
+			<li>Save model</li>
+		</ul>
+	</section>
+
+	<section class="slide atom">
+		<h2>Workflow:</h2>
+		<h2>Delete file / folder</h2>
+		<ul>Explanation how to delete file / ipython notebook / folder in GS from Jupyter
+			<li>_parse_path -> bucket_name, backet_path</li>
+			<li>_get_bucket</li>
+			<li>some logic bla bla</li>
+		</ul>
+	</section>
+
+	<section class="slide atom">
+		<h2>Workflow:</h2>
+		<h2>Rename file / folder</h2>
+		<ul>Explanation how to rename file / ipython notebook / folder in GS from Jupyter
+			<li>some logic bla bla</li>
+		</ul>
+	</section>
+
+	<section class="slide atom">
+		<h2>Workflow:</h2>
+		<h2>Open file</h2>
+		<ul>Explanation how to open file / ipython notebook from GS in Jupyter
+			<li>some logic bla bla</li>
+		</ul>
+	</section>
+
+	<section class="slide atom">
+		<h2>Workflow:</h2>
+		<h2>debug</h2>
+		<ul>Explanation how to open file / ipython notebook from GS in Jupyter
+			<li>some logic bla bla</li>
+		</ul>
+	</section>
+
+	<section class="slide atom">
+		<h2>link to project</h2>
+		<h2>please questions</h2>
+		<h2>access control</h2>
+		<h2>info about company, how to make money</h2>
+		<h2>screen of web interface and jupyter </h2>
+		<h2>conclusion - it's possible to make, everybody can improve toolset, etc.</h2>
+		<h2>conclusion - right now you can use it as reference to write your own adapters for amazon, microsoft azure, etc.</h2>
 	</section>
 
 	<!--<section class="slide">-->
