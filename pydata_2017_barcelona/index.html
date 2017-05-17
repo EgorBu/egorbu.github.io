@@ -18,46 +18,45 @@
 		}
 	</style>
 	<style>
-		  .slide::after {
-				display: none;
-			}
-		  #cover img {
-			  width: 100%;
-			  filter:blur(2px);
-		  }
-		  #cover a {
-				background: none !important;
-			}
-			.atom {
-				background-color: #282c34;
-				color: #FFF;
-			}
-			.atom h2 {
-				color: #FFF;
-			}
-			#coverbg {
-				margin:30px 0 0;
-				width: 80%;
-				opacity: 1;
-				text-align:center;
-				z-index: 150 !important;
-				position: absolute;
-				align-content: center;
-			}
-			#coverbg h2 {
-				font-size:60px !important;
-			}
-			#cover p {
-				margin:10px 0 0;
-				text-align:center;
-				font-style:italic;
-				font-size:20px;
-
-			}
-		  	#cover p a {
-		    color: #FFF;
-	    	}
-			#overlay_image {
+		.slide::after {
+			display: none;
+		}
+		#cover img {
+			width: 100%;
+			filter:blur(2px);
+		}
+		#cover a {
+			background: none !important;
+		}
+		.atom {
+			background-color: #282c34;
+			color: #FFF;
+		}
+		.atom h2 {
+			color: #FFF;
+		}
+		#coverbg {
+			margin:30px 0 0;
+			width: 80%;
+			opacity: 1;
+			text-align:center;
+			z-index: 150 !important;
+			position: absolute;
+			align-content: center;
+		}
+		#coverbg h2 {
+			font-size:60px !important;
+		}
+		#cover p {
+			margin:10px 0 0;
+			text-align:center;
+			font-style:italic;
+			font-size:20px;
+		}
+		#cover p a {
+			color: #FFF;
+		}
+		#overlay_image {
 			position: absolute;
 			bottom: 0px;
 			right: 0px;
@@ -66,171 +65,173 @@
 			background: #33526c;
 			opacity: 0.6;
 			z-index: 100;
-			}
-		</style>
+		}
+	</style>
 </head>
 <body class="shower list">
-	<header class="caption">
-		<h1>Extending Jupyter with Google Cloud Storage file system backend</h1>
-		<p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p>
-	</header>
-	<section class="slide atom" id="cover">
-		<div id="coverbg"><h2>Extending Jupyter with Google Cloud Storage file system backend</h2>
-			<p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p></div>
-		<div id="overlay_image"></div>
-		<img src="pictures/jgscm_landing.webp" alt="background" class="cover">
+<header class="caption">
+    <h1>Extending Jupyter with Google Cloud Storage file system backend</h1>
+    <p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p>
+</header>
+<section class="slide atom" id="cover">
+    <div id="coverbg"><h2>Extending Jupyter with Google Cloud Storage file system backend</h2>
+        <p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p></div>
+    <div id="overlay_image"></div>
+    <img src="pictures/jgscm_landing.webp" alt="background" class="cover">
+</section>
 
-	</section>
+<section class="slide atom">
+    <h2>About me</h2>
+    <ul>
+        <li>Data Scientist, Machine Learning @ <a href="https://sourced.tech">source{d}</a></li>
+        <li>Education: robotics</li>
+        <li>Switched to ML/DS in 2013</li>
+        <li>Python</li>
+    </ul>
+</section>
 
-		<section class="slide atom">
-		<h2>About me</h2>
-		<ul>
-			<li>Data Scientist, Machine Learning @ <a href="https://sourced.tech">source{d}</a></li>
-			<li>Education: robotics</li>
-			<li>Switched to ML/DS in 2013</li>
-			<li>Python</li>
-		</ul>
-	</section>
-
-	<section class="slide atom">
-		<h2>About source{d}</h2>
-		<ul>
-			<li>~20 people in Madrid, Spain</li>
-			<li>Developed <a href="https://github.com/src-d/go-git">src-d/go-git</a>, Git implementation in Go</li>
-			<li>Fetch all repositories from GitHub/BitBucket/etc.</li>
-			<li>Do crazy ML and DS on top of them</li>
-			<li>Project <a href="https://doc.bblf.sh/">Babelfish</a> extracts Abstract Syntax Trees from them</li>
-			<li>And <a href="https://github.com/src-d">many other projects!</a></li>
-		</ul>
-	</section>
-
-
-	<section class="slide atom">
-		<h2>Plan</h2>
-		<div id="qrcode">
-			<img src="pictures/qrcode.svg">
-			<a class="noaline" href="TODO: link & qrcode">TODO: link & qrcode</a>
-			<div>(view this on your device)</div>
-		</div>
-		<ol>
-			<li>Motivation</li>
-			<li>Google Cloud side</li>
-			<li>Jupyter side</li>
-			<li>Jupyter Google Storage Contents Manager</li>
-			<li>Jupyter Google Storage Checkpoints</li>
-		</ol>
-		<style>
-			#qrcode {
-				float: right;
-				display: flex;
-				flex-direction: column;
-			}
-			#qrcode > a {
-				text-align: center;
-			}
-		</style>
-	</section>
+<section class="slide atom">
+    <h2>About source{d}</h2>
+    <ul>
+        <li>~20 people in Madrid, Spain</li>
+        <li>Developed <a href="https://github.com/src-d/go-git">src-d/go-git</a>, Git implementation in Go</li>
+        <li>Fetch all repositories from GitHub/BitBucket/etc.</li>
+        <li>Do crazy ML and DS on top of them</li>
+        <li>Project <a href="https://doc.bblf.sh/">Babelfish</a> extracts Abstract Syntax Trees from them</li>
+        <li>And <a href="https://github.com/src-d">many other projects!</a></li>
+    </ul>
+</section>
 
 
-	<section class="slide atom">
-		<h2>Motivation</h2>
-		<ol>
-			<li>Easy sharing notebooks & results</li>
-			<li>Easy deployment</li>
-			<li>Persistent notebooks from the box</li>
-			<li>As result -> Less pain</li>
-			<li>why we use google cloud</li>
-			<li>use as reference for s3</li>
-			<li>make life of community easier</li>
-		</ol>
-	</section>
-
-	<section class="slide atom">
-		<h2>Google Cloud</h2>
-
-		<div id="motivation-google-cloud-platform">
-			<img src="pictures/google-cloud-platform2.png" height="200">
-		</div>
-
-		<ol>
-			<ul>Compute</ul>
-			<ul>Storage & Databases</ul>
-			<ul>Networking</ul>
-			<ul>Big Data</ul>
-			<ul>Machine Learning</ul>
-			<ul>Identity & Security</ul>
-			<ul>etc...</ul>
-		</ol>
-
-		<style>
-			#motivation-google-cloud-platform {
-				float: right;
-				display: flex;
-				flex-direction: column;
-			}
-		</style>
-	</section>
-
-	<section class="slide atom">
-		<h2>Google Cloud Storage</h2>
+<section class="slide atom">
+    <h2>Plan</h2>
+    <div id="qrcode">
+        <img src="pictures/qrcode.svg">
+        <a class="noaline" href="TODO: link & qrcode">TODO: link & qrcode</a>
+        <div>(view this on your device)</div>
+    </div>
+    <ol>
+        <li>Motivation</li>
+        <li>Google Cloud side</li>
+        <li>Jupyter side</li>
+        <li>Jupyter Google Storage Contents Manager</li>
+        <li>Jupyter Google Storage Checkpoints</li>
+    </ol>
+    <style>
+        #qrcode {
+            float: right;
+            display: flex;
+            flex-direction: column;
+        }
+        #qrcode > a {
+            text-align: center;
+        }
+    </style>
+</section>
 
 
-		<div id="gcstorage">
-			<img src="pictures/google-cloud-storage.png" height="300">
-		</div>
+<section class="slide atom">
+    <h2>Motivation</h2>
+    <ol>
+        <li>Easy sharing notebooks & results</li>
+        <li>Easy deployment</li>
+        <li>Persistent notebooks from the box</li>
+        <li>As result -> Less pain</li>
+        <li>why we use google cloud</li>
+        <li>use as reference for s3</li>
+        <li>make life of community easier</li>
+    </ol>
+</section>
 
-		<ol> Storage & Databases
-			<ul>Cloud Storage</ul>
-			<ul>Cloud SQL</ul>
-			<ul>Cloud Bigtable</ul>
-			<ul>Cloud Spanner</ul>
-			<ul>Cloud Datastore</ul>
-			<ul>Persistent Disk</ul>
-		</ol>
+<section class="slide atom">
+    <h2>Google Cloud</h2>
 
-		<style>
-			#gcstorage {
-				float: right;
-				display: flex;
-				flex-direction: column;
-			}
-		</style>
-	</section>
+    <div id="motivation-google-cloud-platform">
+        <img src="pictures/google-cloud-platform2.png" height="200">
+    </div>
 
-	<section class="slide atom">
-		<h2>Google Cloud Storage: Data Model</h2>
-		<dl>
-			<dt><a href="https://cloud.google.com/storage/docs/key-terms#buckets">Bucket</a></dt>
-			<dd>- Buckets are the basic containers that hold your data.</dd>
-			<dd>- Everything that you store in Google Cloud Storage must be contained in a bucket.</dd>
-			<dt><a href="https://cloud.google.com/storage/docs/key-terms#objects">Blob</a></dt>
-			<dd>- A wrapper around Cloud Storage's concept of an ``Object``</dd>
-			<dd>- Objects are the individual pieces of data that you store in Google Cloud Storage.</dd>
-		</dl>
-	</section>
+    <ul>
+        <li>Compute</li>
+        <li>Storage & Databases</li>
+        <li>Networking</li>
+        <li>Big Data</li>
+        <li>Machine Learning</li>
+        <li>Identity & Security</li>
+        <li>etc...</li>
+    </ul>
 
-	<section class="slide atom">
-		<h2>Google Cloud Storage: Data Model Notice</h2>
-		<dl>
-			<dt>Google Cloud Storage uses a flat namespace to store objects.</dt>
-			<dt><pre class="code">.
-└── foo/bar/image.png
+    <style>
+        #motivation-google-cloud-platform {
+            float: right;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</section>
+
+<section class="slide atom">
+    <h2>Google Cloud: Storage & Databases</h2>
+
+    <div id="gcstorage">
+        <img src="pictures/google-cloud-storage.png" height="300">
+    </div>
+
+    <ul>
+        <li>Cloud Storage</li>
+        <li>Cloud SQL</li>
+        <li>Cloud Bigtable</li>
+        <li>Cloud Spanner</li>
+        <li>Cloud Datastore</li>
+        <li>Persistent Disk</li>
+    </ul>
+
+    <style>
+        #gcstorage {
+            float: right;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</section>
+
+<section class="slide atom">
+    <h2>Google Cloud Storage: Data Model</h2>
+    <dl>
+        <dt><a href="https://cloud.google.com/storage/docs/key-terms#buckets">Bucket</a></dt>
+        <dd>- Buckets are the basic containers that hold your data.</dd>
+        <dd>- Everything that you store in Google Cloud Storage must be contained in a bucket.</dd>
+        <dt><a href="https://cloud.google.com/storage/docs/key-terms#objects">Blob</a></dt>
+        <dd>- A wrapper around Cloud Storage's concept of an ``Object``</dd>
+        <dd>- Objects are the individual pieces of data that you store in Google Cloud Storage.</dd>
+    </dl>
+</section>
+
+<section class="slide atom">
+    <h2>Google Cloud Storage: Data Model Notice</h2>
+    <dl>
+        <dt>Google Cloud Storage uses a flat namespace to store objects.</dt>
+        <dd></dd>
+        <dt><pre class="code">.
+├── foo/bar/image.png
 └── foo/text.txt</pre></dt>
-			<dt>However, it's possible to work with objects as if they are stored in a virtual hierarchy, as a convenience.</dt>
-			<dt><pre class="code">.
+        <dd></dd>
+        <dt>However, it's possible to work with objects as if they are stored in a virtual hierarchy, as a convenience.</dt>
+        <dd></dd>
+        <dt><pre class="code">.
 └── foo
     ├── bar
     │   └── img.png
     └── text.txt</pre></dt>
-		</dl>
-		<style>
-			.code {
-				white-space: pre !important;
-    			font-family: monospace;
-				line-height: 1;
-			}
-		</style>
-	</section>
+        <dd></dd>
+    </dl>
+    <style>
+        .code {
+            white-space: pre !important;
+            font-family: monospace;
+            line-height: 1;
+        }
+    </style>
+</section>
 
 	<!--<section class="slide">-->
 		<!--<h2>Google Cloud Storage: python API</h2>-->
@@ -252,6 +253,7 @@
             ├── create_bucket
             ├── get_bucket
             └── list_buckets</pre></dt>
+			<dd>3 methods are used out of 7</dd>
 
 		</dl>
 	</section>
@@ -284,6 +286,7 @@
             ├── get_blob
             ├── list_blobs
             └── rename_blob</pre></dt>
+			<dd>7 methods are used out of 40</dd>
 		</dl>
 	</section>
 
@@ -311,6 +314,7 @@
             ├── exist
             ├── updated
             └── upload_from_string</pre></dt>
+			<dd>5 methods are used out of 38</dd>
 		</dl>
 	</section>
 
@@ -343,6 +347,7 @@
                 ├── is_hidden
                 ├── rename_file
                 └── save</pre></dt>
+			<dd></dd>
 		</dl>
 	</section>
 
@@ -369,6 +374,7 @@
                 ├── delete_checkpoint
                 ├── list_checkpoints
                 └── rename_checkpoint</pre></dt>
+			<dd></dd>
 		</dl>
 	</section>
 
@@ -397,6 +403,64 @@
                 ├── get_file_checkpoint
                 ├── get_notebook_checkpoint
                 └── list_checkpoints</pre></dt>
+			<dd></dd>
+		</dl>
+	</section>
+
+    <section class="slide atom">
+		<h2>Jupyter:</h2>
+		<h2>Base model</h2>
+        <dl>
+			<dt><pre class="code">model = {
+    "name": None,
+    "path": None,
+    "type": None,
+    "created": None,
+    "last_modified": None,
+    "content": None,
+    "format": None,
+    "mimetype": None
+}</pre></dt>
+			<dd></dd>
+		</dl>
+	</section>
+
+    <section class="slide atom">
+		<h2>Jupyter:</h2>
+		<h2>File model</h2>
+        <dl>
+			<dt><pre class="code">
+model["type"] = "file"
+model["mimetype"] = "text/plain"/"application/octet-stream"
+model["format"] = "file" or "base64"
+model["content"] = content</pre></dt>
+			<dd></dd>
+		</dl>
+	</section>
+
+    <section class="slide atom">
+		<h2>Jupyter:</h2>
+		<h2>Notebook model</h2>
+        <dl>
+			<dt><pre class="code">
+model["type"] = "notebook"
+model["mimetype"] = None
+model["format"] = "json"
+model["content"] = content of notebook</pre></dt>
+			<dd></dd>
+		</dl>
+	</section>
+
+    <section class="slide atom">
+		<h2>Jupyter:</h2>
+		<h2>Directory model</h2>
+        <dl>
+			<dt><pre class="code">
+model["type"] = "directory"
+model["mimetype"] = "application/x-directory"
+model["format"] = "json"
+model["content"] = list(content-free-models of files/nb/dirs)</pre></dt>
+			<dd></dd>
 		</dl>
 	</section>
 
@@ -405,18 +469,15 @@
 		<h2>Task summary</h2>
 		<dl>
 			<dt>What to implement:</dt>
-			<dd>- 2 classes.</dd>
+			<dd>- 2 classes and 3 models.</dd>
 			<dd>- at least 17 methods.</dd>
 			<dt>What to use:</dt>
-			<dd>- 3 classes out of ....</dd>
-			<dd>- 19 methods out of ....</dd>
+			<dd>- 3 classes.</dd>
+			<dd>- 15 methods out of 85 in this 3 classes.</dd>
 		</dl>
 	</section>
 
-	<section class="slide atom">
-		<h2>Jupyter:</h2>
-		<h2>TODO: file / folder model</h2>
-	</section>
+
 
 	<section class="slide atom">
 		<h2>Workflow:</h2>
@@ -472,7 +533,7 @@
 		<ul>Usually you'd need to edit <code>~/.jupyter/jupyter_notebook_config.py</code>
 			<li>Point to jgscm:
 				<ul  class="inside">
-					<li><code>c.NotebookApp.contents_manager_class = 'jgscm.GoogleStorageContentManager'</code></li>
+					<li><code>c.NotebookApp.contents_manager_class = "jgscm.GoogleStorageContentManager"</code></li>
 				</ul>
 			</li>
 		</ul>
@@ -484,25 +545,13 @@
 		<ul>
 			<li>Not default Google Cloud settings:
 				<ul  class="inside">
-					<li><code>c.GoogleStorageContentManager.project = 'project'</code></li>
-					<li><code>c.GoogleStorageContentManager.keyfile = '/path/to/keyfile.json'</code></li>
+					<li><code>c.GoogleStorageContentManager.project = "project"</code></li>
+					<li><code>c.GoogleStorageContentManager.keyfile = "/path/to/keyfile.json"</code></li>
 				</ul>
 			</li>
 			<li>Default path for Google Cloud:
 				<ul  class="inside">
-					<li><code>c.GoogleStorageContentManager.default_path = 'path/without/starting/slash'</code></li>
-				</ul>
-			</li>
-		</ul>
-	</section>
-
-	<section class="slide atom">
-		<h2>Workflow: Initialization</h2>
-		<h2>Jupyter</h2>
-		<ul>
-			<li>Default path for Google Cloud:
-				<ul  class="inside">
-					<li><code>c.GoogleStorageContentManager.default_path = 'path/without/starting/slash'</code></li>
+					<li><code>c.GoogleStorageContentManager.default_path = "path/without/starting/slash"</code></li>
 				</ul>
 			</li>
 		</ul>
@@ -523,29 +572,80 @@
 	<section class="slide atom">
 		<h2>Workflow:</h2>
 		<h2>Navigation</h2>
-		<ul>Explanation how the data from GS is shown in Jupyter
-			<li>ContentsManager.get -> model of default_path</li>
+		<ul>What we need - directory model of current path
+			<li>GoogleStorageContentManager.get(path)</li>
+            <li>path -> (bucket_name, blob_name)</li>
+            <li>bucket = GSClient.Client.get_bucket(bucket_name)</li>
+            <li>blobs = bucket.list_blobs()</li>
+            <li>dir_model = [content-free-model(blob) for blob in blobs]</li>
+            <li>-> Jupyter can visualize content of folder using this dir_model</li>
 		</ul>
 	</section>
 
 	<section class="slide atom">
 		<h2>Workflow:</h2>
 		<h2>Create file / folder</h2>
-		<ul>Explanation how new file / ipython notebook / folder is created in GS from Jupyter
-			<li>Check available names</li>
-			<li>Create file / folder model</li>
-			<li>run_pre_save_hook</li>
-			<li>Save model</li>
+		<ul>What we need - new blob for file/nb/dir in GS
+			<li>get dir_model & bucket of current folder</li>
+			<li>find available name (ex: "untitleX.txt")</li>
+            <li>create content-free-model</li>
+            <li>run_pre_save_hook(content-free-model)</li>
+			<li>-> 3 options</li>
 		</ul>
+	</section>
+
+    <section class="slide atom">
+		<h2>Workflow:</h2>
+		<h2>Create file / folder: Notebook</h2>
+		<ul> _save_notebook(path, nb)
+            <li>check existance</li>
+            <li>create content for NB in a right format</li>
+            <li>check content</li>
+            <li>blob = bucket.blob(path)</li>
+            <li>blob.upload_from_string(data, "application/x-ipynb+json")</li>
+            <li>create checkpoint if not exists</li>
+        </ul>
+	</section>
+
+    <section class="slide atom">
+		<h2>Workflow:</h2>
+		<h2>Create file / folder: file</h2>
+		<ul> _save_file(path, content, format)
+            <li>check existance</li>
+            <li>data = to_utf8(content)</li>
+            <li>blob = bucket.blob(path)</li>
+            <li>blob.upload_from_string(data)</li>
+        </ul>
+	</section>
+
+    <section class="slide atom">
+		<h2>Workflow:</h2>
+		<h2>Create file / folder: directory</h2>
+		<ul> _save_directory(path)
+            <li>check existance and type</li>
+            <li>blob = bucket.blob(path)</li>
+            <li>blob.upload_from_string("", content_type="application/x-directory")</li>
+        </ul>
 	</section>
 
 	<section class="slide atom">
 		<h2>Workflow:</h2>
 		<h2>Delete file / folder</h2>
-		<ul>Explanation how to delete file / ipython notebook / folder in GS from Jupyter
-			<li>_parse_path -> bucket_name, backet_path</li>
-			<li>_get_bucket</li>
-			<li>some logic bla bla</li>
+		<ul>What we need - delete blob for path in GS
+			<li>get bucket of current folder</li>
+            <li>get model for path</li>
+            <li>get model of object to delete</li>
+            <li>if path == bucket_path -> bucket.delete </li>
+            <li>
+                <ul class="inside"> list files and
+                    <li>check existance and type</li>
+                    <li>blob = bucket.blob(path)</li>
+                    <li>blob.upload_from_string("", content_type="application/x-directory")</li>
+                </ul>
+            </li>
+            <li>create content-free-model</li>
+            <li>run_pre_save_hook(content-free-model)</li>
+			<li>-> 3 options</li>
 		</ul>
 	</section>
 
@@ -568,9 +668,7 @@
 	<section class="slide atom">
 		<h2>Workflow:</h2>
 		<h2>debug</h2>
-		<ul>Explanation how to open file / ipython notebook from GS in Jupyter
-			<li>some logic bla bla</li>
-		</ul>
+        <img src="pictures/debug_funct.tiff" alt="background" class="cover">
 	</section>
 
 	<section class="slide atom">
@@ -1022,16 +1120,15 @@
 		<!--<p style="color: #585a5e">We are hiring!</p>-->
 		<!--<img src="pictures/dream_code.jpg" class="cover">-->
 	<!--</section>-->
-	<!--<p class="badge">-->
-		<!--<a href="mailto://eiso@sourced.tech">We are hiring!</a>-->
-	<!--</p>-->
-	<!--<div class="progress"></div>-->
-	<!--<script src="shower/shower.min.js"></script>-->
-	<!--<script type="text/javascript"-->
-      <!--src="node_modules/mathjax/MathJax.js">-->
-	<!--</script>-->
-    <!--<script type="text/javascript"-->
-      <!--src="node_modules/mathjax/config/TeX-AMS_CHTML.js">-->
-	<!--</script>-->
+
+
+<div class="progress"></div>
+<script src="shower/shower.min.js"></script>
+<script type="text/javascript"
+  src="node_modules/mathjax/MathJax.js">
+</script>
+<script type="text/javascript"
+  src="node_modules/mathjax/config/TeX-AMS_CHTML.js">
+</script>
 </body>
 </html>
