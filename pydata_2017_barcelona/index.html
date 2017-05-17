@@ -106,8 +106,8 @@
 <section class="slide atom">
     <h2>Plan</h2>
     <div id="qrcode">
-        <img src="pictures/qrcode.svg">
-        <a class="noaline" href="TODO: link & qrcode">TODO: link & qrcode</a>
+        <img src="pictures/qrcode.jpeg">
+        <a class="noaline" href="https://goo.gl/yUQvCl">link to presentation</a>
         <div>(view this on your device)</div>
     </div>
     <ol>
@@ -598,7 +598,7 @@ model["content"] = list(content-free-models of files/nb/dirs)</pre></dt>
 		<h2>Workflow:</h2>
 		<h2>Create file / folder: Notebook</h2>
 		<ul> _save_notebook(path, nb)
-            <li>check existance</li>
+            <li>check existence</li>
             <li>create content for NB in a right format</li>
             <li>check content</li>
             <li>blob = bucket.blob(path)</li>
@@ -630,56 +630,83 @@ model["content"] = list(content-free-models of files/nb/dirs)</pre></dt>
 
 	<section class="slide atom">
 		<h2>Workflow:</h2>
-		<h2>Delete file / folder</h2>
-		<ul>What we need - delete blob for path in GS
+		<h2>Delete file / folder: delete_file(path)</h2>
+		<ul>What we need - delete blob(s or bucket) for path in GS
 			<li>get bucket of current folder</li>
             <li>get model for path</li>
             <li>get model of object to delete</li>
-            <li>if path == bucket_path -> bucket.delete </li>
-            <li>
-                <ul class="inside"> list files and
-                    <li>check existance and type</li>
-                    <li>blob = bucket.blob(path)</li>
-                    <li>blob.upload_from_string("", content_type="application/x-directory")</li>
-                </ul>
-            </li>
-            <li>create content-free-model</li>
-            <li>run_pre_save_hook(content-free-model)</li>
-			<li>-> 3 options</li>
+            <li>if path == bucket_path -> bucket.delete  & return</li>
+            <li>blobs = bucket.list_blobs(prefix=path)</li>
+            <li>get list of files and list of folders from blobs</li>
+            <li>bucket.delete_blobs(files)</li>
+            <li>[self.delete_file(folder) for folder in folders]</li>
 		</ul>
 	</section>
 
 	<section class="slide atom">
 		<h2>Workflow:</h2>
 		<h2>Rename file / folder</h2>
-		<ul>Explanation how to rename file / ipython notebook / folder in GS from Jupyter
-			<li>some logic bla bla</li>
+        <ul>GoogleStorageContentManager.rename_file
+			<li>it's a bit complicated logic</li>
+            <li>
+                <ul class="inside">keep in mind
+                    <li>the same bucket - rename blob</li>
+                    <li>directory - rename recursively</li>
+                    <li>different buckets - copy to new bucket -> delete old blobs</li>
+                </ul>
+            </li>
 		</ul>
 	</section>
 
 	<section class="slide atom">
 		<h2>Workflow:</h2>
 		<h2>Open file</h2>
-		<ul>Explanation how to open file / ipython notebook from GS in Jupyter
-			<li>some logic bla bla</li>
+		<ul>GoogleStorageContentManager.get(path, content=True, type=None, format=None)
+			<li>return model for path</li>
 		</ul>
 	</section>
 
 	<section class="slide atom">
-		<h2>Workflow:</h2>
-		<h2>debug</h2>
-        <img src="pictures/debug_funct.tiff" alt="background" class="cover">
+		<h2>Workflow: debug</h2>
+        <img src="pictures/debug_func.jpg" alt="background" class="cover">
 	</section>
 
-	<section class="slide atom">
-		<h2>link to project</h2>
-		<h2>please questions</h2>
-		<h2>access control</h2>
-		<h2>info about company, how to make money</h2>
-		<h2>screen of web interface and jupyter </h2>
-		<h2>conclusion - it's possible to make, everybody can improve toolset, etc.</h2>
-		<h2>conclusion - right now you can use it as reference to write your own adapters for amazon, microsoft azure, etc.</h2>
+    <section class="slide atom">
+		<h2>Workflow: Optimization</h2>
+        <h2>HASH TABLES</h2>
 	</section>
+
+
+    <section class="slide atom">
+    <h2>Questions?</h2>
+    <div id="qrcode">
+        <img src="pictures/qrcode_github.jpeg">
+        <a class="noaline" href="https://goo.gl/EIwnwr">project on github</a>
+        <div>(view this on your device)</div>
+    </div>
+    <style>
+        #qrcode {
+            float: right;
+            display: flex;
+            flex-direction: column;
+        }
+        #qrcode > a {
+            text-align: center;
+        }
+    </style>
+</section>
+
+	<!--<section class="slide atom">-->
+		<!--&lt;!&ndash;<h2>link to project</h2>&ndash;&gt;-->
+		<!--<h2>Please questions</h2>-->
+        <!--<h2>Please questions</h2>-->
+        <!--<img src="pictures/debug_func.jpg" alt="background" class="cover">-->
+		<!--&lt;!&ndash;<h2>access control</h2>&ndash;&gt;-->
+		<!--&lt;!&ndash;<h2>info about company, how to make money</h2>&ndash;&gt;-->
+		<!--&lt;!&ndash;<h2>screen of web interface and jupyter </h2>&ndash;&gt;-->
+		<!--&lt;!&ndash;<h2>conclusion - it's possible to make, everybody can improve toolset, etc.</h2>&ndash;&gt;-->
+		<!--&lt;!&ndash;<h2>conclusion - right now you can use it as reference to write your own adapters for amazon, microsoft azure, etc.</h2>&ndash;&gt;-->
+	<!--</section>-->
 
 	<!--<section class="slide">-->
 		<!--<h2>Motivation</h2>-->
