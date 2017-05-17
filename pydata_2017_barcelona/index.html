@@ -10,9 +10,11 @@
 	<style>
 		.fa {
 			font-style: normal !important;
+			font-color:#FFFFFF;
 		}
 		.noaline {
 			background: none !important;
+			background-color:#000000;
 		}
 	</style>
 </head>
@@ -21,37 +23,43 @@
 		<h1>Extending Jupyter with Google Cloud Storage file system backend</h1>
 		<p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p>
 	</header>
-	<section class="slide" id="cover">
+	<section class="slide atom" id="cover">
 		<h2>Extending Jupyter with Google Cloud Storage file system backend</h2>
 		<p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p>
 		<img src="pictures/cover.png" alt="" class="cover">
 		<style>
-			.slide:after {
+		  .slide::after {
 				display: none;
 			}
-			#cover a {
+		  #cover a {
 				background: none !important;
+			}
+			.atom {
+				background-color: #282c34;
+				color: #FFF;
+			}
+			.atom h2 {
+				color: #FFF;
 			}
 			#cover h2 {
 				margin:30px 0 0;
-				color:#FFF;
+				color: #FFF;
 				text-align:center;
 				font-size:70px;
 			}
 			#cover p {
 				margin:10px 0 0;
 				text-align:center;
-				color:#FFF;
 				font-style:italic;
 				font-size:20px;
 			}
-			    #cover p a {
-				    color:#FFF;
-			    }
+	    #cover p a {
+		    color: #FFF;
+	    }
 		</style>
 	</section>
 
-		<section class="slide">
+		<section class="slide atom">
 		<h2>About me</h2>
 		<ul>
 			<li>Data Scientist, Machine Learning @ <a href="https://sourced.tech">source{d}</a></li>
@@ -61,7 +69,7 @@
 		</ul>
 	</section>
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>About source{d}</h2>
 		<ul>
 			<li>~20 people in Madrid, Spain</li>
@@ -74,7 +82,7 @@
 	</section>
 
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Plan</h2>
 		<div id="qrcode">
 			<img src="pictures/qrcode.svg">
@@ -101,7 +109,7 @@
 	</section>
 
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Motivation</h2>
 		<ol>
 			<li>Easy sharing notebooks & results</li>
@@ -111,7 +119,7 @@
 		</ol>
 	</section>
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Google Cloud</h2>
 
 		<div id="motivation-google-cloud-platform">
@@ -137,7 +145,7 @@
 		</style>
 	</section>
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Google Cloud Storage</h2>
 
 
@@ -163,7 +171,7 @@
 		</style>
 	</section>
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Google Cloud Storage: Data Model</h2>
 		<dl>
 			<dt><a href="https://cloud.google.com/storage/docs/key-terms#buckets">Bucket</a></dt>
@@ -175,7 +183,7 @@
 		</dl>
 	</section>
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Google Cloud Storage: Data Model Notice</h2>
 		<dl>
 			<dt>Google Cloud Storage uses a flat namespace to store objects.</dt>
@@ -207,7 +215,7 @@
 		<!--</dl>-->
 	<!--</section>-->
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Google Cloud Storage: python API</h2>
 		<h2>Client</h2>
 		<dl>
@@ -217,7 +225,7 @@
         └── Client
             ├── create_bucket
             ├── get_bucket
-            └── list_bucket</pre></dt>
+            └── list_buckets</pre></dt>
 
 		</dl>
 	</section>
@@ -235,7 +243,7 @@
 		<!--</dl>-->
 	<!--</section>-->
 
-		<section class="slide">
+		<section class="slide atom">
 		<h2>Google Cloud Storage: python API</h2>
 		<h2>Bucket</h2>
 		<dl>
@@ -264,7 +272,7 @@
 		<!--</dl>-->
 	<!--</section>-->
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Google Cloud Storage: python API</h2>
 		<h2>Blob</h2>
 		<dl>
@@ -293,7 +301,7 @@
 		<!--</dl>-->
 	<!--</section>-->
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Jupyter API:</h2>
 		<h2>ContentsManager</h2>
 		<dl>
@@ -322,7 +330,7 @@
 		<!--</dl>-->
 	<!--</section>-->
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Jupyter API:</h2>
 		<h2>Checkpoints</h2>
 		<dl>
@@ -349,7 +357,7 @@
 		<!--</dl>-->
 	<!--</section>-->
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Jupyter API:</h2>
 		<h2>GenericCheckpointsMixin</h2>
 		<dl>
@@ -366,7 +374,7 @@
 		</dl>
 	</section>
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Jupyter Google Storage Contents Manager:</h2>
 		<h2>Task summary</h2>
 		<dl>
@@ -379,30 +387,53 @@
 		</dl>
 	</section>
 
-	<section class="slide">
+	<section class="slide atom">
 		<h2>Workflow:</h2>
 		<ul>
 			<li>Initialization</li>
 			<li>Navigation</li>
-			<li>Create file</li>
-			<li>Create folder</li>
-			<li>Remove file</li>
-			<li>Remove folder</li>
+			<li>Create file / folder</li>
+			<li>Remove file / folder</li>
 			<li>Open file</li>
 		</ul>
 	</section>
 
-	<section class="slide">
-		<h2>Workflow:</h2>
-		<h2>Initialization</h2>
+	<section class="slide atom">
+		<h2>Workflow: Initialization</h2>
+		<h2>Google Cloud</h2>
 		<ul>
-			<li>Navigation</li>
-			<li>Create file</li>
-			<li>Create folder</li>
-			<li>Remove file</li>
-			<li>Remove folder</li>
-			<li>Open file</li>
+			<li>In case of usage of default settings - just follow <code>gcloud init</code>:
+				<ul  class="inside">
+					<li>project: [srcd-bla-bla]</li>
+					<li>account: [egor@sourced.tech]</li>
+				</ul>
+			</li>
+			<li>And you need <a href="https://github.com/src-d/jgscm#projects-and-keyfiles"> keyfile</a>: [srcd-bla-bla.json]
+			<ul  class="inside">
+				<li>Go to API Manager / Credentials in cloud console to generate JSON</li>
+				<li>And please read <a href="https://cloud.google.com/storage/docs/authentication">official documentation</a></li>
+			</ul>
+			</li>
+
 		</ul>
+	</section>
+
+	<section class="slide atom">
+		<h2>Google Cloud Keyfile</h2>
+		<div id="keyfile">
+			<img src="pictures/keyfile-credentials.png">
+		</div>
+
+		<style>
+			#keyfile {
+				float: right;
+				display: flex;
+				flex-direction: column;
+			}
+			#keyfile > a {
+				text-align: center;
+			}
+		</style>
 	</section>
 
 	<!--<section class="slide">-->
