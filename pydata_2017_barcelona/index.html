@@ -331,8 +331,7 @@
                 ├── create_file_checkpoint
                 ├── create_notebook_checkpoint
                 ├── get_file_checkpoint
-                ├── get_notebook_checkpoint
-                └── list_checkpoints</pre></dt>
+                └── get_notebook_checkpoint</pre></dt>
 			<dd></dd>
 		</dl>
 	</section>
@@ -362,7 +361,7 @@
 			<dt><pre class="code">
 model["type"] = "file"
 model["mimetype"] = "text/plain"/"application/octet-stream"
-model["format"] = "file" or "base64"
+model["format"] = "text" or "base64"
 model["content"] = content</pre></dt>
 			<dd></dd>
 		</dl>
@@ -519,7 +518,7 @@ model["content"] = list(content-free-models of files/nb/dirs)</pre></dt>
             <li>path -> (bucket_name, blob_name)</li>
             <li>bucket = GSClient.Client.get_bucket(bucket_name)</li>
             <li>blobs = bucket.list_blobs(prefix=blob_name)</li>
-            <li>dir_model = [content-free-model(blob) for blob in blobs]</li>
+            <li>dir_model.content = [content-free-model(blob) for blob in blobs]</li>
             <li>-> Jupyter can visualize content of folder using this dir_model</li>
 		</ul>
 	</section>
@@ -588,8 +587,8 @@ model["content"] = list(content-free-models of files/nb/dirs)</pre></dt>
 		<h2>Rename file / folder</h2>
         <ul>GoogleStorageContentManager.rename_file
 			<li>it's a bit complicated logic</li>
-            <li>
-                <ul class="inside">keep in mind
+            <li>keep in mind
+                <ul class="inside">
                     <li>the same bucket - rename blob</li>
                     <li>directory - rename recursively</li>
                     <li>different buckets - copy to new bucket -> delete old blobs</li>
