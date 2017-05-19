@@ -107,7 +107,7 @@
     <h2>Plan</h2>
     <div id="qrcode">
         <img src="pictures/qrcode.jpeg">
-        <a class="noaline" href="https://goo.gl/yUQvCl">link to presentation</a>
+        <a class="noaline" href="https://goo.gl/yUQvCl">egorbu.github.io/pydata_2017_barcelona/index.html</a>
         <div>(view this on your device)</div>
     </div>
     <ol>
@@ -135,10 +135,9 @@
         <li>Easy sharing notebooks & results</li>
         <li>Easy deployment</li>
         <li>Persistent notebooks from the box</li>
-        <li>As result -> Less pain</li>
-        <li>why we use google cloud</li>
-        <li>use as reference for s3</li>
-        <li>make life of community easier</li>
+        <li>Use as reference for S3, Azure, etc.</li>
+        <li>Make life of community easier</li>
+		<li>As result -> Less pain</li>
     </ol>
 </section>
 
@@ -487,6 +486,8 @@ model["content"] = list(content-free-models of files/nb/dirs)</pre></dt>
 			<li>Delete file / folder</li>
 			<li>Rename file / folder</li>
 			<li>Open file</li>
+			<li>Debug</li>
+			<li>Optimization</li>
 		</ul>
 	</section>
 
@@ -575,7 +576,7 @@ model["content"] = list(content-free-models of files/nb/dirs)</pre></dt>
 			<li>GoogleStorageContentManager.get(path)</li>
             <li>path -> (bucket_name, blob_name)</li>
             <li>bucket = GSClient.Client.get_bucket(bucket_name)</li>
-            <li>blobs = bucket.list_blobs()</li>
+            <li>blobs = bucket.list_blobs(prefix=blob_name)</li>
             <li>dir_model = [content-free-model(blob) for blob in blobs]</li>
             <li>-> Jupyter can visualize content of folder using this dir_model</li>
 		</ul>
@@ -672,7 +673,7 @@ model["content"] = list(content-free-models of files/nb/dirs)</pre></dt>
 
     <section class="slide atom">
 		<h2>Workflow: Optimization</h2>
-        <h2>HASH TABLES</h2>
+        <h2>Cache</h2>
 	</section>
 
 
@@ -683,16 +684,16 @@ model["content"] = list(content-free-models of files/nb/dirs)</pre></dt>
         <a class="noaline" href="https://goo.gl/EIwnwr">project on github</a>
         <div>(view this on your device)</div>
     </div>
-    <style>
-        #qrcode {
-            float: right;
-            display: flex;
-            flex-direction: column;
-        }
-        #qrcode > a {
-            text-align: center;
-        }
-    </style>
+    <!--<style>-->
+        <!--#qrcode {-->
+            <!--float: right;-->
+            <!--display: flex;-->
+            <!--flex-direction: column;-->
+        <!--}-->
+        <!--#qrcode > a {-->
+            <!--text-align: center;-->
+        <!--}-->
+    <!--</style>-->
 </section>
 
 	<!--<section class="slide atom">-->
