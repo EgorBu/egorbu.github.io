@@ -513,11 +513,11 @@ model["content"] = list(content-free-models of files/nb/dirs)</pre></dt>
 	<section class="slide atom">
 		<h2>Workflow:</h2>
 		<h2>Navigation</h2>
-		<ul>What we need - directory model of current path
+		<ul>What we need - model of directory
 			<li>GoogleStorageContentManager.get(path)</li>
             <li>path -> (bucket_name, blob_name)</li>
-            <li>bucket = GSClient.Client.get_bucket(bucket_name)</li>
-            <li>blobs = bucket.list_blobs(prefix=blob_name)</li>
+			<li>if bucket_name == "": create dir_model from list of buckets</li>
+            <li>else: client -> bucket -> blobs</li>
             <li>dir_model.content = [content-free-model(blob) for blob in blobs]</li>
             <li>-> Jupyter can visualize content of folder using this dir_model</li>
 		</ul>
