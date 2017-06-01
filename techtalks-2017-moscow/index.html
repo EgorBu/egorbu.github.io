@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Extending Jupyter with Google Cloud Storage file system backend</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+	<style>
+		.fa {
+			font-style: normal !important;
+			font-color:#FFFFFF;
+		}
+		.noaline {
+			background: none !important;
+			background-color:#000000;
+		}
+	</style>
+	<style>
+		.slide::after {
+			display: none;
+		}
+		#cover img {
+			width: 100%;
+			filter:blur(1px);
+		}
+		#cover a {
+			background: none !important;
+		}
+		.atom {
+			background-color: #282c34;
+			color: #FFF;
+		}
+		.atom h2 {
+			color: #FFF;
+		}
+		#coverbg {
+			margin:30px 0 0;
+			width: 80%;
+			opacity: 1;
+			text-align:center;
+			z-index: 150 !important;
+			position: absolute;
+			align-content: center;
+		}
+		#coverbg h2 {
+			font-size:60px !important;
+		}
+		#cover p {
+			margin:10px 0 0;
+			text-align:center;
+			font-style:italic;
+			font-size:20px;
+		}
+		#cover p a {
+			color: #FFF;
+		}
+		#overlay_image {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			width: 100%;
+			height: 100%;
+			background: #33526c;
+			opacity: 0.6;
+			z-index: 100;
+		}
+	</style>
+</head>
+<body class="shower list">
+<header class="caption">
+    <h1>Embedding the GitHub contribution graph</h1>
+    <p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p>
+</header>
+<section class="slide atom" id="cover">
+    <div id="coverbg"><h2>Embedding the GitHub contribution graph</h2>
+        <p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p></div>
+    <div id="overlay_image"></div>
+    <img src="pictures/landing3_small2.png" alt="background" class="cover">
+</section>
+
+<section class="slide atom">
+    <h2>About me</h2>
+    <ul>
+        <li>Data Scientist, Machine Learning @ <a href="https://sourced.tech">source{d}</a></li>
+        <li>Education: robotics</li>
+        <li>Switched to ML/DS in 2013</li>
+    </ul>
+</section>
+
+
+<section class="slide atom">
+    <h2>Plan</h2>
+    <div id="qrcode">
+        <img src="pictures/qrcode.jpeg">
+        <a class="noaline" href="https://goo.gl/yUQvCl">TODO</a>
+        <div>(view this on your device)</div>
+    </div>
+    <ol>
+        <li>Motivation</li>
+        <li>Dataset description</li>
+        <li>Algorithms</li>
+        <li>Algorithms: Swivel</li>
+		<li>Training details</li>
+		<li>Results</li>
+    </ol>
+    <style>
+        #qrcode {
+            float: right;
+            display: flex;
+            flex-direction: column;
+        }
+        #qrcode > a {
+            text-align: center;
+        }
+    </style>
+</section>
+
+
+<section class="slide atom">
+    <h2>Motivation</h2>
+    <ol>
+        <li>Labeled data is expensive</li>
+		<li>Unlabeled data is available</li>
+		<li>Most of the data has some structure</li>
+		<li>In most of the cases: item & context</li>
+		<li>This structural information can be represented as embeddings</li>
+		<li>We want to encode
+			<ul class="inside">
+				<li>developer-repository relations in continuous vectors</li>
+			</ul>
+		</li>
+    </ol>
+</section>
+
+<section class="slide atom">
+	<h2>Where to take the data?</h2>
+	<p>Commit datasets:</p>
+	<ol>
+		<li><a href="http://ghtorrent.org/">GHTorrent</a> (145M)</li>
+		<li><span class="mono">commits</span> table in <a href="https://bigquery.cloud.google.com/table/bigquery-public-data:github_repos.commits">Google BigQuery</a> - equivalent to GHTorrent</li>
+		<li><a href="https://www.githubarchive.org/">GitHub Archive</a> (stream, unknown)</li>
+		<li>source{d}'s <a href="https://data.world/vmarkovtsev/452-m-commits-on-github">452M dataset</a> with <a href="https://blog.sourced.tech/post/minhashcuda/">de-fuzzy-forking</a></li>
+	</ol>
+	<p style="color:red">BigQuery will charge you money.</p>
+</section>
+
+<section class="slide atom">
+    <h2>Dataset description</h2>
+
+    <!--<div id="motivation-google-cloud-platform">-->
+        <!--<img src="pictures/google-cloud-platform2.png" height="200">-->
+    <!--</div>-->
+
+    <ul>
+        <li>16.6M repositories</li>
+        <li>6.6M developers</li>
+		<li>452M commits</li>
+        <li>Bipartite graph - developers & repositories</li>
+        <li>Non planar graph</li>
+    </ul>
+
+    <style>
+        #motivation-google-cloud-platform {
+            float: right;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</section>
+
+<section class="slide atom">
+	<h2>Adjacency matrix</h2>
+	<div class="adj-matrix"></div>
+	<p>C<sub>ij</sub> is the number of commits done by developer i to repository j</p>
+	<p>C<sub>ij</sub> = C<sub>ji</sub></p>
+	<p>Non-zero elements: &lt;10<sup>-7</sup></p>
+	<style>
+		.adj-matrix {
+			width: 400px;
+			height: 400px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			float: left;
+			margin-right: 50px;
+			background-image: url("pictures/adj_matrix_black.svg");
+		}
+		@media not print {
+			.adj-matrix {
+				background-image: url("pictures/adj_matrix_white.svg");
+			}
+		}
+	</style>
+</section>
+
+
+<section class="slide atom">
+    <h2>Algorithms</h2>
+
+    <ul>
+		<li><a href="https://code.google.com/p/word2vec">Word2Vec: CBOW & SGNS</a></li>
+        <li><a href="https://github.com/stanfordnlp/GloVe">GloVe</a></li>
+		<li><a href="https://arxiv.org/pdf/1602.02215.pdf">Swivel</a></li>
+		<li><a href="http://www.cs.utoronto.ca/~rsalakhu/papers/semantic_final.pdf">Semantic hashing</a></li>
+		<li><a href="http://www.lsi.upc.edu/~bejar/amlt/material_art/random_projection.pdf">Random projections</a></li>
+		<li>Autoencoders, RBM, t-SNE, PCA, etc.</li>
+	</ul>
+</section>
+
+<section class="slide atom">
+    <h2>What to use: Swivel</h2>
+
+    <ul>Advantages
+		<li>Complexity: O(co-occurrence matrix) < O(size of the corpus)</li>
+		<li>Handling unobserved co-occurences: identity matching</li>
+		<li>Parallelism: co-occurence matrix -> shards</li>
+		<li>Quality: best results so far</li>
+	</ul>
+</section>
+
+
+<section class="slide atom">
+    <h2>Training details</h2>
+
+    <div id="gcstorage">
+        <img src="pictures/degree_vs_cnt.svg" height="300">
+    </div>
+
+    <ul>Dataset is skewed
+        <li>Filter out repositories with less than 6 contributors:
+			<ul class="inside">
+				<li>222k repositories</li>
+				<li>600k developers</li>
+			</ul>
+		</li>
+    </ul>
+
+    <style>
+        #gcstorage {
+            float: right;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</section>
+
+<section class="slide atom">
+    <h2>Training details</h2>
+
+    <ol>Swivel pipeline
+		<li>Graph -> corpus</li>
+        <li>Corpus -> co-occurrence matrix</li>
+		<li>Co-occurrence matrix -> shardes</li>
+		<li>Random init</li>
+		<li>Iterative approximation of PMI</li>
+    </ol>
+</section>
+
+<section class="slide atom">
+    <h2>Training details</h2>
+
+    <ul>Swivel pipeline: Graph to text corpus
+		<li>Filtering</li>
+        <li>for repo in repos:
+			<ul class="inside">
+				<li>for dev in repo.developers:</li>
+				<ul class="inside">
+					<li>create pair (repo, dev)</li>
+					<li>repeat pair n_commits time</li>
+				</ul>dump to file
+			</ul>
+		</li>
+		<li>result: "repo dev_1 repo dev_1 repo dev_2"</li>
+    </ul>
+</section>
+
+
+<section class="slide atom">
+    <h2>Training details</h2>
+
+    <div id="gcstorage">
+        <img src="pictures/degree_vs_cnt.svg" height="300">
+    </div>
+
+    <ul>
+        <li>Hardware:
+			<ul class="inside">
+				<li>2 * Titan X 2016</li>
+				<li>2 * GTX 1080 Ti</li>
+				<li>Brewery</li>
+			</ul>
+		</li>
+		<li>Swivel:
+			<ul class="inside">
+				<li>Embedding: 100</li>
+				<li>Epochs: 40</li>
+			</ul>
+		</li>
+		<li>Duration: ~24 hours</li>
+    </ul>
+
+    <style>
+        #gcstorage {
+            float: right;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</section>
+
+<section class="slide atom">
+    <h2>Results</h2>
+    <ul>Most similar to: <a href="https://github.com/tensorflow/tensorflow">tensorflow/tensorflow</a>
+		<li>0.7710 <a href="https://github.com/google/skflow">google/skflow</a></li>
+		<li>0.7211 <a href="https://github.com/tensorflow/models">tensorflow/models</a></li>
+		<li>0.5922 <a href="https://github.com/otherlab/geode">otherlab/geode</a></li>
+		<li>0.5459 <a href="https://github.com/pthulhu/eigen">pthulhu/eigen</a></li>
+		<li>0.5367 <a href="https://github.com/Luracast/Restler">Luracast/Restler</a></li>
+		<li>0.5341 <a href="https://github.com/Blosc/c-blosc2">Blosc/c-blosc2</a></li>
+    </ul>
+</section>
+
+<section class="slide atom">
+    <h2>Results</h2>
+    <ul>Most similar to: <a href="https://github.com/torch/nn">torch/nn</a>
+		<li>0.9398 <a href="https://github.com/torch/cunn">torch/cunn</a></li>
+		<li>0.9082 <a href="https://github.com/torch/cutorch">torch/cutorch</a></li>
+		<li>0.8838 <a href="https://github.com/torch/torch.github.io">torch/torch.github.io</a></li>
+		<li>0.8836 <a href="https://github.com/torch/rocks">torch/rocks</a></li>
+		<li>0.8813 <a href="https://github.com/torch/torch7">torch/torch7</a></li>
+		<li>0.8563 <a href="https://github.com/torch/threads-ffi">torch/threads-ffi</a></li>
+    </ul>
+</section>
+
+<section class="slide atom">
+    <h2>Results</h2>
+    <ul>Most similar to: <a href="https://github.com/zmatsh/Docker">zmatsh/Docker</a>
+		<li>0.9019 <a href="https://github.com/docker/engine-api">docker/engine-api</a></li>
+		<li>0.8415 <a href="https://github.com/opencontainers/runc">opencontainers/runc</a></li>
+		<li>0.8178 <a href="https://github.com/docker/go-units">docker/go-units</a></li>
+		<li>0.8107 <a href="https://github.com/jfrazelle/leeroy">jfrazelle/leeroy</a></li>
+		<li>0.8083 <a href="https://github.com/peteflorence/SubtreePractice2">peteflorence/SubtreePractice2</a></li>
+		<li>0.8036 <a href="https://github.com/unclejack/debian2docker">unclejack/debian2docker</a></li>
+    </ul>
+</section>
+
+<section class="slide atom">
+    <h2>Results</h2>
+    <ul>Most similar to: <a href="https://github.com/BeerWithMe/beer-finder">BeerWithMe/beer-finder</a>
+		<li>0.5481 <a href="https://github.com/chef/chef-provisioning-fog">chef/chef-provisioning-fog</a></li>
+		<li>0.5334 <a href="https://github.com/keaneokelley/InshtantMeshenger">keaneokelley/InshtantMeshenger</a></li>
+		<li>0.5123 <a href="https://github.com/tpjg/goriakpbc">tpjg/goriakpbc</a></li>
+		<li>0.5088 <a href="https://github.com/test-kitchen/kitchen-openstack">test-kitchen/kitchen-openstack</a></li>
+		<li>0.5076 <a href="https://github.com/SmarterApp/IllustrationGlossaryTool">SmarterApp/IllustrationGlossaryTool</a></li>
+		<li>0.5061 <a href="https://github.com/chef/chef-provisioning-aws">chef/chef-provisioning-aws</a></li>
+    </ul>
+</section>
+
+<section class="slide atom">
+    <h2>Results</h2>
+    <ul>Most similar to: <a href="https://github.com/src-d/go-git">src-d/go-git</a>
+		<li>0.8053 <a href="https://github.com/mcuadros/dockership">mcuadros/dockership</a></li>
+		<li>0.7865 <a href="https://github.com/mongator/behaviors">mongator/behaviors</a></li>
+		<li>0.7601 <a href="https://github.com/mcuadros/pynats">mcuadros/pynats</a></li>
+		<li>0.7569 <a href="https://github.com/mongator/mongator">mongator/mongator</a></li>
+		<li>0.7173 <a href="https://github.com/mongator/documentation">mongator/documentation</a></li>
+		<li>0.7113 <a href="https://github.com/mongofill/mongofill-hhvm">mongofill/mongofill-hhvm</a></li>
+    </ul>
+</section>
+
+
+<section class="slide atom">
+    <h2>Questions?</h2>
+    <div id="qrcode">
+        <img src="pictures/qrcode_github.jpeg">
+        <a class="noaline" href="https://goo.gl/EIwnwr">project on github</a>
+        <div>(view this on your device)</div>
+    </div>
+</section>
+
+
+<div class="progress"></div>
+<script src="shower/shower.min.js"></script>
+<script type="text/javascript"
+  src="node_modules/mathjax/MathJax.js">
+</script>
+<script type="text/javascript"
+  src="node_modules/mathjax/config/TeX-AMS_CHTML.js">
+</script>
+</body>
+</html>
