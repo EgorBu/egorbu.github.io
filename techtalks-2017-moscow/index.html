@@ -237,6 +237,8 @@
 		<li><a href="https://code.google.com/p/word2vec">Word2Vec: CBOW & SGNS</a></li>
         <li><a href="https://github.com/stanfordnlp/GloVe">GloVe</a></li>
 		<li><a href="https://arxiv.org/pdf/1602.02215.pdf">Swivel</a></li>
+		<li><a href="https://arxiv.org/pdf/1607.00653.pdf">node2vec</a></li>
+		<li><a href="https://research.facebook.com/research/fasttext/">fastText</a></li>
 		<li><a href="http://www.cs.utoronto.ca/~rsalakhu/papers/semantic_final.pdf">Semantic hashing</a></li>
 		<li><a href="http://www.lsi.upc.edu/~bejar/amlt/material_art/random_projection.pdf">Random projections</a></li>
 		<li>Autoencoders, RBM, t-SNE, PCA, etc.</li>
@@ -246,17 +248,28 @@
 <section class="slide atom">
     <h2>What to use: Swivel</h2>
 
-    <ul>Advantages
-		<li>Complexity: O(co-occurrence matrix) < O(size of the corpus)</li>
+    <ul>Description
+		<li>Complexity: O(co-occurrence matrix) - useful on huge corpuses</li>
 		<li>Handling unobserved co-occurences: identity matching</li>
 		<li>Parallelism: co-occurence matrix -> shards</li>
-		<li>Quality: best results so far</li>
+		<li>Quality: best results (according to <a href="https://arxiv.org/pdf/1602.02215.pdf">paper</a>)</li>
+	</ul>
+</section>
+
+<section class="slide atom">
+    <h2>What to use: node2vec + fastText</h2>
+
+    <ul>Description
+		<li>Complexity: O(size of the corpus)</li>
+		<li>Handling unobserved co-occurences: character ngram</li>
+		<li>Parallelism: like word2vec</li>
 	</ul>
 </section>
 
 
+
 <section class="slide atom">
-    <h2>Training details</h2>
+    <h2>Training details:</h2>
 
     <div id="gcstorage">
         <img src="pictures/degree_vs_cnt.svg" height="300">
@@ -266,7 +279,7 @@
         <li>Filter out repositories with less than 6 contributors:
 			<ul class="inside">
 				<li>222k repositories</li>
-				<li>600k developers</li>
+				<li>1.2M developers</li>
 			</ul>
 		</li>
     </ul>
@@ -284,19 +297,29 @@
     <h2>Training details</h2>
 
     <ol>Swivel pipeline
+		<li>Filtering</li>
 		<li>Graph -> corpus</li>
         <li>Corpus -> co-occurrence matrix</li>
-		<li>Co-occurrence matrix -> shardes</li>
+		<li>Co-occurrence matrix -> shards</li>
 		<li>Random init</li>
-		<li>Iterative approximation of PMI</li>
+		<li>Iterative approximation of <a href="https://en.wikipedia.org/wiki/Pointwise_mutual_information">PMI</a></li>
     </ol>
 </section>
 
 <section class="slide atom">
     <h2>Training details</h2>
 
-    <ul>Swivel pipeline: Graph to text corpus
+    <ol>node2vec pipeline
 		<li>Filtering</li>
+		<li>Graph -> corpus</li>
+		<li>Random init</li>
+		<li>Iterative approximation of <a href="https://en.wikipedia.org/wiki/Pointwise_mutual_information">PMI</a></li>
+    </ol>
+</section>
+
+<section class="slide atom">
+    <h2>Training details</h2>
+    <ul>Swivel pipeline: Graph to text corpus
         <li>for repo in repos:
 			<ul class="inside">
 				<li>for dev in repo.developers:</li>
@@ -307,15 +330,45 @@
 			</ul>
 		</li>
 		<li>result: "repo dev_1 repo dev_1 repo dev_2"</li>
+		<li>result: ≈2 GB corpus</li>
     </ul>
 </section>
 
+<section class="slide atom">
+    <h2>Training details</h2>
+    <ul>node2vec pipeline: Graph to text corpus
+		<li>def random_walk(node, max_len):
+			<ul class="inside">
+				<li># There could be many random walk strategies</li>
+				<li># Our case: probability n1 -> n2 ~ n_commits(n1, n2) / n_commits(n2)</li>
+				<li>return __alg__(node, max_len)</li>
+			</ul>
+		</li>
+    </ul>
+</section>
+
+<section class="slide atom">
+    <h2>Training details</h2>
+    <ul>node2vec pipeline: Graph to text corpus
+        <li>for node in graph:
+			<ul class="inside">
+				<li>for _ in range(n_random_walks):</li>
+				<ul class="inside">
+					<li>path = random_walk(node, max_len)</li>
+					<li>dump to file</li>
+				</ul>
+			</ul>
+		</li>
+		<li>result: "repo1 dev1 repo42 dev137 repo167 dev42"</li>
+		<li>result: 10 random walks * 80 max_len ≈6 GB corpus</li>
+    </ul>
+</section>
 
 <section class="slide atom">
     <h2>Training details</h2>
 
     <div id="gcstorage">
-        <img src="pictures/degree_vs_cnt.svg" height="300">
+        <img src="pictures/science-beer.JPG" height="420">
     </div>
 
     <ul>
@@ -323,16 +376,9 @@
 			<ul class="inside">
 				<li>2 * Titan X 2016</li>
 				<li>2 * GTX 1080 Ti</li>
-				<li>Brewery</li>
+				<li>(Brewery)</li>
 			</ul>
 		</li>
-		<li>Swivel:
-			<ul class="inside">
-				<li>Embedding: 100</li>
-				<li>Epochs: 40</li>
-			</ul>
-		</li>
-		<li>Duration: ≈24 hours</li>
     </ul>
 
     <style>
@@ -345,64 +391,154 @@
 </section>
 
 <section class="slide atom">
-    <h2>Results</h2>
-    <ul>Most similar to: <a href="https://github.com/tensorflow/tensorflow">tensorflow/tensorflow</a>
-		<li>0.7710 <a href="https://github.com/google/skflow">google/skflow</a></li>
-		<li>0.7211 <a href="https://github.com/tensorflow/models">tensorflow/models</a></li>
-		<li>0.5922 <a href="https://github.com/otherlab/geode">otherlab/geode</a></li>
-		<li>0.5459 <a href="https://github.com/pthulhu/eigen">pthulhu/eigen</a></li>
-		<li>0.5367 <a href="https://github.com/Luracast/Restler">Luracast/Restler</a></li>
-		<li>0.5341 <a href="https://github.com/Blosc/c-blosc2">Blosc/c-blosc2</a></li>
+    <h2>Training details</h2>
+
+    <ul>
+		<li>Swivel:
+			<ul class="inside">
+				<li>Embedding: 100</li>
+				<li>Epochs: 40</li>
+				<li>Duration: ≈0.5 hour preprocessing + ≈24 hours training</li>
+			</ul>
+		</li>
+		<li>node2vec:
+			<ul class="inside">
+				<li>Embedding: 100</li>
+				<li>Epochs: 40</li>
+				<li>Duration: ≈6 hours preprocessing + ≈2 hours fastText</li>
+			</ul>
+		</li>
     </ul>
+
+    <style>
+        #gcstorage {
+            float: right;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </section>
 
 <section class="slide atom">
-    <h2>Results</h2>
-    <ul>Most similar to: <a href="https://github.com/torch/nn">torch/nn</a>
-		<li>0.9398 <a href="https://github.com/torch/cunn">torch/cunn</a></li>
-		<li>0.9082 <a href="https://github.com/torch/cutorch">torch/cutorch</a></li>
-		<li>0.8838 <a href="https://github.com/torch/torch.github.io">torch/torch.github.io</a></li>
-		<li>0.8836 <a href="https://github.com/torch/rocks">torch/rocks</a></li>
-		<li>0.8813 <a href="https://github.com/torch/torch7">torch/torch7</a></li>
-		<li>0.8563 <a href="https://github.com/torch/threads-ffi">torch/threads-ffi</a></li>
-    </ul>
+    <h2>Results: similar to <a href="https://github.com/tensorflow/tensorflow">tensorflow/tensorflow</a></h2>
+	<div class="comparison">
+    	<ul>Swivel
+			<li>0.7710 <a href="https://github.com/google/skflow">google/skflow</a></li>
+			<li>0.7211 <a href="https://github.com/tensorflow/models">tensorflow/models</a></li>
+			<li>0.5922 <a href="https://github.com/otherlab/geode">otherlab/geode</a></li>
+			<li>0.5459 <a href="https://github.com/pthulhu/eigen">pthulhu/eigen</a></li>
+			<li>0.5367 <a href="https://github.com/Luracast/Restler">Luracast/Restler</a></li>
+			<li>0.5341 <a href="https://github.com/Blosc/c-blosc2">Blosc/c-blosc2</a></li>
+		</ul>
+		<ul>node2vec
+			<li>0.8654 <a href="https://github.com/google/skflow">google/skflow</a></li>
+			<li>0.8111 <a href="https://github.com/otherlab/geode">otherlab/geode</a></li>
+			<li>0.8034 <a href="https://github.com/rishabh-battulwar/DeepBeliefProj">rishabh-battulwar/DeepBeliefProj</a></li>
+			<li>0.7609 <a href="https://github.com/tensorflow/models">tensorflow/models</a></li>
+			<li>0.7597 <a href="https://github.com/tensorflowkorea/tensorflow-kr">tensorflowkorea/tensorflow-kr</a></li>
+			<li>0.7366 <a href="https://github.com/google/gemmlowp">google/gemmlowp</a></li>
+		</ul>
+	</div>
+	<style>
+		.comparison {
+			display: flex;
+		}
+		.comparison > ul:first-child {
+			margin-right: 30px;
+		}
+	</style>
 </section>
 
 <section class="slide atom">
-    <h2>Results</h2>
-    <ul>Most similar to: <a href="https://github.com/zmatsh/Docker">zmatsh/Docker</a>
-		<li>0.9019 <a href="https://github.com/docker/engine-api">docker/engine-api</a></li>
-		<li>0.8415 <a href="https://github.com/opencontainers/runc">opencontainers/runc</a></li>
-		<li>0.8178 <a href="https://github.com/docker/go-units">docker/go-units</a></li>
-		<li>0.8107 <a href="https://github.com/jfrazelle/leeroy">jfrazelle/leeroy</a></li>
-		<li>0.8083 <a href="https://github.com/peteflorence/SubtreePractice2">peteflorence/SubtreePractice2</a></li>
-		<li>0.8036 <a href="https://github.com/unclejack/debian2docker">unclejack/debian2docker</a></li>
-    </ul>
+    <h2>Results: similar to <a href="https://github.com/torch/nn">torch/nn</a></h2>
+	<div class="comparison">
+		<ul>Swivel
+			<li>0.9398 <a href="https://github.com/torch/cunn">torch/cunn</a></li>
+			<li>0.9082 <a href="https://github.com/torch/cutorch">torch/cutorch</a></li>
+			<li>0.8838 <a href="https://github.com/torch/torch.github.io">torch/torch.github.io</a></li>
+			<li>0.8836 <a href="https://github.com/torch/rocks">torch/rocks</a></li>
+			<li>0.8813 <a href="https://github.com/torch/torch7">torch/torch7</a></li>
+			<li>0.8563 <a href="https://github.com/torch/threads-ffi">torch/threads-ffi</a></li>
+		</ul>
+		<ul>node2vec
+			<li>0.9379 <a href="https://github.com/torch/cunn">torch/cunn</a></li>
+			<li>0.9233 <a href="https://github.com/torch/torch7">torch/torch7</a></li>
+			<li>0.9167 <a href="https://github.com/torch/rocks">torch/rocks</a></li>
+			<li>0.9106 <a href="https://github.com/torch/image">torch/image</a></li>
+			<li>0.9093 <a href="https://github.com/soumith/cudnn.torch">soumith/cudnn.torch</a></li>
+			<li>0.9029 <a href="https://github.com/torch/cutorch">torch/cutorch</a></li>
+		</ul>
+	</div>
 </section>
 
 <section class="slide atom">
-    <h2>Results</h2>
-    <ul>Most similar to: <a href="https://github.com/BeerWithMe/beer-finder">BeerWithMe/beer-finder</a>
-		<li>0.5481 <a href="https://github.com/chef/chef-provisioning-fog">chef/chef-provisioning-fog</a></li>
-		<li>0.5334 <a href="https://github.com/keaneokelley/InshtantMeshenger">keaneokelley/InshtantMeshenger</a></li>
-		<li>0.5123 <a href="https://github.com/tpjg/goriakpbc">tpjg/goriakpbc</a></li>
-		<li>0.5088 <a href="https://github.com/test-kitchen/kitchen-openstack">test-kitchen/kitchen-openstack</a></li>
-		<li>0.5076 <a href="https://github.com/SmarterApp/IllustrationGlossaryTool">SmarterApp/IllustrationGlossaryTool</a></li>
-		<li>0.5061 <a href="https://github.com/chef/chef-provisioning-aws">chef/chef-provisioning-aws</a></li>
-    </ul>
+	<h2>Results: similar to <a href="https://github.com/zmatsh/Docker">zmatsh/Docker</a></h2>
+	<div class="comparison">
+		<ul>Swivel
+			<li>0.9019 <a href="https://github.com/docker/engine-api">docker/engine-api</a></li>
+			<li>0.8415 <a href="https://github.com/opencontainers/runc">opencontainers/runc</a></li>
+			<li>0.8178 <a href="https://github.com/docker/go-units">docker/go-units</a></li>
+			<li>0.8107 <a href="https://github.com/jfrazelle/leeroy">jfrazelle/leeroy</a></li>
+			<li>0.8083 <a href="https://github.com/peteflorence/SubtreePractice2">peteflorence/SubtreePractice2</a></li>
+			<li>0.8036 <a href="https://github.com/unclejack/debian2docker">unclejack/debian2docker</a></li>
+		</ul>
+		<ul>node2vec
+			<li>0.9823 <a href="https://github.com/docker/engine-api">docker/engine-api</a></li>
+			<li>0.9061 <a href="https://github.com/jfrazelle/leeroy">jfrazelle/leeroy</a></li>
+			<li>0.9029 <a href="https://github.com/docker/docs-base">docker/docs-base</a></li>
+			<li>0.8935 <a href="https://github.com/docker/gordon">docker/gordon</a></li>
+			<li>0.8802 <a href="https://github.com/jfrazelle/gh-patch-parser">jfrazelle/gh-patch-parser</a></li>
+			<li>0.8600 <a href="https://github.com/containers/image">containers/imager</a></li>
+		</ul>
+	</div>
 </section>
 
 <section class="slide atom">
-    <h2>Results</h2>
-    <ul>Most similar to: <a href="https://github.com/src-d/go-git">src-d/go-git</a>
-		<li>0.8053 <a href="https://github.com/mcuadros/dockership">mcuadros/dockership</a></li>
-		<li>0.7865 <a href="https://github.com/mongator/behaviors">mongator/behaviors</a></li>
-		<li>0.7601 <a href="https://github.com/mcuadros/pynats">mcuadros/pynats</a></li>
-		<li>0.7569 <a href="https://github.com/mongator/mongator">mongator/mongator</a></li>
-		<li>0.7173 <a href="https://github.com/mongator/documentation">mongator/documentation</a></li>
-		<li>0.7113 <a href="https://github.com/mongofill/mongofill-hhvm">mongofill/mongofill-hhvm</a></li>
-    </ul>
+    <h2>Results: similar to <a href="https://github.com/BeerWithMe/beer-finder">BeerWithMe/beer-finder</a></h2>
+	<div class="comparison">
+		<ul>Swivel
+			<li>0.5481 <a href="https://github.com/chef/chef-provisioning-fog">chef/chef-provisioning-fog</a></li>
+			<li>0.5334 <a href="https://github.com/keaneokelley/InshtantMeshenger">keaneokelley/InshtantMeshenger</a></li>
+			<li>0.5123 <a href="https://github.com/tpjg/goriakpbc">tpjg/goriakpbc</a></li>
+			<li>0.5088 <a href="https://github.com/test-kitchen/kitchen-openstack">test-kitchen/kitchen-openstack</a></li>
+			<li>0.5076 <a href="https://github.com/SmarterApp/IllustrationGlossaryTool">SmarterApp/IllustrationGloss...</a></li>
+			<li>0.5061 <a href="https://github.com/chef/chef-provisioning-aws">chef/chef-provisioning-aws</a></li>
+		</ul>
+		<ul>node2vec
+			<li>0.7709 <a href="https://github.com/BeerTrack/btapp">BeerTrack/btapp</a></li>
+			<li>0.7192 <a href="https://github.com/GoldenLions/GitHubScout">GoldenLions/GitHubScout</a></li>
+			<li>0.6914 <a href="https://github.com/Beerclub/Fikt">Beerclub/Fikt</a></li>
+			<li>0.6837 <a href="https://github.com/Zeega/Zeega">Zeega/Zeega</a></li>
+			<li>0.6809 <a href="https://github.com/YoBanfa/yo-banfa">YoBanfa/yo-banfa</a></li>
+			<li>0.6808 <a href="https://github.com/HRack-a-ton/5Hours">HRack-a-ton/5Hours</a></li>
+		</ul>
+	</div>
 </section>
+
+
+<!--1.0000 src-d/go-git-->
+<!--0.8602 mcuadros/dockership-->
+<!--0.8319 mongator/mongator-->
+<!--0.8102 mongofill/mongofill-->
+<!--0.8097 mongator/behaviors-->
+<!--0.7991 mongofill/mongofill-hhvm-->
+<!--0.7718 deSymfonyDay/desymfonyday.github.io-->
+<!--0.7646 mcuadros/go-syslog-->
+<!--0.7517 mcuadros/pynats-->
+<!--0.7424 mongator/documentation-->
+<!--0.7122 PistonDevelopers/hematite_server-->
+<!--0.6706 raulfraile/distill-->
+<!--<section class="slide atom">-->
+    <!--<h2>Results</h2>-->
+    <!--<ul>Most similar to: <a href="https://github.com/src-d/go-git">src-d/go-git</a>-->
+		<!--<li>0.8053 <a href="https://github.com/mcuadros/dockership">mcuadros/dockership</a></li>-->
+		<!--<li>0.7865 <a href="https://github.com/mongator/behaviors">mongator/behaviors</a></li>-->
+		<!--<li>0.7601 <a href="https://github.com/mcuadros/pynats">mcuadros/pynats</a></li>-->
+		<!--<li>0.7569 <a href="https://github.com/mongator/mongator">mongator/mongator</a></li>-->
+		<!--<li>0.7173 <a href="https://github.com/mongator/documentation">mongator/documentation</a></li>-->
+		<!--<li>0.7113 <a href="https://github.com/mongofill/mongofill-hhvm">mongofill/mongofill-hhvm</a></li>-->
+    <!--</ul>-->
+<!--</section>-->
 
 
 <section class="slide atom">
