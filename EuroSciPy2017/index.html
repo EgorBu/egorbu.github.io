@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>source{d}: EuroSciPy 2017</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+	<style>
+		.fa {
+			font-style: normal !important;
+			font-color:#FFFFFF;
+		}
+		.noaline {
+			background: none !important;
+			background-color:#000000;
+		}
+	</style>
+	<style>
+		.slide::after {
+			display: none;
+		}
+		#cover img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			filter:blur(1px);
+		}
+		#cover a {
+			background: none !important;
+		}
+		.atom {
+			background-color: #282c34;
+			color: #FFF;
+		}
+		.atom h2 {
+			color: #FFF;
+		}
+		#cover p a {
+			color: #FFF;
+		}
+		@media print {
+			.atom {
+				background-color: #fff;
+				color: #000;
+			}
+			.atom h2 {
+				color: #000;
+			}
+			#cover p a {
+				color: #000;
+			}
+		}
+		#coverbg {
+			margin:30px 0 0;
+			width: 80%;
+			opacity: 1;
+			text-align:center;
+			z-index: 150 !important;
+			position: absolute;
+			align-content: center;
+		}
+		#coverbg h2 {
+			font-size:60px !important;
+		}
+		#cover p {
+			margin:10px 0 0;
+			text-align:center;
+			font-style:italic;
+			font-size:20px;
+		}
+		#overlay_image {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			width: 100%;
+			height: 100%;
+			background: #33526c;
+			opacity: 0.6;
+			z-index: 100;
+		}
+		@media print {
+			#overlay_image {
+				background: #fff;
+			}
+		}
+	</style>
+</head>
+<body class="shower list">
+<header class="caption">
+    <h1>EuroSciPy 2017: Machine Learning on Source Code</h1>
+    <p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p>
+</header>
+
+<!--<section class="slide atom" id="cover">-->
+    <!--<div id="coverbg"><h2>Machine Learning on Source Code</h2>-->
+        <!--<p>Egor Bulychev, <a href="http://sourced.tech">source{d}</a></p></div>-->
+    <!--<div id="overlay_image"></div>-->
+    <!--<img src="pictures/cover.png" alt="background" class="cover">-->
+<!--</section>-->
+
+<section class="slide atom">
+    <h2>Content</h2>
+    <ul>
+        <li><a href="todo:poster-link">Poster</a></li>
+		<li>Similar repository: <a href="http://vmarkovtsev.github.io/techtalks-2017-moscow/">article</a> & <a href="https://github.com/src-d/vecino">code</a></li>
+        <li>Topic modeling: <a href="https://arxiv.org/abs/1704.00135">article</a> & <a href="https://blog.sourced.tech//post/github_topic_modeling/">blog</a></li>
+		<li>Bblfsh: <a href="https://doc.bblf.sh/">docs</a> & <a href="https://github.com/bblfsh/client-python">client-python</a></li>
+		<li>A lot of interesting stuff: <a href="https://doc.bblf.sh/">Awesome machine learning on Source Code</a></li>
+    </ul>
+</section>
+
+<!--<section class="slide atom">-->
+	<!--<ul>Contact information:-->
+		<!--<li>mail: egor@sourced.tech</li>-->
+		<!--<li>LinkedIn: <a href="www.linkedin.com/in/egor-bulychev-028237118">www.linkedin.com/in/egor-bulychev-028237118</a></li>-->
+		<!--<li>GitHub: <a href="gttps://github.com/EgorBu">github.com/EgorBu</a></li>-->
+		<!--<li>Twitter: <a href="https://twitter.com/egor_bu">twitter.com/egor_bu</a></li>-->
+    <!--</ul>-->
+<!--</section>-->
+
+
+<div class="progress"></div>
+<script src="shower/shower.min.js"></script>
+<script type="text/javascript"
+  src="node_modules/mathjax/MathJax.js">
+</script>
+<script type="text/javascript"
+  src="node_modules/mathjax/config/TeX-AMS_CHTML.js">
+</script>
+</body>
+</html>
