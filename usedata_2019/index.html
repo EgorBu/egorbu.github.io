@@ -10,13 +10,13 @@
     <meta name="twitter:label1" content="Number of slides" />
     <meta name="twitter:data1" content="79" />
     <meta name="twitter:label2" content="Where and when" />
-    <meta name="twitter:data2" content="Munich, Germany - 19/06/2018" />
+    <meta name="twitter:data2" content="Moscow, Russia - 16/09/2019" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="http://egorbu.github.io/mlconference.ai" />
+    <meta property="og:url" content="http://egorbu.github.io/usedata_2019" />
     <meta property="og:title" content="Machine Learning on Source Code" />
-    <meta property="og:description" content="What is Machine Learning on Source Code? Are there cool applications? What are the tools?" />
-    <meta property="og:image" content="https://egorbu.github.io/mlconference.ai/pictures/cover.png" />
-    <meta property="twitter:image" content="https://egorbu.github.io/mlconference.ai/pictures/cover.png" />
+    <meta property="og:description" content="What is Machine Learning on Source Code?" />
+    <meta property="og:image" content="https://egorbu.github.io/usedata_2019/pictures/cover.png" />
+    <meta property="twitter:image" content="https://egorbu.github.io/usedata_2019/pictures/cover.png" />
     <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
@@ -228,10 +228,7 @@
         </style>
     </section>
 
-
-
-
-	<section class="slide vista vista-cover" id="cover">
+    <section class="slide vista vista-cover" id="cover">
         <h2 class="black title">#MLonCode</h2>
         <p class="black">source{d}</p>
 
@@ -272,6 +269,87 @@
         </style>
     </section>
 
+    <section class="slide atom">
+        <h2>Plan</h2>
+
+        <ul>
+            <li>What's MLonCode?</li>
+            <li>Why MLonCode hard?</li>
+            <li>Basics</li>
+            <li>Similar repository search</li>
+            <li>Code review</li>
+            <li>Developer similarity</li>
+        </ul>
+        <!--<style>-->
+            <!--#qrcode {-->
+                <!--float: right;-->
+                <!--display: flex;-->
+                <!--flex-direction: column;-->
+            <!--}-->
+            <!--#qrcode > a {-->
+                <!--text-align: center;-->
+            <!--}-->
+        <!--</style>-->
+        <!--<div id="qrcode">-->
+            <!--<img src="pictures/qrcode.svg">-->
+            <!--<a class="noaline" href="https://goo.gl/gtZbyc">goo.gl/gtZbyc</a>-->
+        <!--</div>-->
+    </section>
+
+    <section class="slide vista vista-cover dragons">
+        <div></div>
+        <h2>What's MLonCode?</h2>
+        <style>
+            @font-face {
+              font-family: CartaMarinaBold;
+              src: url("fonts/Carta Marina Bold.woff2") format("woff2")
+            }
+            .dragons {
+                background: url("pictures/here_be_dragons.jpg") #000;
+            }
+            .dragons h2 {
+                position: absolute;
+                left: 507px;
+                top: 147px;
+                width: 280px;
+                text-align: center;
+                color: #000;
+                font-family: CartaMarinaBold;
+            }
+            .dragons div {
+                position: absolute;
+                left: 527px;
+                width: 240px;
+                height: 240px;
+                top: 72px;
+                background: radial-gradient(circle at center, #bababa 0, rgba(186, 186, 186, 0) 75%)
+            }
+        </style>
+    </section>
+
+
+
+    <section class="slide" id="hello-humans">
+        <h2 class="top">Stereotypes</h2>
+        <img class="top" src="pictures/what_mloncode/hello.gif">
+        <!--ffmpeg -i hello.mkv hello.gif-->
+    </section>
+
+    <!--TODO: add slide about code generation-->
+    <!---->
+
+
+
+    <section class="slide atom">
+        <h2>  <a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome MLonCode</a></h2>
+
+        <ul>
+            <li>Program Synthesis</li>
+            <li>Program Translation</li>
+            <li>Code Suggestion and Completion</li>
+            <li>Program Repair and Bug Detection</li>
+        </ul>
+    </section>
 
     <section class="slide vista" id="source-ml">
 		<style>
@@ -287,8 +365,10 @@
 	</section>
 
 
+
+
     <section class="slide vista" id="ml">
-        <h2 class="shout small-shout">🚀 Machine Learning</h2>
+        <h2 class="shout small-shout">🚀 TODO: find good pic. Why MLonCode hard?</h2>
         <style>
             #ml {
                 background-image: url("pictures/ml.png");
@@ -304,6 +384,27 @@
             }
         </style>
     </section>
+
+
+    <section class="slide vista vista-cover" id="pipeline">
+            <h2 class="shout">Data</h2>
+            <style>
+                #pipeline {
+                    background-image: url("pictures/why_mloncode_hard/pipeline.jpg");
+                }
+                #pipeline::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: rgba(0, 0, 0, 0.7);
+                }
+            </style>
+    </section>
+
+    <!--___________________________________________________________________________________________-->
 
     <section class="slide vista vista-cover" id="github">
         <h2 class="shout small-shout"><i class="fa fa-inverse fa-github-alt" aria-hidden="true"></i> GitHub</h2>
@@ -331,46 +432,7 @@
         </style>
     </section>
     
-    <section class="slide vista vista-cover dragons">
-        <div></div>
-        <h2>Machine Learning on Source Code</h2>
-        <style>
-            @font-face {
-              font-family: CartaMarinaBold;
-              src: url("fonts/Carta Marina Bold.woff2") format("woff2")
-            }
-            .dragons {
-                background: url("pictures/here_be_dragons.jpg") #000;
-            }
-            .dragons h2 {
-                position: absolute;
-                left: 507px;
-                top: 92px;
-                width: 280px;
-                text-align: center;
-                color: #000;
-                font-family: CartaMarinaBold;
-            }
-            .dragons div {
-                position: absolute;
-                left: 527px;
-                width: 240px;
-                height: 240px;
-                top: 72px;
-                background: radial-gradient(circle at center, #bababa 0, rgba(186, 186, 186, 0) 75%)
-            }
-        </style>
-    </section>
 
-    <section class="slide vista vista-cover dragons" id="dragons-mloncode">
-        <div></div>
-        <h2>MLonCode</h2>
-        <style>
-            #dragons-mloncode h2 {
-                top: 167px;
-            }
-        </style>
-    </section>
 
     <section class="slide part">
         <h2 class="shout">Examples</h2>

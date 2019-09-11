@@ -1,3 +1,8 @@
+
+print("Hello HUMANS")
+
+
+
 from matplotlib import pyplot as plt
 
 wiki = """
@@ -231,3 +236,36 @@ def autolabel(rects, ax, bar_labels):
 autolabel(rects=bar_plot, ax=ax, bar_labels=languages
           )
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
