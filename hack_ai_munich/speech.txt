@@ -3,24 +3,23 @@ hi everybody
 my name is Egor, i'm from source{d}, we are working in area of machine learning on source code
 today i'm going to tell you about our experience in this area and what we know about it
 
-TODO:
 my presentation contains several  parts
-the first one will be 
+the first one will be about problems that can be solved already
+second - about available datasets and tools
+third - about existing ml solutions
+
+in our company we follow couple of trends
 
 #ml
-i want to tell you about couple of trends
 first trend is machine learning - this family of algorithms became super famous in recent years because of bunch useful and succesful application
 
-QUESTION - please raise your hands if you had experience with machine learning
-- awesome, a lot of people
-
 #github
-second ingredient is code
+second trend is code
 amount of open source code is growing tremendously fast recent years.
 tech giants, amateur and experienced developers have been publishing bunch of tools, libraries and so on. and there is github - awesome place to collaborate and publish code
 
 QUESTION - please raise your hands if you used open source code, libraries, frameworks like tensorflow, pytorch and so on
-- awesome, a lot of people
+- awesome, a lot of people, obviously if you work in machine learning area - you are using something from open source
 
 QUESTION - please raise your hands if you contributed to open source - pull request to existing projects or published your own
 - you see - a lot of people among us did it
@@ -41,6 +40,11 @@ that's why machine learning on source code is like terra ingognito
 #7
 let me give you some examples of machine learning applicatation that has been done or possible to make them in near future
 
+a lot of people think that code is not natural language.
+and they are correct.
+but still it has bunch of properties from natural language.
+so the first example is
+
 #8
 code naturalness
 what does it mean?
@@ -55,7 +59,7 @@ we can predict the name of the class based on what it containes.
 what does it give us?
 better naming - if algorithms can "understand" (hand movements to show quotes) some kind of meaning of whats going on - than it's possible to suggest to change variable names to improve readability of your code
 or you can detect bad naming in your code
-and as a result the quality
+and as a result the quality will be improved
 
 because bad naming may lead (CLICK)
 
@@ -65,7 +69,8 @@ it can lead to a lot of problems during collaboration with any other developer
 #12
 search for projects by meaning
 let's imagine you have project A - that doesn't satisfy some of your requirements.
-Or maybe satisfy but you want to check alternatives. But you don't know if any other projects like this exist.  - so it will be really painful to find such kind of similar projects. and you still don't know if you find all of them
+Or maybe satisfy but you want to check alternatives. But you don't know if any other projects like this exist.  - so it will be really painful to find such kind of similar projects. because google and other search engines aren't really optimized to search for code
+and you still don't know if you find all of them
 
 in our company we made the project called vecino for similarity search based on meaning - in several words - we made efficient search for nearest neighbors based tfidf weighted embeddings of identifiers. We used word mover's distance to measure similarity between projects.
 and now we can search for similar repositories based on "meaning" of identifiers.
@@ -75,8 +80,8 @@ TODO: QR in the beginning
 
 #excodesearch
 how many times have you been trying to understand if something is possible to do with framework or library and couldn't find correct key words to search?
-the idea of exploratory search is to make several iterations of search and go deeper to detatils until you find the correct snippet of code
-we did some experimetns - but still there are bunch of work to do in this area - and it's really important feature for smart code assistant
+the idea of exploratory search is to make several iterations of search and go deeper to details until you find the correct snippet of code
+we did some experimetns with topic modeling - but still there are bunch of work to do in this area - and it's really important feature for smart code assistant
 
 
 #14
@@ -84,15 +89,19 @@ QUESTION how many of you copy  and pasted code from different projects or stacko
 
 even here we can see a lot of hands.
 imagine huge corporations that has thousands of developers.
-and such kind of copy-paste became really huge problem there.
+and such kind of copy-paste may become really huge problem there.
 one of the reason is: your company may lost millions if somebody will sue you for copy-paste (like google for using oracle-like api)
 
-compare to natural language in code you can search for similar code not only by text but you can use structure of code or names.
+compare to natural language in code you can search for similar code not only by text but you can use structure of code or style.
 
 as result of similar code dedection we can create global graph of dependent projects, handle licencing issues efficiently, and it will make refactoring easier
 for example if you have copy-pasted function in many different places of your code, you can find them easily with such kind of similar code detetion
 
-and this problem is solved and released to github in our company and I will tell you about it a bit later
+and this problem is solved in our company using min hash algorithm
+it was developed for fuzzy text deduplication
+but we extended it to work with code
+
+explain about approach
 
 #nncomplete-example
 everyone of us wants to have bot that will write code instead of you.
@@ -102,7 +111,7 @@ it's like generative models trained on text. let's imagine you trained the model
 
 but you still may have smart assistant that will allow you to write code faster.
 
- we did experiments with code completion based on recurent neural networks. it can definetly study some micropatterns but fails to write long code. so you can see at this example how
+ we did experiments with code completion based on recurent neural networks. it can definetly study some micropatterns but fails to write long peace of code. so you can see it at this example how
 
 compare to all other code completion we don't suggest which method or name to use but which operator to use
 
@@ -111,8 +120,10 @@ and obviously it can be combined with standart code suggestions approaches to ta
 
 #16
 there are more than 400 programming languages in the world. and at least several style guides for each of them.
+QUESTION - does anybody of have to switch from one style to another when you switching between projects?
+
 and it may vary from project to project - single quotes or double quotes? tab versus spaces and so on.
-and obviuosly not every project has automatic style checker or explicit guide about style. so developers will spend a lot of time trying to fix style during PR or writing the code trying to figure out what is the proper style
+and obviuosly not every project has automatic style checker or explicit guide about style. so developers will spend a lot of time trying to fix style during PR or during writing the code trying to figure out what is the proper style
 
 and it's waste of many for huge corporation, and developers may become dissapointed because it's not really interesting work to fix the style
 
@@ -132,6 +143,7 @@ if you want to analyze the code i recommend you to read this book, it will give 
 
 #hercules
 here it's the example
+in this book it was recommended to check which files are frequently modified together.
 you can create an embedding of files based on git history - which files are modied together and create embeddings from this information.
 the same can be done for developers.
 you create bipartite graph of contribution - that this two developers modified this file, function, class.
@@ -176,6 +188,7 @@ another point - repository may contain binary data like images, microsoft office
 QUESTION: another good question - what is the step required for parsing?
 we need to know what the language code before we parse code
 obviously to know which parser to use - so we need language classification
+tell about enry
 
 next step is parsing - extracting ast from code
 
