@@ -498,17 +498,66 @@
     </section>
 
 
-    <section class="slide">
-        <pre>
-        <code><span class="hl-keyword">def</span> <span class="hl-def">nearest_neighbors</span>(<span class="hl-reserved">self</span>, origin, k=10):</code>
-        <code>        <span class="hl-comment"># origin can be either a text query or an id</span></code>
-        <code>        <span class="hl-keyword">if</span> <span class="hl-reserved">isinstance</span>(origin, (<span class="hl-reserved">tuple</span>, <span class="hl-reserved">list</span>):</code>
-        <code>            words, weights = origin</code>
-        <code>            <span class="hl-keyword">if not</span> <span class="hl-reserved">isinstance</span>(words, (<span class="hl-reserved">list</span>, numpy.ndarray)):</code>
-        <code>                words = <span class="hl-reserved">list</span>(words)</code>
-        </pre>
-    </section>
+    <!--<section class="slide">-->
+        <!--<pre>-->
+        <!--<code><span class="hl-keyword">def</span> <span class="hl-def">nearest_neighbors</span>(<span class="hl-reserved">self</span>, origin, k=10):</code>-->
+        <!--<code>        <span class="hl-comment"># origin can be either a text query or an id</span></code>-->
+        <!--<code>        <span class="hl-keyword">if</span> <span class="hl-reserved">isinstance</span>(origin, (<span class="hl-reserved">tuple</span>, <span class="hl-reserved">list</span>):</code>-->
+        <!--<code>            words, weights = origin</code>-->
+        <!--<code>            <span class="hl-keyword">if not</span> <span class="hl-reserved">isinstance</span>(words, (<span class="hl-reserved">list</span>, numpy.ndarray)):</code>-->
+        <!--<code>                words = <span class="hl-reserved">list</span>(words)</code>-->
+        <!--</pre>-->
+    <!--</section>-->
 
+
+    <section class="slide">
+		<h2>Parsing</h2>
+		<div id="what-is-sc">
+		<pre>
+            <code class="python"><span class="hl-keyword">def</span> <span class="hl-def">nearest_neighbors</span>(<span class="hl-reserved">self</span>, origin, k=<span class="hl-literal">10</span>,</code>
+            <code class="python">                      skipped_stop=<span class="hl-literal">0.99</span>, throw=<span class="hl-keyword">True</span>):</code>
+<code class="python">    <span class="hl-comment"># origin can be either a text query or an id</span></code>
+<code class="python">    <span class="hl-keyword">if</span> <span class="hl-reserved">isinstance</span>(origin, (<span class="hl-reserved">tuple</span>, <span class="hl-reserved">list</span>):</code>
+<code class="python">	     words, weights = origin</code>
+<code class="python">	     weights = numpy.array(weights, dtype=numpy.float32)</code>
+            <code class="python">	     index = <span class="hl-keyword">None</span></code>
+<code class="python">	     avg = <span class="hl-reserved">self</span>._get_centroid(words, weights, force=<span class="hl-keyword">True</span>)</code>
+<code class="python">    else:</code>
+<code class="python">	     index = origin</code>
+<code class="python">	     words, weights = <span class="hl-reserved">self</span>._get_vocabulary(index)</code>
+<code class="python">	     avg = <span class="hl-reserved">self</span>._get_centroid_by_index(index)</code>
+            <code class="python">    <span class="hl-keyword">if</span> avg <span class="hl-keyword">is None</span>:</code>
+<code class="python">	     raise ValueError(</code>
+<code class="python">		     "Too little vocabulary for %s: %d" % (index, len(words)))</code>
+		</pre>
+			<div><pre>
+				<code class="inline-no-offset"><span class="hl-keyword">⬤</span> keywords</code>
+				<code class="inline-no-offset"><span class="hl-title">⬤</span> identifiers</code>
+				<code class="inline-no-offset"><span class="hl-literal">⬤</span> literals</code>
+				<code class="inline-no-offset"><span class="hl-string">⬤</span> strings</code>
+				<code class="inline-no-offset"><span class="hl-comment">⬤</span> comments</code>
+                <code class="inline-no-offset"><span class="hl-reserved">⬤</span> reserved</code>
+			</pre></div>
+			</div>
+		<style>
+			#what-is-sc {
+				display: flex;
+			}
+			#what-is-sc > pre {
+				font-size: 0.5em;
+				margin-right: 100px;
+			}
+			#what-is-sc > div > pre {
+				border: 1px solid white;
+				border-radius: 5px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			#what-is-sc > div > pre > code {
+				padding: 0 20px !important;
+			}
+		</style>
+	</section>
 
     <section class="slide vista" id="ast">
         <h2>AST</h2>
@@ -736,11 +785,11 @@
                 right: 50px;
                 width: 500px;
                 height: 300px;
-                background-image: url("pictures/analogy_black.png");
+                background-image: url("pictures/basics/analogy_black.png");
             }
             @media not print {
                 #analogies {
-                    background-image: url("pictures/analogy_white.png");
+                    background-image: url("pictures/basics/analogy_white.png");
                 }
             }
         </style>
@@ -877,11 +926,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all1">
         <style>
             #all2all1 {
-                background-image: url("pictures/all2all_1_black.svg");
+                background-image: url("pictures/basics/all2all_1_black.svg");
             }
             @media not print {
                 #all2all1 {
-                    background-image: url("pictures/all2all_1_white.svg");
+                    background-image: url("pictures/basics/all2all_1_white.svg");
                 }
             }
         </style>
@@ -912,11 +961,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all2">
         <style>
             #all2all2 {
-                background-image: url("pictures/all2all_2_black.svg");
+                background-image: url("pictures/basics/all2all_2_black.svg");
             }
             @media not print {
                 #all2all2 {
-                    background-image: url("pictures/all2all_2_white.svg");
+                    background-image: url("pictures/basics/all2all_2_white.svg");
                 }
             }
         </style>
@@ -947,11 +996,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all3">
         <style>
             #all2all3 {
-                background-image: url("pictures/all2all_3_black.svg");
+                background-image: url("pictures/basics/all2all_3_black.svg");
             }
             @media not print {
                 #all2all3 {
-                    background-image: url("pictures/all2all_3_white.svg");
+                    background-image: url("pictures/basics/all2all_3_white.svg");
                 }
             }
         </style>
@@ -982,11 +1031,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all4">
         <style>
             #all2all4 {
-                background-image: url("pictures/all2all_4_black.svg");
+                background-image: url("pictures/basics/all2all_4_black.svg");
             }
             @media not print {
                 #all2all4 {
-                    background-image: url("pictures/all2all_4_white.svg");
+                    background-image: url("pictures/basics/all2all_4_white.svg");
                 }
             }
         </style>
@@ -1017,11 +1066,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all5">
         <style>
             #all2all5 {
-                background-image: url("pictures/all2all_5_black.svg");
+                background-image: url("pictures/basics/all2all_5_black.svg");
             }
             @media not print {
                 #all2all5 {
-                    background-image: url("pictures/all2all_5_white.svg");
+                    background-image: url("pictures/basics/all2all_5_white.svg");
                 }
             }
         </style>
@@ -1052,11 +1101,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all6">
         <style>
             #all2all6 {
-                background-image: url("pictures/all2all_6_black.svg");
+                background-image: url("pictures/basics/all2all_6_black.svg");
             }
             @media not print {
                 #all2all6 {
-                    background-image: url("pictures/all2all_6_white.svg");
+                    background-image: url("pictures/basics/all2all_6_white.svg");
                 }
             }
         </style>
@@ -1087,11 +1136,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all7">
         <style>
             #all2all7 {
-                background-image: url("pictures/all2all_7_black.svg");
+                background-image: url("pictures/basics/all2all_7_black.svg");
             }
             @media not print {
                 #all2all7 {
-                    background-image: url("pictures/all2all_7_white.svg");
+                    background-image: url("pictures/basics/all2all_7_white.svg");
                 }
             }
         </style>
@@ -1122,11 +1171,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all8">
         <style>
             #all2all8 {
-                background-image: url("pictures/all2all_8_black.svg");
+                background-image: url("pictures/basics/all2all_8_black.svg");
             }
             @media not print {
                 #all2all8 {
-                    background-image: url("pictures/all2all_8_white.svg");
+                    background-image: url("pictures/basics/all2all_8_white.svg");
                 }
             }
         </style>
@@ -1157,11 +1206,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all9">
         <style>
             #all2all9 {
-                background-image: url("pictures/all2all_9_black.svg");
+                background-image: url("pictures/basics/all2all_9_black.svg");
             }
             @media not print {
                 #all2all9 {
-                    background-image: url("pictures/all2all_9_white.svg");
+                    background-image: url("pictures/basics/all2all_9_white.svg");
                 }
             }
         </style>
@@ -1170,11 +1219,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all">
         <style>
             #all2all {
-                background-image: url("pictures/all2all_black.svg");
+                background-image: url("pictures/basics/all2all_black.svg");
             }
             @media not print {
                 #all2all {
-                    background-image: url("pictures/all2all_white.svg");
+                    background-image: url("pictures/basics/all2all_white.svg");
                 }
             }
         </style>
@@ -1233,7 +1282,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         </style>
         <style>
             #swivel-before {
-                background-image: url("pictures/swivel_before.png");
+                background-image: url("pictures/basics/swivel_before.png");
             }
         </style>
     </section>
@@ -1242,7 +1291,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         <div class="vista padded-image" id="swivel-after"></div>
         <style>
             #swivel-after {
-                background-image: url("pictures/swivel_after.png");
+                background-image: url("pictures/basics/swivel_after.png");
             }
         </style>
     </section>
@@ -1264,531 +1313,350 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     </section>
 
 
+    <!--TODO: find image for similar repo - somebody is looking in mirror, bender and bad bender and so on-->
+    <section class="slide">
+        <h2 class="shout">Similar repository search</h2>
+    </section>
+
+
+    <section class="slide nn">
+		<h2>torch/nn</h2>
+		<ul class="no-bullets">
+			<li><a href="https://github.com/intel-analytics/BigDL">intel-analytics/BigDL</a></li>
+			<li><a href="https://github.com/pytorch/pytorch">pytorch/pytorch</a></li>
+			<li><a href="https://github.com/clementfarabet/lua---nnx">clementfarabet/lua---nnx</a></li>
+			<li><a href="https://github.com/Element-Research/dpnn">Element-Research/dpnn</a></li>
+			<li><a href="https://github.com/aciditeam/torch-models">aciditeam/torch-models</a></li>
+			<li><a href="https://github.com/sermanet/OverFeat">sermanet/OverFeat</a></li>
+			<li><a href="https://github.com/naman14/Arcade">naman14/Arcade</a></li>
+			<li><a href="https://github.com/hughperkins/clnn">hughperkins/clnn</a></li>
+			<li><a href="https://github.com/itayhubara/BinaryNet">itayhubara/BinaryNet</a></li>
+			<li><a href="https://github.com/google/FluidNet">google/FluidNet</a></li>
+		</ul>
+		<style>
+			.nn ul {
+				overflow: hidden;
+			}
+			.nn li {
+				float: left;
+  				display: inline;
+				width: 50%;
+			}
+		</style>
+	</section>
+
+	<section class="slide nn">
+		<h2>src-d/go-git</h2>
+		<ul class="no-bullets">
+			<li><a href="https://github.com/chrisparnin/autogit">chrisparnin/autogit</a></li>
+			<li><a href="https://github.com/libgit2/git2go">libgit2/git2go</a></li>
+			<li><a href="https://github.com/christkv/node-git">christkv/node-git</a></li>
+			<li><a href="https://github.com/gitchain/gitchain">gitchain/gitchain</a></li>
+			<li><a href="https://github.com/heroku/cli">heroku/cli</a></li>
+			<li><a href="https://github.com/modocache/Gift">modocache/Gift</a></li>
+			<li><a href="https://github.com/ChimeraCoder/gitgo">ChimeraCoder/gitgo</a></li>
+			<li><a href="https://github.com/mojombo/grit">mojombo/grit</a></li>
+			<li><a href="https://github.com/FriendCode/gittle">FriendCode/gittle</a></li>
+			<li><a href="https://github.com/tsuru/gandalf">tsuru/gandalf</a></li>
+		</ul>
+	</section>
+
+    <section class="slide">
+		<h2>Pipeline</h2>
+		<ol>
+			<li>Clone the repositories.</li>
+			<li>Classify and parse source code.</li>
+			<li>Preprocess identifiers: split, normalize, filter, stem.</li>
+			<li>Prepare embeddings - cooc matrix & Swivel.</li>
+			<li>Weighted BOW per repository.</li>
+            <li>WMD.</li>
+		</ol>
+	</section>
+
+
+    <section class="slide">
+		<h2>Training identifier embeddings</h2>
+		<table>
+		<tr>
+			<th scope="col">Stage</th>
+			<th>Time</th>
+			<th>Resources</th>
+			<th>Size on disk</th>
+		</tr>
+		<tr>
+			<th scope="row">Cloning 143k repos</th>
+			<td>3 days</td>
+			<td>20x2 cores, 256 GB RAM</td>
+			<td>2.6 TB</td>
+		</tr>
+		<tr>
+			<th scope="row">Dataset</th>
+			<td>4 days</td>
+			<td>20x2 cores, 256 GB RAM</td>
+			<td>2TB (31GB in xz)</td>
+		</tr>
+		<tr>
+			<th scope="row">fastprep</th>
+			<td>2 days</td>
+			<td>16x2 cores, 256 GB RAM</td>
+			<td>20 GB</td>
+		</tr>
+		<tr>
+			<th scope="row">Swivel</th>
+			<td>14 hours</td>
+			<td>2 Titan X'2016 + 2 1080Ti</td>
+			<td>5.6 GB</td>
+		</tr>
+		</table>
+	</section>
+
+	<section class="slide vista" id="projector">
+		<h2>Embeddings</h2>
+
+		<style>
+			#projector {
+				background-position: right !important;
+				background: white url("pictures/similar_repo/projector_black.png");
+			}
+			@media not print {
+				#projector {
+					background: black url("pictures/similar_repo/projector_white.png");
+				}
+			}
+		</style>
+	</section>
+
+
+    <section class="slide">
+		<h2>Weighted nBOW</h2>
+		<p>Let's interpret every repository as the weighted bag-of-words.</p>
+		<p>We calculate TF-IDF to weight the occurring identifiers.</p>
+		<div id="tensorflow-nbow"><code class="inline-no-offset">tensorflow/tensorflow:</code>
+		<pre class="pre">    tfreturn	67.780249
+  oprequires	63.968142
+      doblas	63.714424
+    gputools	62.337396
+    tfassign	61.545926
+    opkernel	60.721556
+        sycl	57.064558
+         hlo	55.723587
+     libxsmm	54.820668
+  tfdisallow	53.666890</pre></div>
+		<style>
+			#tensorflow-nbow {
+				display: flex;
+				align-items: center;
+			}
+			#tensorflow-nbow > code {
+				padding-right: 50px;
+			}
+			.pre {
+				white-space: pre !important;
+				font-family: monospace;
+				line-height: 1.2em;
+			}
+		</style>
+	</section>
+
+    <section class="slide">
+		<h2>Word Mover's Distance</h2>
+		<p>Based on the <a href="http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf">paper</a>.</p>
+		<p>An application of Earth Mover's Distance to sentences.</p>
+		<p>Works on the nBOW model.</p>
+		<div class="vista" id="wmd"></div>
+		<style>
+			#wmd {
+				width: 320px;
+				height: 250px;
+				background: white url("pictures/similar_repo/wmd_black.png");
+			}
+			@media not print {
+				#wmd {
+					background: black url("pictures/similar_repo/wmd_white.png");
+				}
+			}
+		</style>
+	</section>
+
+	<section class="slide">
+		<h2>WMD calculation in a nutshell</h2>
+		<p class="important">WMD evaluation is O(N<sup>3</sup>), becomes slow on N≈100.</p>
+		<ol>
+			<li>Sort samples by centroid distance.</li>
+			<li>Evaluate first k WMDs.</li>
+			<li>For every subsequent sample, solve the relaxed LP which gives an upper estimation.</li>
+			<li>If it is greater than the farthest among the k NN, go next.</li>
+			<li>Otherwise, evaluate the WMD.</li>
+		</ol>
+		<p class="success">This allows to avoid 95% WMD evaluations on average.</p>
+	</section>
 
 
 
+    <!--TODO: find image for similar repo - somebody is looking in mirror, bender and bad bender and so on-->
+    <section class="slide">
+        <h2 class="shout">Code review</h2>
+    </section>
+
+    <section class="slide vista vista-cover" id="issues">
+        <!--<img src="pictures/code_review/typos_issues.png" id="issues">-->
+        <style>
+            #issues {
+                /*background-color: white;*/
+                /*position: relative;*/
+                /*!*top: -81px;*!*/
+                /*!*left: -100px;*!*/
+                /*width: calc(100% + 200px);*/
+                /*height: calc(100% + 81px);*/
+                /*border: 0;*/
+                /*object-fit: cover !important;*/
+                background-image: url("pictures/code_review/typos_issues.png");
+                background-size: cover !important;
+        }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Typos correction inside code identifiers</h2>
+        <pre><code><span style="color: #cc8242">class</span> <span style="background-color: orangered">ClasName</span>:</code>
+<code>    <span style="color: #bbb429">@classmethod</span></code>
+            <code>    <span style="color: #cc8242">def</span> <span style="color: #ffc66d">function_name</span>(<span style="color: #94558D;">cls</span>) <span style="color: #f92672">-&gt;</span> str:</code>
+            <code>        <span><span style="background-color: orangered">varyable_name</span></span> = <span style="color: seagreen">"Hello, I'm ClassName object!"</span></code>
+            <code>        <span style="color: #cc8242">return</span> <span style="background-color: orangered">varyable_name</span></code></pre>
+    </section>
+
+    <section class="slide vista" id="tc">
+        <h2>Typos correction</h2>
+        <p style="font-size: 30px"><span style="color: orangered">funktion</span>&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;<span style="color: limegreen">function</span></p>
+        <p style="font-size: 30px"><span style="color: orangered">GetValu</span>&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;<span style="color: limegreen">GetValue</span></p>
+        <p style="font-size: 30px"><span style="color: orangered">str_lenght</span>&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;<span style="color: limegreen">str_length</span></p>
+        <style>
+            #tc span {
+                position: relative;
+                top: 2px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Typos correction inside code identifiers</h2>
+        <pre><code><span style="color: #cc8242">class</span> <span style="background-color: green">ClassName</span>:</code>
+<code>    <span style="color: #bbb429">@classmethod</span></code>
+            <code>    <span style="color: #cc8242">def</span> <span style="color: #ffc66d">function_name</span>(<span style="color: #94558D;">cls</span>) <span style="color: #f92672">-&gt;</span> str:</code>
+            <code>        <span><span style="background-color: green">variable_name</span></span> = <span style="color: seagreen">"Hello, I'm ClassName object!"</span></code>
+            <code>        <span style="color: #cc8242">return</span> <span style="background-color: green">variable_name</span></code></pre>
+    </section>
+
+    <section class="slide">
+        <h2>The correction pipeline</h2>
+        <img src="pictures/code_review/typos_analyzer.png" id="typos_analyzer">
+        <style>
+            #typos_analyzer {
+                width: 95%;
+                position: absolute;
+                left: 25px;
+                top: 200px;
+            }
+        </style>
+    </section>
+
+
+    <section class="slide">
+        <h2>Candidates generation</h2>
+        <ol>
+            <li>Find candidates with the <a href="https://github.com/ne3x7/pysymspell/">SymSpell</a></li>
+            <li>Identifier to which the token belongs - a context</li>
+            <li>Features: based on the frequencies, embeddings, similarity and edit distance between the elements</li>
+        </ol>
+    </section>
+
+    <section class="slide">
+        <h2>Candidates ranking</h2>
+        <ul>
+            <li>Logistic regression model on tuples <code>(identifier, token, candidate)</code>:
+                <ul><li><code>label=1</code> if the candidate is the correct suggestion</li>
+                    <li><code>label=0</code> otherwise</li></ul></li>
+            <li>Group by the token and sort</li>
+            <li><a href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a> is used for the logistic regression</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Suggestions</h2>
+        <ul>
+            <li>Suggested token itsetf - not correcting</li>
+            <li>Otherwise return corrections</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Training and testing</h2>
+        <ul>
+            <li>Train and test datasets are sampled from the dataset of identifiers</li>
+            <li>Random artificial typos</li>
+            <li><span style="font-weight: 900">Dataset itself contains typos</span></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Results on a token level</h2>
+        <ul>
+            <li><span style="color: greenyellow">Detection precision</span> - 98%</li>
+            <li><span style="color: greenyellow">Detection recall</span> - 82%</li>
+            <li><span style="color: greenyellow">Top3 correction accuracy</span> - 95%</li>
+        </ul>
+        Note: the test dataset is not a ground truth.
+    </section>
+
+    <!--TODO: find image for similar repo - somebody is looking in mirror, bender and bad bender and so on-->
+    <section class="slide">
+        <h2 class="shout">Developer similarity</h2>
+    </section>
+
+    <section class="slide">
+		<h2>Pipeline</h2>
+		<ol>
+			<li>Clone the organization.</li>
+			<li>Classify and parse source code.</li>
+			<li>Extract identifiers per file.</li>
+			<li>Extract experience per developer - languages, files, etc.</li>
+			<li>Topic modeling.</li>
+            <li>Usage: KD-tree, clustering and so on.</li>
+		</ol>
+	</section>
+
+    <section class="slide vista vista-cover white" id="dev_token">
+        <!--<h2>Tokens per developer</h2>-->
+        <!--<img src="pictures/similar_devs/dev_token.png" id="dev_token">-->
+        <style>
+            #dev_token {
+                /*width: 95%;*/
+                /*position: absolute;*/
+                /*left: 25px;*/
+                /*top: 200px;*/
+
+                background-image: url("pictures/similar_devs/dev_token.png");
+                background-size: contain !important;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista vista-cover white" id="developer_clustering">
+        <!--<h2>Tokens per developer</h2>-->
+        <!--<img src="pictures/similar_devs/developer_clustering.png" id="developer_clustering">-->
+        <style>
+            #developer_clustering {
+                /*width: 95%;*/
+                /*position: absolute;*/
+                /*left: 25px;*/
+                /*top: 200px;*/
+                background-image: url("pictures/similar_devs/developer_clustering.png");
+                background-size: contain !important;
+            }
+        </style>
+    </section>
 
     <!--___________________________________________________________________________________________-->
-
-    <section class="slide vista vista-cover" id="github">
-        <h2 class="shout small-shout"><i class="fa fa-inverse fa-github-alt" aria-hidden="true"></i> GitHub</h2>
-        <style>
-            #github {
-                background-image: url("pictures/github.png");
-            }
-            #github > h2 > i {
-                color: inherit !important;
-            }
-            .small-shout {
-                font-size: 400% !important;
-                padding-left: 100px;
-                padding-right: 100px;
-            }
-            #github::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                background-color: rgba(0, 0, 0, 0.65);
-            }
-        </style>
-    </section>
-    
-
-
-    <section class="slide part">
-        <h2 class="shout">Examples</h2>
-    </section>
-
-    <section class="slide">
-        <h2 class="shout">Code naturalness</h2>
-    </section>
-
-    <section class="slide">
-<pre><code><span class="hl-keyword">class</span> <span class="box">???</span>:</code>
-<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, dbname, user, password, host, port):</code>
-<code>        <span class="hl-comment"># ...</span></code>
-<code>    <span class="hl-keyword">def</span> <span class="hl-def">query</span>(<span class="hl-reserved">self</span>, sql):</code>
-<code>        <span class="hl-comment"># ...</span></code>
-<code>    <span class="hl-keyword">def</span> <span class="hl-def">close</span>(<span class="hl-reserved">self</span>):</code>
-<code>        <span class="hl-comment"># ...</span></code>
-</pre>
-        <style>
-            .hl-keyword {
-                color: #cc8242;
-                font-weight: bold;
-            }
-            .hl-def {
-                color: #ffc66d;
-            }
-            .hl-reserved {
-                color: #94558D;
-            }
-            .hl-string {
-                color: #6a8759;
-            }
-            .hl-comment {
-                color: #707070;
-            }
-            .box {
-                border: 1px solid white;
-                padding: 0.05em 0.1em;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <pre><code><span class="hl-keyword">class</span> <span class="box">Database</span>:</code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, dbname, user, password, host, port):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">query</span>(<span class="hl-reserved">self</span>, sql):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">close</span>(<span class="hl-reserved">self</span>):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <!-- metasyntactic -->
-        <pre><code><span class="hl-keyword">class</span> Foo:</code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">bar</span>(<span class="hl-reserved">self</span>, qux):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">baz</span>(<span class="hl-reserved">self</span>, waldo):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">do</span>(<span class="hl-reserved">self</span>, really):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        </pre>
-    </section>
-
-
-    <section class="slide">
-        <h2>Projects similar to MariaDB/server?</h2>
-        <ul class="two-cols no-bullets">
-            <li><a href="https://github.com/twitter/mysql">twitter/mysql</a></li>
-            <li><a href="https://github.com/Tokutek/mysql-5.5">Tokutek/mysql-5.5</a></li>
-            <li><a href="https://github.com/facebook/mysql-5.6">facebook/mysql-5.6</a></li>
-            <li><a href="https://github.com/percona/percona-xtrabackup">percona/percona-xtrabackup</a></li>
-            <li><a href="https://github.com/Tokutek/mariadb-5.5">Tokutek/mariadb-5.5</a></li>
-            <li><a href="https://github.com/percona/percona-server">percona/percona-server</a></li>
-            <li><a href="https://github.com/atcurtis/mariadb">atcurtis/mariadb</a></li>
-            <li><a href="https://github.com/webscalesql/webscalesql-5.6">webscalesql/webscalesql-5.6</a></li>
-            <li><a href="https://github.com/alibaba/AliSQL">alibaba/AliSQL</a></li>
-            <li><a href="https://github.com/mysql/mysql-server">mysql/mysql-server</a></li>
-        </ul>
-        <br>
-        <a style="float: right;" href="https://vmarkovtsev.github.com/techtalks-2017-moscow">Details</a>
-    </section>
-
-    <section class="slide vista" id="excodesearch">
-        <h2>Exploratory search</h2>
-        <style>
-            #excodesearch {
-                padding: 50px;
-                background-origin: content-box;
-                background-image: url("pictures/excodesearch_black.png");
-            }
-            @media not print {
-                #excodesearch {
-                    background-image: url("pictures/excodesearch_white.png");
-                }
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>Similar code detection</h2>
-        <ul>
-            <li>By style</li>
-            <li>By structure</li>
-            <li>By identifiers</li>
-        </ul>
-        <div id="andthen">
-        <h2>provides us</h2>
-        <ul class="no-bullets fa-bullets">
-            <li><span class="monofa">💪</span>Global graph</li>
-            <li><i class="fa fa-balance-scale monofa" aria-hidden="true"></i>Licenses</li>
-            <li><i class="fa fa-line-chart monofa" aria-hidden="true"></i>Refactoring</li>
-        </ul>
-        </div>
-        <style>
-            #andthen {
-                position: absolute;
-                right: 300px;
-                bottom: 100px;
-            }
-        </style>
-    </section>
-
-    <section class="slide" id="nncomplete-example">
-        <h2 class="top">Code autocompletion</h2>
-        <img class="top" src="pictures/channelSelectExample.gif">
-        <style>
-            #nncomplete-example {
-                background-color: #1e1e1c;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>Code style</h2>
-        <pre><code class="python"><span class="hl-keyword">class</span> foobar:
-    <span class="hl-keyword">def</span> <span class="hl-def">connecttoserver</span>(<span class="hl-reserved">self</span>):
-        myserverhost = globalconfig.server.host</code>
-        </pre>
-        <style>
-            .hl-keyword {
-                color: #cc8242;
-                font-weight: bold;
-            }
-            .hl-def {
-                color: #ffc66d;
-            }
-            .hl-reserved {
-                color: #94558D;
-            }
-            .hl-string {
-                color: #6a8759;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <pre><code class="python"><span class="hl-keyword">class</span> FooBar:
-    <span class="hl-keyword">def</span> <span class="hl-def">connect_to_server</span>(<span class="hl-reserved">self</span>):
-        myServerHost = globalConfig.server.host</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Many other applications</h2>
-        <ul>
-            <li>Prediction of class, function, variable names</li>
-            <li>Type inference</li>
-            <li>Which comments do not make sense?</li>
-            <li>Which comments are funny?</li>
-            <li>Which APIs are bad or misused?</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Your code as a crime scene</h2>
-        <ul>
-            <li>Idea: mine the development history</li>
-            <li><a href="https://pragprog.com/book/atcrime/your-code-as-a-crime-scene">Book</a> by Adam Tornhill</li>
-            <li><a href="https://codescene.io/">codescene.io</a></li>
-        </ul>
-        <img src="pictures/atcrime.jpg" id="atcrime">
-        <style>
-            #atcrime {
-                position: absolute;
-                right: 100px;
-                bottom: 100px;
-                width: 300px;
-                object-fit: contain;
-            }
-        </style>
-    </section>
-
-    <section class="slide vista" id="hercules">
-        <style>
-            #hercules {
-                padding: 50px;
-                background-origin: content-box;
-                background-image: url("pictures/jinja_black.png");
-            }
-            @media not print {
-                #hercules {
-                    background-image: url("pictures/jinja_white.png");
-                }
-            }
-        </style>
-    </section>
-
-    <section class="slide vista vista-cover" id="pipeline">
-            <h2 class="shout">Data</h2>
-            <style>
-                #pipeline {
-                    background-image: url("pictures/pipeline.jpg");
-                }
-                #pipeline::before {
-                    content: "";
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    background-color: rgba(0, 0, 0, 0.7);
-                }
-            </style>
-        </section>
-    
-        <section class="slide">
-            <h2>Datasets</h2>
-            <ul>
-                <li><a href="http://ghtorrent.org/">GHTorrent</a> - everything except Git repositories, 70GB</li>
-                <li><a href="https://github.com/src-d/datasets/tree/master/PublicGitArchive">Public Git Archive</a> - only Git repositories, 3TB</li>
-                <li><a href="https://cloud.google.com/bigquery/public-data/github">GitHub Data in Google BigQuery</a></li>
-                <li><a href="https://github.com/src-d/rovers">rovers</a> &amp; <a href="https://github.com/src-d/borges">borges</a> - DIY</li>
-            </ul>
-        </section>
-    
-        <section class="slide">
-            <h2>PGA</h2>
-            <ul>
-                <li>270k of siva files</li>
-                <li>CSV index</li>
-            </ul>
-            Details in the <a href="https://arxiv.org/abs/1803.10144">paper</a>.<br>
-            <img src="pictures/by-nc-sa.eu.svg">
-            <div id="rooted" class="vista"></div>
-            <style>
-                #rooted {
-                    position: absolute;
-                    width: 600px;
-                    height: 400px;
-                    top: 120px;
-                    right: 50px;
-                    background-image: url("pictures/rooted_black.png");
-                }
-                @media not print {
-                    #rooted {
-                        background-image: url("pictures/rooted_white.png");
-                    }
-                }
-            </style>
-        </section>
-
-    <section class="slide">
-        <h2 id="mloncode-stack-h">Tools for MLonCode</h2>
-        <figure>
-            <img class="cover obj-cover" src="pictures/leverBigCorners.png" alt="MLonCode logo">
-        </figure>
-        <style>
-            #mloncode-stack-h {
-                color: black;
-                text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #ffffff , 0 0 70px #ffffff , 0 0 80px #ffffff , 0 0 100px #ffffff ;
-            }
-        </style>
-    </section>
-
-    <section class="slide vista" id="mloncode-pyramid">
-        <style>
-            #mloncode-pyramid {
-                padding: 100px;
-                background-origin: content-box;
-                background-image: url("pictures/pyramid_black.svg");
-            }
-            @media not print {
-                #mloncode-pyramid {
-                    background-image: url("pictures/pyramid_white.svg");
-                }
-            }
-        </style>
-    </section>
-
-    <section class="slide part">
-        <h2 class="shout">Plumbing</h2>
-    </section>
-
-    <section class="slide">
-        <h2>source{d} engine</h2>
-        <ul>
-            <li>siva or bare git repository loader for Apache Spark</li>
-            <li>Classification, parsing (thanks to bblfsh), filtering, checkouting, scaling</li>
-            <li>Apache license</li>
-        </ul>
-        <a href="https://github.com/src-d/engine">GitHub</a>
-    </section>
-
-    <section class="slide">
-        <h2>source{d} engine</h2>
-        <pre><code>&gt;&gt;&gt; <span class="hl-keyword">from</span> sourced.engine <span class="hl-keyword">import</span> Engine
-&gt;&gt;&gt; engine = Engine(spark, <span class="hl-string">"/path/to/siva/files"</span>, <span class="hl-string">"siva"</span>)
-&gt;&gt;&gt; engine.repositories.references.head_ref \
-    .commits.tree_entries.blobs \
-    .classify_languages() \
-    .select(<span class="hl-string">"blob_id"</span>, <span class="hl-string">"path"</span>, <span class="hl-string">"lang"</span>) \
-    .show()
-</code></pre>
-    </section>
-
-    <section class="slide vista" id="ast">
-        <h2>AST</h2>
-        <style>
-            #ast {
-                background: url("pictures/ast_black.svg");
-            }
-            @media not print {
-                #ast {
-                    background: black url("pictures/ast_white.svg");
-                }
-            }
-            #ast > h2 {
-                position: absolute;
-                bottom: 50px;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>How to parse</h2>
-        <ul>
-            <li>Regular expressions - <a href="http://pygments.org/">Pygments</a>,
-                <a href="https://highlightjs.org/">highlight.js</a></li>
-            <li><span class="box">Abstract syntax tree (AST)</span> - <a href="http://www.antlr.org/">ANTLR</a></li>
-            <li>Compilation</li>
-        </ul>
-        <style>
-            .box {
-                border: 1px solid white;
-                padding: 0 0.2em 0.1em 0.2em;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>  </h2>
-        <a href="https://doc.bblf.sh"><img class="center" src="pictures/bblfsh-logo.png"></a>
-        <div class="vista center" id="bblfsh-arch"></div>
-        <style>
-            #bblfsh-arch {
-                width: 600px;
-                height: 100px;
-                background-image: url("pictures/bblfsh-arch-black.png");
-            }
-            @media not print {
-                #bblfsh-arch {
-                    background-image: url("pictures/bblfsh-arch-white.png");
-                }
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2><i class="fa fa-sitemap" aria-hidden="true"></i> Universal AST</h2>
-        <ul>
-            <li>± uniform structure</li>
-            <li>± standard node types (roles)</li>
-            <li>XPath queries</li>
-            <li>4 traversal orders</li>
-        </ul>
-        <a href="http://dashboard.bblf.sh/">dashboard.bblf.sh</a>
-    </section>
-
-    <section class="slide">
-        <pre><code>&gt;&gt;&gt; engine.repositories.references.head_ref \
-    .commits.tree_entries.blobs \
-    .classify_languages() \
-    .filter(<span class="hl-string">'lang = "Python"'</span>) \
-    .extract_uasts() \
-    .query_uast(<span class="hl-string">'//*[@roleIdentifier]'</span>) \
-    .extract_tokens(<span class="hl-string">"result"</span>, <span class="hl-string">"tokens"</span>) \
-    .select(<span class="hl-string">"blob_id"</span>, <span class="hl-string">"path"</span>, <span class="hl-string">"tokens"</span>)
-        </code></pre>
-    </section>
-
-    <section class="slide vista" id="django">
-        <style>
-            #django {
-                padding: 50px;
-                background-origin: content-box;
-                background-image: url("pictures/django_black.png");
-            }
-            @media not print {
-                #django {
-                    background-image: url("pictures/django_white.png");
-                }
-            }
-        </style>
-    </section>
-
-    <section class="slide vista vista-cover" id="powerful">
-        <h2>Powerful</h2>
-        <style>
-            #powerful {
-                background-image: url("pictures/power.jpg");
-            }
-            #powerful h2 {
-                color: #000;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>modelforge</h2>
-        <ul class="no-bullets fa-bullets">
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Automatically fetch from the internet</li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>"Model Store"</li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Flexible, modern binary format - <a href="https://github.com/spacetelescope/asdf">ASDF</a></li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Versioning</li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Reproducability</li>
-            <li><i class="fa fa-close monofa" aria-hidden="true"></i>Support various programming languages</li>
-        </ul>
-        <a href="https://github.com/src-d/modelforge">GitHub</a>
-    </section>
-
-    <section class="slide part">
-        <h2 class="shout">Machine Learning</h2>
-    </section>
-
-    <section class="slide">
-        <h2>hercules</h2>
-        <ul>
-            <li>Go</li>
-            <li>Mining Git history</li>
-            <li>Relies on go-git, Babelfish and Tensorflow</li>
-            <li>Apache license</li>
-        </ul>
-        <a href="https://github.com/src-d/hercules">GitHub</a>
-    </section>
-
-    <section class="slide">
-        <h2>MLonCode in hercules</h2>
-        <ul>
-            <li>Structural hotness</li>
-            <li>Comment sentiment</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>source{d} ml</h2>
-        <ul>
-            <li>Python</li>
-            <li>Targets large-scale MLonCode</li>
-            <li>Runs on top of source{d} engine, modelforge and Tensorflow</li>
-            <li>Apache license</li>
-        </ul>
-        <a href="https://github.com/src-d/ml">GitHub</a>
-    </section>
-
-    <section class="slide">
-        <h2>Solved practical problems</h2>
-        <ul>
-            <li>Identifier splitting</li>
-            <li>O(1) code similarity search</li>
-            <li>Topic modeling</li>
-            <li>Embeddings</li>
-        </ul>
-    </section>
-
-    
-
-
-
-    <section class="slide">
-        <h2>Typos</h2>
-        <ul>
-            <li>recieve <span class="compare">=</span> receive</li>
-            <li>grey <span class="compare">=</span> gray</li>
-            <li>calback <span class="compare">=</span> callbak <span class="compare">=</span> callback</li>
-        </ul>
-    </section>
-
-    <section class="slide part">
-        <h2 class="shout">Summary</h2>
-    </section>
 
     <section class="slide">
         <h2>Summary</h2>

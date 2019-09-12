@@ -1,8 +1,3 @@
-
-print("Hello HUMANS")
-
-
-
 from matplotlib import pyplot as plt
 
 wiki = """
@@ -211,6 +206,7 @@ Japanese	500,000
 Lithuanian	500,000
 Norwegian	500,000
 English	470,000
+Russian	150,000
 """
 
 for line in data_to_use.splitlines():
