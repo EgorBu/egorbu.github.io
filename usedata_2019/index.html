@@ -528,39 +528,107 @@
         </style>
     </section>
 
-    <!--___________________________________________________________________________________________-->
 
-    <section class="slide vista vista-cover" id="github">
-        <h2 class="shout small-shout"><i class="fa fa-inverse fa-github-alt" aria-hidden="true"></i> GitHub</h2>
-        <style>
-            #github {
-                background-image: url("pictures/github.png");
-            }
-            #github > h2 > i {
-                color: inherit !important;
-            }
-            .small-shout {
-                font-size: 400% !important;
-                padding-left: 100px;
-                padding-right: 100px;
-            }
-            #github::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                background-color: rgba(0, 0, 0, 0.65);
-            }
-        </style>
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
+        <ul>
+            <li>Russian:        ?</li>
+        </ul>
     </section>
-    
 
-
-    <section class="slide part">
-        <h2 class="shout">Examples</h2>
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
+        <ul>
+            <li>Russian:        150k</li>
+        </ul>
     </section>
+
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
+        <ul>
+            <li>Russian:        150k</li>
+            <li>English:        ?</li>
+        </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
+        <ul>
+            <li>Russian:        150k</li>
+            <li>English:        470k</li>
+        </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
+        <ul>
+            <li>Russian:        150k</li>
+            <li>English:        470k</li>
+            <li>Turkish:        ?</li>
+        </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
+        <ul>
+            <li>Russian:        150k</li>
+            <li>English:        470k</li>
+            <li>Turkish:        616k</li>
+        </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
+        <ul>
+            <li>Russian:        150k</li>
+            <li>English:        470k</li>
+            <li>Turkish:        616k</li>
+            <li>Korean:        ?</li>
+        </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
+        <ul>
+            <li>Russian:        150k</li>
+            <li>English:        470k</li>
+            <li>Turkish:        616k</li>
+            <li>Korean:        1100k</li>
+        </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
+        <ul>
+            <li>Russian:        150k</li>
+            <li>English:        470k</li>
+            <li>Turkish:        616k</li>
+            <li>Korean:        1100k</li>
+            <li>Code identifiers:        ?</li>
+        </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
+        <ul>
+            <li>Russian:        150k</li>
+            <li>English:        470k</li>
+            <li>Turkish:        616k</li>
+            <li>Korean:        1100k</li>
+            <li>Code identifiers:        49M</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Why so many identifiers?</h2>
+        <pre>
+            <code>_tcp_socket_connect -> [tcp, socket, connect]</code>
+            <code>AuthenticationError -> [authentication, error]</code>
+            <code>authentication, authenticate -> authenticate</code>
+        </pre>
+    </section>
+
+    <!--TODO: tables & plots - too empty pages for number of words-->
 
     <section class="slide">
         <h2 class="shout">Code naturalness</h2>
@@ -610,433 +678,72 @@
         </pre>
     </section>
 
-    <section class="slide">
-        <!-- metasyntactic -->
-        <pre><code><span class="hl-keyword">class</span> Foo:</code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">bar</span>(<span class="hl-reserved">self</span>, qux):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">baz</span>(<span class="hl-reserved">self</span>, waldo):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">do</span>(<span class="hl-reserved">self</span>, really):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        </pre>
-    </section>
-
-
-    <section class="slide">
-        <h2>Projects similar to MariaDB/server?</h2>
-        <ul class="two-cols no-bullets">
-            <li><a href="https://github.com/twitter/mysql">twitter/mysql</a></li>
-            <li><a href="https://github.com/Tokutek/mysql-5.5">Tokutek/mysql-5.5</a></li>
-            <li><a href="https://github.com/facebook/mysql-5.6">facebook/mysql-5.6</a></li>
-            <li><a href="https://github.com/percona/percona-xtrabackup">percona/percona-xtrabackup</a></li>
-            <li><a href="https://github.com/Tokutek/mariadb-5.5">Tokutek/mariadb-5.5</a></li>
-            <li><a href="https://github.com/percona/percona-server">percona/percona-server</a></li>
-            <li><a href="https://github.com/atcurtis/mariadb">atcurtis/mariadb</a></li>
-            <li><a href="https://github.com/webscalesql/webscalesql-5.6">webscalesql/webscalesql-5.6</a></li>
-            <li><a href="https://github.com/alibaba/AliSQL">alibaba/AliSQL</a></li>
-            <li><a href="https://github.com/mysql/mysql-server">mysql/mysql-server</a></li>
-        </ul>
-        <br>
-        <a style="float: right;" href="https://vmarkovtsev.github.com/techtalks-2017-moscow">Details</a>
-    </section>
-
-    <section class="slide vista" id="excodesearch">
-        <h2>Exploratory search</h2>
-        <style>
-            #excodesearch {
-                padding: 50px;
-                background-origin: content-box;
-                background-image: url("pictures/excodesearch_black.png");
-            }
-            @media not print {
-                #excodesearch {
-                    background-image: url("pictures/excodesearch_white.png");
-                }
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>Similar code detection</h2>
+     <section class="slide">
+        <h2>Take away</h2>
         <ul>
-            <li>By style</li>
-            <li>By structure</li>
-            <li>By identifiers</li>
-        </ul>
-        <div id="andthen">
-        <h2>provides us</h2>
-        <ul class="no-bullets fa-bullets">
-            <li><span class="monofa">💪</span>Global graph</li>
-            <li><i class="fa fa-balance-scale monofa" aria-hidden="true"></i>Licenses</li>
-            <li><i class="fa fa-line-chart monofa" aria-hidden="true"></i>Refactoring</li>
-        </ul>
-        </div>
-        <style>
-            #andthen {
-                position: absolute;
-                right: 300px;
-                bottom: 100px;
-            }
-        </style>
-    </section>
-
-    <section class="slide" id="nncomplete-example">
-        <h2 class="top">Code autocompletion</h2>
-        <img class="top" src="pictures/channelSelectExample.gif">
-        <style>
-            #nncomplete-example {
-                background-color: #1e1e1c;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>Code style</h2>
-        <pre><code class="python"><span class="hl-keyword">class</span> foobar:
-    <span class="hl-keyword">def</span> <span class="hl-def">connecttoserver</span>(<span class="hl-reserved">self</span>):
-        myserverhost = globalconfig.server.host</code>
-        </pre>
-        <style>
-            .hl-keyword {
-                color: #cc8242;
-                font-weight: bold;
-            }
-            .hl-def {
-                color: #ffc66d;
-            }
-            .hl-reserved {
-                color: #94558D;
-            }
-            .hl-string {
-                color: #6a8759;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <pre><code class="python"><span class="hl-keyword">class</span> FooBar:
-    <span class="hl-keyword">def</span> <span class="hl-def">connect_to_server</span>(<span class="hl-reserved">self</span>):
-        myServerHost = globalConfig.server.host</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Many other applications</h2>
-        <ul>
-            <li>Prediction of class, function, variable names</li>
-            <li>Type inference</li>
-            <li>Which comments do not make sense?</li>
-            <li>Which comments are funny?</li>
-            <li>Which APIs are bad or misused?</li>
+            <li>Agglutination</li>
+            <li>Raw code is text</li>
+            <li>Non-linear structure of AST</li>
+            <li>Code naturalness</li>
         </ul>
     </section>
 
+
+    <!--TODO: Picture for basics. -->
     <section class="slide">
-        <h2>Your code as a crime scene</h2>
-        <ul>
-            <li>Idea: mine the development history</li>
-            <li><a href="https://pragprog.com/book/atcrime/your-code-as-a-crime-scene">Book</a> by Adam Tornhill</li>
-            <li><a href="https://codescene.io/">codescene.io</a></li>
-        </ul>
-        <img src="pictures/atcrime.jpg" id="atcrime">
-        <style>
-            #atcrime {
-                position: absolute;
-                right: 100px;
-                bottom: 100px;
-                width: 300px;
-                object-fit: contain;
-            }
-        </style>
+        <h2 class="shout">Basics</h2>
     </section>
 
-    <section class="slide vista" id="hercules">
-        <style>
-            #hercules {
-                padding: 50px;
-                background-origin: content-box;
-                background-image: url("pictures/jinja_black.png");
-            }
-            @media not print {
-                #hercules {
-                    background-image: url("pictures/jinja_white.png");
-                }
-            }
-        </style>
-    </section>
-
-    <section class="slide vista vista-cover" id="pipeline">
-            <h2 class="shout">Data</h2>
-            <style>
-                #pipeline {
-                    background-image: url("pictures/pipeline.jpg");
-                }
-                #pipeline::before {
-                    content: "";
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    background-color: rgba(0, 0, 0, 0.7);
-                }
-            </style>
-        </section>
-    
-        <section class="slide">
-            <h2>Datasets</h2>
-            <ul>
-                <li><a href="http://ghtorrent.org/">GHTorrent</a> - everything except Git repositories, 70GB</li>
-                <li><a href="https://github.com/src-d/datasets/tree/master/PublicGitArchive">Public Git Archive</a> - only Git repositories, 3TB</li>
-                <li><a href="https://cloud.google.com/bigquery/public-data/github">GitHub Data in Google BigQuery</a></li>
-                <li><a href="https://github.com/src-d/rovers">rovers</a> &amp; <a href="https://github.com/src-d/borges">borges</a> - DIY</li>
-            </ul>
-        </section>
-    
-        <section class="slide">
-            <h2>PGA</h2>
-            <ul>
-                <li>270k of siva files</li>
-                <li>CSV index</li>
-            </ul>
-            Details in the <a href="https://arxiv.org/abs/1803.10144">paper</a>.<br>
-            <img src="pictures/by-nc-sa.eu.svg">
-            <div id="rooted" class="vista"></div>
-            <style>
-                #rooted {
-                    position: absolute;
-                    width: 600px;
-                    height: 400px;
-                    top: 120px;
-                    right: 50px;
-                    background-image: url("pictures/rooted_black.png");
-                }
-                @media not print {
-                    #rooted {
-                        background-image: url("pictures/rooted_white.png");
-                    }
-                }
-            </style>
-        </section>
 
     <section class="slide">
-        <h2 id="mloncode-stack-h">Tools for MLonCode</h2>
-        <figure>
-            <img class="cover obj-cover" src="pictures/leverBigCorners.png" alt="MLonCode logo">
-        </figure>
-        <style>
-            #mloncode-stack-h {
-                color: black;
-                text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #ffffff , 0 0 70px #ffffff , 0 0 80px #ffffff , 0 0 100px #ffffff ;
-            }
-        </style>
+        <h2 class="shout">Placeholder: splitter</h2>
     </section>
-
-    <section class="slide vista" id="mloncode-pyramid">
-        <style>
-            #mloncode-pyramid {
-                padding: 100px;
-                background-origin: content-box;
-                background-image: url("pictures/pyramid_black.svg");
-            }
-            @media not print {
-                #mloncode-pyramid {
-                    background-image: url("pictures/pyramid_white.svg");
-                }
-            }
-        </style>
-    </section>
-
-    <section class="slide part">
-        <h2 class="shout">Plumbing</h2>
-    </section>
-
-    <section class="slide">
-        <h2>source{d} engine</h2>
-        <ul>
-            <li>siva or bare git repository loader for Apache Spark</li>
-            <li>Classification, parsing (thanks to bblfsh), filtering, checkouting, scaling</li>
-            <li>Apache license</li>
-        </ul>
-        <a href="https://github.com/src-d/engine">GitHub</a>
-    </section>
-
-    <section class="slide">
-        <h2>source{d} engine</h2>
-        <pre><code>&gt;&gt;&gt; <span class="hl-keyword">from</span> sourced.engine <span class="hl-keyword">import</span> Engine
-&gt;&gt;&gt; engine = Engine(spark, <span class="hl-string">"/path/to/siva/files"</span>, <span class="hl-string">"siva"</span>)
-&gt;&gt;&gt; engine.repositories.references.head_ref \
-    .commits.tree_entries.blobs \
-    .classify_languages() \
-    .select(<span class="hl-string">"blob_id"</span>, <span class="hl-string">"path"</span>, <span class="hl-string">"lang"</span>) \
-    .show()
-</code></pre>
-    </section>
-
-    <section class="slide vista" id="ast">
-        <h2>AST</h2>
-        <style>
-            #ast {
-                background: url("pictures/ast_black.svg");
-            }
-            @media not print {
-                #ast {
-                    background: black url("pictures/ast_white.svg");
-                }
-            }
-            #ast > h2 {
-                position: absolute;
-                bottom: 50px;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>How to parse</h2>
-        <ul>
-            <li>Regular expressions - <a href="http://pygments.org/">Pygments</a>,
-                <a href="https://highlightjs.org/">highlight.js</a></li>
-            <li><span class="box">Abstract syntax tree (AST)</span> - <a href="http://www.antlr.org/">ANTLR</a></li>
-            <li>Compilation</li>
-        </ul>
-        <style>
-            .box {
-                border: 1px solid white;
-                padding: 0 0.2em 0.1em 0.2em;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>  </h2>
-        <a href="https://doc.bblf.sh"><img class="center" src="pictures/bblfsh-logo.png"></a>
-        <div class="vista center" id="bblfsh-arch"></div>
-        <style>
-            #bblfsh-arch {
-                width: 600px;
-                height: 100px;
-                background-image: url("pictures/bblfsh-arch-black.png");
-            }
-            @media not print {
-                #bblfsh-arch {
-                    background-image: url("pictures/bblfsh-arch-white.png");
-                }
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2><i class="fa fa-sitemap" aria-hidden="true"></i> Universal AST</h2>
-        <ul>
-            <li>± uniform structure</li>
-            <li>± standard node types (roles)</li>
-            <li>XPath queries</li>
-            <li>4 traversal orders</li>
-        </ul>
-        <a href="http://dashboard.bblf.sh/">dashboard.bblf.sh</a>
-    </section>
-
-    <section class="slide">
-        <pre><code>&gt;&gt;&gt; engine.repositories.references.head_ref \
-    .commits.tree_entries.blobs \
-    .classify_languages() \
-    .filter(<span class="hl-string">'lang = "Python"'</span>) \
-    .extract_uasts() \
-    .query_uast(<span class="hl-string">'//*[@roleIdentifier]'</span>) \
-    .extract_tokens(<span class="hl-string">"result"</span>, <span class="hl-string">"tokens"</span>) \
-    .select(<span class="hl-string">"blob_id"</span>, <span class="hl-string">"path"</span>, <span class="hl-string">"tokens"</span>)
-        </code></pre>
-    </section>
-
-    <section class="slide vista" id="django">
-        <style>
-            #django {
-                padding: 50px;
-                background-origin: content-box;
-                background-image: url("pictures/django_black.png");
-            }
-            @media not print {
-                #django {
-                    background-image: url("pictures/django_white.png");
-                }
-            }
-        </style>
-    </section>
-
-    <section class="slide vista vista-cover" id="powerful">
-        <h2>Powerful</h2>
-        <style>
-            #powerful {
-                background-image: url("pictures/power.jpg");
-            }
-            #powerful h2 {
-                color: #000;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>modelforge</h2>
-        <ul class="no-bullets fa-bullets">
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Automatically fetch from the internet</li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>"Model Store"</li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Flexible, modern binary format - <a href="https://github.com/spacetelescope/asdf">ASDF</a></li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Versioning</li>
-            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Reproducability</li>
-            <li><i class="fa fa-close monofa" aria-hidden="true"></i>Support various programming languages</li>
-        </ul>
-        <a href="https://github.com/src-d/modelforge">GitHub</a>
-    </section>
-
-    <section class="slide part">
-        <h2 class="shout">Machine Learning</h2>
-    </section>
-
-    <section class="slide">
-        <h2>hercules</h2>
-        <ul>
-            <li>Go</li>
-            <li>Mining Git history</li>
-            <li>Relies on go-git, Babelfish and Tensorflow</li>
-            <li>Apache license</li>
-        </ul>
-        <a href="https://github.com/src-d/hercules">GitHub</a>
-    </section>
-
-    <section class="slide">
-        <h2>MLonCode in hercules</h2>
-        <ul>
-            <li>Structural hotness</li>
-            <li>Comment sentiment</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>source{d} ml</h2>
-        <ul>
-            <li>Python</li>
-            <li>Targets large-scale MLonCode</li>
-            <li>Runs on top of source{d} engine, modelforge and Tensorflow</li>
-            <li>Apache license</li>
-        </ul>
-        <a href="https://github.com/src-d/ml">GitHub</a>
-    </section>
-
-    <section class="slide">
-        <h2>Solved practical problems</h2>
-        <ul>
-            <li>Identifier splitting</li>
-            <li>O(1) code similarity search</li>
-            <li>Topic modeling</li>
-            <li>Embeddings</li>
-        </ul>
-    </section>
-
-    
 
     <section class="slide part">
         <h2 class="shout">Identifier embeddings</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Nearest to “foo”</h2>
+        <ul class="two-cols">
+            <li>afoo</li>
+            <li>qux</li>
+            <li>myfoo</li>
+            <li>baz</li>
+            <li>mfoo</li>
+            <li>wibble</li>
+            <li>dofoo</li>
+            <li>quux</li>
+            <li>dfoo</li>
+            <li>testing</li>
+            <li>ifoo</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Analogies</h2>
+        <p>“bug” <span class="compare">-</span> “test” <span class="compare">+</span> “expect” <span class="compare">=</span> “suppress”</p>
+        <p>“database” <span class="compare">-</span> “query” <span class="compare">+</span> “tune” <span class="compare">=</span> “settings”</p>
+        <p>“send” <span class="compare">-</span> “receive” <span class="compare">+</span> “pop” <span class="compare">=</span> “push”</p>
+        <div id="analogies" class="vista"></div>
+        <style>
+            .compare {
+                color: #fff01f;
+            }
+            #analogies {
+                position: absolute;
+                bottom: 50px;
+                right: 50px;
+                width: 500px;
+                height: 300px;
+                background-image: url("pictures/analogy_black.png");
+            }
+            @media not print {
+                #analogies {
+                    background-image: url("pictures/analogy_white.png");
+                }
+            }
+        </style>
     </section>
 
     <section class="slide">
@@ -1556,48 +1263,519 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         </style>
     </section>
 
-    <section class="slide">
-        <h2>Nearest to “foo”</h2>
-        <ul class="two-cols">
-            <li>afoo</li>
-            <li>qux</li>
-            <li>myfoo</li>
-            <li>baz</li>
-            <li>mfoo</li>
-            <li>wibble</li>
-            <li>dofoo</li>
-            <li>quux</li>
-            <li>dfoo</li>
-            <li>testing</li>
-            <li>ifoo</li>
-        </ul>
+
+
+
+
+
+    <!--___________________________________________________________________________________________-->
+
+    <section class="slide vista vista-cover" id="github">
+        <h2 class="shout small-shout"><i class="fa fa-inverse fa-github-alt" aria-hidden="true"></i> GitHub</h2>
+        <style>
+            #github {
+                background-image: url("pictures/github.png");
+            }
+            #github > h2 > i {
+                color: inherit !important;
+            }
+            .small-shout {
+                font-size: 400% !important;
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+            #github::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.65);
+            }
+        </style>
+    </section>
+    
+
+
+    <section class="slide part">
+        <h2 class="shout">Examples</h2>
     </section>
 
     <section class="slide">
-        <h2>Analogies</h2>
-        <p>“bug” <span class="compare">-</span> “test” <span class="compare">+</span> “expect” <span class="compare">=</span> “suppress”</p>
-        <p>“database” <span class="compare">-</span> “query” <span class="compare">+</span> “tune” <span class="compare">=</span> “settings”</p>
-        <p>“send” <span class="compare">-</span> “receive” <span class="compare">+</span> “pop” <span class="compare">=</span> “push”</p>
-        <div id="analogies" class="vista"></div>
+        <h2 class="shout">Code naturalness</h2>
+    </section>
+
+    <section class="slide">
+<pre><code><span class="hl-keyword">class</span> <span class="box">???</span>:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, dbname, user, password, host, port):</code>
+<code>        <span class="hl-comment"># ...</span></code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">query</span>(<span class="hl-reserved">self</span>, sql):</code>
+<code>        <span class="hl-comment"># ...</span></code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">close</span>(<span class="hl-reserved">self</span>):</code>
+<code>        <span class="hl-comment"># ...</span></code>
+</pre>
         <style>
-            .compare {
-                color: #fff01f;
+            .hl-keyword {
+                color: #cc8242;
+                font-weight: bold;
             }
-            #analogies {
-                position: absolute;
-                bottom: 50px;
-                right: 50px;
-                width: 500px;
-                height: 300px;
-                background-image: url("pictures/analogy_black.png");
+            .hl-def {
+                color: #ffc66d;
+            }
+            .hl-reserved {
+                color: #94558D;
+            }
+            .hl-string {
+                color: #6a8759;
+            }
+            .hl-comment {
+                color: #707070;
+            }
+            .box {
+                border: 1px solid white;
+                padding: 0.05em 0.1em;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <pre><code><span class="hl-keyword">class</span> <span class="box">Database</span>:</code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, dbname, user, password, host, port):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">query</span>(<span class="hl-reserved">self</span>, sql):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">close</span>(<span class="hl-reserved">self</span>):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <!-- metasyntactic -->
+        <pre><code><span class="hl-keyword">class</span> Foo:</code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">bar</span>(<span class="hl-reserved">self</span>, qux):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">baz</span>(<span class="hl-reserved">self</span>, waldo):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">do</span>(<span class="hl-reserved">self</span>, really):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        </pre>
+    </section>
+
+
+    <section class="slide">
+        <h2>Projects similar to MariaDB/server?</h2>
+        <ul class="two-cols no-bullets">
+            <li><a href="https://github.com/twitter/mysql">twitter/mysql</a></li>
+            <li><a href="https://github.com/Tokutek/mysql-5.5">Tokutek/mysql-5.5</a></li>
+            <li><a href="https://github.com/facebook/mysql-5.6">facebook/mysql-5.6</a></li>
+            <li><a href="https://github.com/percona/percona-xtrabackup">percona/percona-xtrabackup</a></li>
+            <li><a href="https://github.com/Tokutek/mariadb-5.5">Tokutek/mariadb-5.5</a></li>
+            <li><a href="https://github.com/percona/percona-server">percona/percona-server</a></li>
+            <li><a href="https://github.com/atcurtis/mariadb">atcurtis/mariadb</a></li>
+            <li><a href="https://github.com/webscalesql/webscalesql-5.6">webscalesql/webscalesql-5.6</a></li>
+            <li><a href="https://github.com/alibaba/AliSQL">alibaba/AliSQL</a></li>
+            <li><a href="https://github.com/mysql/mysql-server">mysql/mysql-server</a></li>
+        </ul>
+        <br>
+        <a style="float: right;" href="https://vmarkovtsev.github.com/techtalks-2017-moscow">Details</a>
+    </section>
+
+    <section class="slide vista" id="excodesearch">
+        <h2>Exploratory search</h2>
+        <style>
+            #excodesearch {
+                padding: 50px;
+                background-origin: content-box;
+                background-image: url("pictures/excodesearch_black.png");
             }
             @media not print {
-                #analogies {
-                    background-image: url("pictures/analogy_white.png");
+                #excodesearch {
+                    background-image: url("pictures/excodesearch_white.png");
                 }
             }
         </style>
     </section>
+
+    <section class="slide">
+        <h2>Similar code detection</h2>
+        <ul>
+            <li>By style</li>
+            <li>By structure</li>
+            <li>By identifiers</li>
+        </ul>
+        <div id="andthen">
+        <h2>provides us</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><span class="monofa">💪</span>Global graph</li>
+            <li><i class="fa fa-balance-scale monofa" aria-hidden="true"></i>Licenses</li>
+            <li><i class="fa fa-line-chart monofa" aria-hidden="true"></i>Refactoring</li>
+        </ul>
+        </div>
+        <style>
+            #andthen {
+                position: absolute;
+                right: 300px;
+                bottom: 100px;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="nncomplete-example">
+        <h2 class="top">Code autocompletion</h2>
+        <img class="top" src="pictures/channelSelectExample.gif">
+        <style>
+            #nncomplete-example {
+                background-color: #1e1e1c;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Code style</h2>
+        <pre><code class="python"><span class="hl-keyword">class</span> foobar:
+    <span class="hl-keyword">def</span> <span class="hl-def">connecttoserver</span>(<span class="hl-reserved">self</span>):
+        myserverhost = globalconfig.server.host</code>
+        </pre>
+        <style>
+            .hl-keyword {
+                color: #cc8242;
+                font-weight: bold;
+            }
+            .hl-def {
+                color: #ffc66d;
+            }
+            .hl-reserved {
+                color: #94558D;
+            }
+            .hl-string {
+                color: #6a8759;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <pre><code class="python"><span class="hl-keyword">class</span> FooBar:
+    <span class="hl-keyword">def</span> <span class="hl-def">connect_to_server</span>(<span class="hl-reserved">self</span>):
+        myServerHost = globalConfig.server.host</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Many other applications</h2>
+        <ul>
+            <li>Prediction of class, function, variable names</li>
+            <li>Type inference</li>
+            <li>Which comments do not make sense?</li>
+            <li>Which comments are funny?</li>
+            <li>Which APIs are bad or misused?</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Your code as a crime scene</h2>
+        <ul>
+            <li>Idea: mine the development history</li>
+            <li><a href="https://pragprog.com/book/atcrime/your-code-as-a-crime-scene">Book</a> by Adam Tornhill</li>
+            <li><a href="https://codescene.io/">codescene.io</a></li>
+        </ul>
+        <img src="pictures/atcrime.jpg" id="atcrime">
+        <style>
+            #atcrime {
+                position: absolute;
+                right: 100px;
+                bottom: 100px;
+                width: 300px;
+                object-fit: contain;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="hercules">
+        <style>
+            #hercules {
+                padding: 50px;
+                background-origin: content-box;
+                background-image: url("pictures/jinja_black.png");
+            }
+            @media not print {
+                #hercules {
+                    background-image: url("pictures/jinja_white.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista vista-cover" id="pipeline">
+            <h2 class="shout">Data</h2>
+            <style>
+                #pipeline {
+                    background-image: url("pictures/pipeline.jpg");
+                }
+                #pipeline::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: rgba(0, 0, 0, 0.7);
+                }
+            </style>
+        </section>
+    
+        <section class="slide">
+            <h2>Datasets</h2>
+            <ul>
+                <li><a href="http://ghtorrent.org/">GHTorrent</a> - everything except Git repositories, 70GB</li>
+                <li><a href="https://github.com/src-d/datasets/tree/master/PublicGitArchive">Public Git Archive</a> - only Git repositories, 3TB</li>
+                <li><a href="https://cloud.google.com/bigquery/public-data/github">GitHub Data in Google BigQuery</a></li>
+                <li><a href="https://github.com/src-d/rovers">rovers</a> &amp; <a href="https://github.com/src-d/borges">borges</a> - DIY</li>
+            </ul>
+        </section>
+    
+        <section class="slide">
+            <h2>PGA</h2>
+            <ul>
+                <li>270k of siva files</li>
+                <li>CSV index</li>
+            </ul>
+            Details in the <a href="https://arxiv.org/abs/1803.10144">paper</a>.<br>
+            <img src="pictures/by-nc-sa.eu.svg">
+            <div id="rooted" class="vista"></div>
+            <style>
+                #rooted {
+                    position: absolute;
+                    width: 600px;
+                    height: 400px;
+                    top: 120px;
+                    right: 50px;
+                    background-image: url("pictures/rooted_black.png");
+                }
+                @media not print {
+                    #rooted {
+                        background-image: url("pictures/rooted_white.png");
+                    }
+                }
+            </style>
+        </section>
+
+    <section class="slide">
+        <h2 id="mloncode-stack-h">Tools for MLonCode</h2>
+        <figure>
+            <img class="cover obj-cover" src="pictures/leverBigCorners.png" alt="MLonCode logo">
+        </figure>
+        <style>
+            #mloncode-stack-h {
+                color: black;
+                text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #ffffff , 0 0 70px #ffffff , 0 0 80px #ffffff , 0 0 100px #ffffff ;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="mloncode-pyramid">
+        <style>
+            #mloncode-pyramid {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/pyramid_black.svg");
+            }
+            @media not print {
+                #mloncode-pyramid {
+                    background-image: url("pictures/pyramid_white.svg");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Plumbing</h2>
+    </section>
+
+    <section class="slide">
+        <h2>source{d} engine</h2>
+        <ul>
+            <li>siva or bare git repository loader for Apache Spark</li>
+            <li>Classification, parsing (thanks to bblfsh), filtering, checkouting, scaling</li>
+            <li>Apache license</li>
+        </ul>
+        <a href="https://github.com/src-d/engine">GitHub</a>
+    </section>
+
+    <section class="slide">
+        <h2>source{d} engine</h2>
+        <pre><code>&gt;&gt;&gt; <span class="hl-keyword">from</span> sourced.engine <span class="hl-keyword">import</span> Engine
+&gt;&gt;&gt; engine = Engine(spark, <span class="hl-string">"/path/to/siva/files"</span>, <span class="hl-string">"siva"</span>)
+&gt;&gt;&gt; engine.repositories.references.head_ref \
+    .commits.tree_entries.blobs \
+    .classify_languages() \
+    .select(<span class="hl-string">"blob_id"</span>, <span class="hl-string">"path"</span>, <span class="hl-string">"lang"</span>) \
+    .show()
+</code></pre>
+    </section>
+
+    <section class="slide vista" id="ast">
+        <h2>AST</h2>
+        <style>
+            #ast {
+                background: url("pictures/ast_black.svg");
+            }
+            @media not print {
+                #ast {
+                    background: black url("pictures/ast_white.svg");
+                }
+            }
+            #ast > h2 {
+                position: absolute;
+                bottom: 50px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>How to parse</h2>
+        <ul>
+            <li>Regular expressions - <a href="http://pygments.org/">Pygments</a>,
+                <a href="https://highlightjs.org/">highlight.js</a></li>
+            <li><span class="box">Abstract syntax tree (AST)</span> - <a href="http://www.antlr.org/">ANTLR</a></li>
+            <li>Compilation</li>
+        </ul>
+        <style>
+            .box {
+                border: 1px solid white;
+                padding: 0 0.2em 0.1em 0.2em;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>  </h2>
+        <a href="https://doc.bblf.sh"><img class="center" src="pictures/bblfsh-logo.png"></a>
+        <div class="vista center" id="bblfsh-arch"></div>
+        <style>
+            #bblfsh-arch {
+                width: 600px;
+                height: 100px;
+                background-image: url("pictures/bblfsh-arch-black.png");
+            }
+            @media not print {
+                #bblfsh-arch {
+                    background-image: url("pictures/bblfsh-arch-white.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2><i class="fa fa-sitemap" aria-hidden="true"></i> Universal AST</h2>
+        <ul>
+            <li>± uniform structure</li>
+            <li>± standard node types (roles)</li>
+            <li>XPath queries</li>
+            <li>4 traversal orders</li>
+        </ul>
+        <a href="http://dashboard.bblf.sh/">dashboard.bblf.sh</a>
+    </section>
+
+    <section class="slide">
+        <pre><code>&gt;&gt;&gt; engine.repositories.references.head_ref \
+    .commits.tree_entries.blobs \
+    .classify_languages() \
+    .filter(<span class="hl-string">'lang = "Python"'</span>) \
+    .extract_uasts() \
+    .query_uast(<span class="hl-string">'//*[@roleIdentifier]'</span>) \
+    .extract_tokens(<span class="hl-string">"result"</span>, <span class="hl-string">"tokens"</span>) \
+    .select(<span class="hl-string">"blob_id"</span>, <span class="hl-string">"path"</span>, <span class="hl-string">"tokens"</span>)
+        </code></pre>
+    </section>
+
+    <section class="slide vista" id="django">
+        <style>
+            #django {
+                padding: 50px;
+                background-origin: content-box;
+                background-image: url("pictures/django_black.png");
+            }
+            @media not print {
+                #django {
+                    background-image: url("pictures/django_white.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide vista vista-cover" id="powerful">
+        <h2>Powerful</h2>
+        <style>
+            #powerful {
+                background-image: url("pictures/power.jpg");
+            }
+            #powerful h2 {
+                color: #000;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>modelforge</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Automatically fetch from the internet</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>"Model Store"</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Flexible, modern binary format - <a href="https://github.com/spacetelescope/asdf">ASDF</a></li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Versioning</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Reproducability</li>
+            <li><i class="fa fa-close monofa" aria-hidden="true"></i>Support various programming languages</li>
+        </ul>
+        <a href="https://github.com/src-d/modelforge">GitHub</a>
+    </section>
+
+    <section class="slide part">
+        <h2 class="shout">Machine Learning</h2>
+    </section>
+
+    <section class="slide">
+        <h2>hercules</h2>
+        <ul>
+            <li>Go</li>
+            <li>Mining Git history</li>
+            <li>Relies on go-git, Babelfish and Tensorflow</li>
+            <li>Apache license</li>
+        </ul>
+        <a href="https://github.com/src-d/hercules">GitHub</a>
+    </section>
+
+    <section class="slide">
+        <h2>MLonCode in hercules</h2>
+        <ul>
+            <li>Structural hotness</li>
+            <li>Comment sentiment</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>source{d} ml</h2>
+        <ul>
+            <li>Python</li>
+            <li>Targets large-scale MLonCode</li>
+            <li>Runs on top of source{d} engine, modelforge and Tensorflow</li>
+            <li>Apache license</li>
+        </ul>
+        <a href="https://github.com/src-d/ml">GitHub</a>
+    </section>
+
+    <section class="slide">
+        <h2>Solved practical problems</h2>
+        <ul>
+            <li>Identifier splitting</li>
+            <li>O(1) code similarity search</li>
+            <li>Topic modeling</li>
+            <li>Embeddings</li>
+        </ul>
+    </section>
+
+    
+
+
 
     <section class="slide">
         <h2>Typos</h2>
