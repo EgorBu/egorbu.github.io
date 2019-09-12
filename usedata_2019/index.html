@@ -387,21 +387,145 @@
 
 
     <section class="slide vista vista-cover" id="pipeline">
-            <h2 class="shout">Data</h2>
-            <style>
-                #pipeline {
-                    background-image: url("pictures/why_mloncode_hard/pipeline.jpg");
+        <h2 class="shout">Data</h2>
+        <style>
+            #pipeline {
+                background-image: url("pictures/why_mloncode_hard/pipeline.jpg");
+            }
+            #pipeline::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </section>
+
+
+    <!--<section class="slide vista vista-cover" id="cover-wiki">-->
+        <!--&lt;!&ndash;<h2 class="black title">#MLonCode</h2>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p class="black">source{d}</p>&ndash;&gt;-->
+
+        <!--<style>-->
+            <!--#cover-wiki {-->
+                <!--background: url("pictures/why_mloncode_hard/Wikipedia_article_size_in_gigabytes_negative.png") black;-->
+                <!--background-position-x: 68% !important;-->
+            <!--}-->
+        <!--</style>-->
+    <!--</section>-->
+
+    <!--<section class="slide vista " id="cover-imagenet">-->
+        <!--<h2 class="white title">150GB</h2>-->
+        <!--&lt;!&ndash;<p class="black">source{d}</p>&ndash;&gt;-->
+
+        <!--<style>-->
+            <!--#cover-imagenet {-->
+                <!--background: url("pictures/why_mloncode_hard/imagenet.png") black;-->
+                <!--background-position-x: 68% !important;-->
+                <!--background-size: contain !important;-->
+            <!--}-->
+            <!--.title {-->
+                <!--font-family: ShareTechMono !important;-->
+                <!--font-size: 350% !important;-->
+            <!--}-->
+            <!--#cover-imagenet h2 {-->
+                <!--margin:30px 0 0;-->
+                <!--text-align:center;-->
+                <!--font-size:70px;-->
+                <!--margin-bottom: 226px;-->
+            <!--}-->
+        <!--</style>-->
+    <!--</section>-->
+
+
+    <section class="slide atom">
+        <h2>Common datasets</h2>
+        <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Wikipedia:Size_of_Wikipedia">Wikipedia: 16 GB</a></li>
+            <li><a href="https://www.kaggle.com/c/imagenet-object-localization-challenge/data">Imagenet: 150 GB</a> </li>
+            <li><a href="http://storage.googleapis.com/books/ngrams/books/datasetsv2.html">Google Books Ngrams: 2.2 TB</a></li>
+        </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Public Git Archive</a></h2>
+        <ul>
+            <li>Size: 6 TB</li>
+            <li>Number of repositories: 260k+ (out of 96 M+) from GitHub</li>
+            <li>Number of files: 136M+ files </li>
+            <li>LOC: ~28 billions</li>
+        </ul>
+    </section>
+
+    <section class="slide vista vista-cover" id="pga">
+        <style>
+            #pga {
+                background-image: url("pictures/why_mloncode_hard/pga_huge.png");
+                background-size: contain !important;
+            }
+        </style>
+    </section>
+    <!--TODO: prettify PGA & common datasets -->
+
+    <section class="slide vista " id="tools">
+        <h2 class="white shout">Tools</h2>
+        <style>
+            #tools {
+                background-image: url("pictures/why_mloncode_hard/tools.png");
+                background-size: cover !important;
+                filter: brightness(70%)
+            }
+        </style>
+    </section>
+    <!--TODO: make text brighter-->
+
+    <section class="slide vista" id="mloncode-pyramid">
+        <style>
+            #mloncode-pyramid {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/why_mloncode_hard/pyramid_black.svg");
+            }
+            @media not print {
+                #mloncode-pyramid {
+                    background-image: url("pictures/why_mloncode_hard/pyramid_white.svg");
                 }
-                #pipeline::before {
-                    content: "";
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </section>
+
+
+    <section class="slide">
+        <pre>
+        <code><span class="hl-keyword">def</span> <span class="hl-def">nearest_neighbors</span>(<span class="hl-reserved">self</span>, origin, k=10):</code>
+        <code>        <span class="hl-comment"># origin can be either a text query or an id</span></code>
+        <code>        <span class="hl-keyword">if</span> <span class="hl-reserved">isinstance</span>(origin, (<span class="hl-reserved">tuple</span>, <span class="hl-reserved">list</span>):</code>
+        <code>            words, weights = origin</code>
+        <code>            <span class="hl-keyword">if not</span> <span class="hl-reserved">isinstance</span>(words, (<span class="hl-reserved">list</span>, numpy.ndarray)):</code>
+        <code>                words = <span class="hl-reserved">list</span>(words)</code>
+        </pre>
+    </section>
+
+
+    <section class="slide vista" id="ast">
+        <h2>AST</h2>
+        <style>
+            #ast {
+                background: url("pictures/why_mloncode_hard/ast_black.svg");
+            }
+            @media not print {
+                #ast {
+                    background: black url("pictures/why_mloncode_hard/ast_white.svg");
                 }
-            </style>
+            }
+            #ast > h2 {
+                position: absolute;
+                bottom: 50px;
+            }
+        </style>
     </section>
 
     <!--___________________________________________________________________________________________-->
