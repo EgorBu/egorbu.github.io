@@ -478,6 +478,15 @@
                 background-size: cover !important;
                 filter: brightness(70%)
             }
+            #tools::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.3);
+            }
         </style>
     </section>
     <!--TODO: make text brighter-->
@@ -826,6 +835,15 @@
                     background: black url("pictures/why_mloncode_hard/natural.jpg");
                 }
             }
+            #natural-code::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.2);
+            }
         </style>
     </section>
 
@@ -876,17 +894,39 @@
      <section class="slide">
         <h2>Take away</h2>
         <ul>
-            <li>Agglutination</li>
+            <li>Identifier ~ combinations of words</li>
             <li>Raw code is text</li>
+            <li>Parsed code is AST</li>
             <li>Non-linear structure of AST</li>
             <li>Code naturalness</li>
+            <li>370 programming languages</li>
         </ul>
     </section>
 
 
     <!--TODO: Picture for basics. -->
-    <section class="slide">
+
+    <section class="slide vista vista-cover" id="basics">
         <h2 class="shout">Basics</h2>
+        <style>
+            #basics {
+                background: url("pictures/basics/cover.jpeg");
+            }
+            @media not print {
+                #basics {
+                    background: black url("pictures/basics/cover.jpeg");
+                }
+            }
+            #basics::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+        </style>
     </section>
 
 
