@@ -599,6 +599,47 @@
         <!--</pre>-->
     <!--</section>-->
 
+    <section class="slide">
+		<h2>Parsing</h2>
+		<div id="what-is-sc-0">
+		<pre>
+            <code class="python">def nearest_neighbors(self, origin, k=10,</code>
+            <code class="python">                      skipped_stop=0.99, throw=True):</code>
+<code class="python">    # origin can be either a text query or an id</code>
+<code class="python">    if isinstance(origin, (tuple, list):</code>
+<code class="python">	     words, weights = origin</code>
+<code class="python">	     weights = numpy.array(weights, dtype=numpy.float32)</code>
+            <code class="python">	     index = None</code>
+<code class="python">	     avg = self._get_centroid(words, weights, force=True)</code>
+<code class="python">    else:</code>
+<code class="python">	     index = origin</code>
+<code class="python">	     words, weights = self._get_vocabulary(index)</code>
+<code class="python">	     avg = self._get_centroid_by_index(index)</code>
+            <code class="python">    if avg is None:</code>
+<code class="python">	     raise ValueError(</code>
+<code class="python">		     "Too little vocabulary for %s: %d" % (index, len(words)))</code>
+        </pre></div>
+
+        <style>
+			#what-is-sc-0 {
+				display: flex;
+			}
+			#what-is-sc-0 > pre {
+				font-size: 0.5em;
+				margin-right: 100px;
+			}
+			#what-is-sc-0 > div > pre {
+				border: 1px solid white;
+				border-radius: 5px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			#what-is-sc-0 > div > pre > code {
+				padding: 0 20px !important;
+			}
+		</style>
+	</section>
+
 
     <section class="slide">
 		<h2>Parsing</h2>
@@ -612,12 +653,12 @@
 <code class="python">	     weights = numpy.array(weights, dtype=numpy.float32)</code>
             <code class="python">	     index = <span class="hl-keyword">None</span></code>
 <code class="python">	     avg = <span class="hl-reserved">self</span>._get_centroid(words, weights, force=<span class="hl-keyword">True</span>)</code>
-<code class="python">    else:</code>
+<code class="python">    <span class="hl-keyword">else:</span></code>
 <code class="python">	     index = origin</code>
 <code class="python">	     words, weights = <span class="hl-reserved">self</span>._get_vocabulary(index)</code>
 <code class="python">	     avg = <span class="hl-reserved">self</span>._get_centroid_by_index(index)</code>
             <code class="python">    <span class="hl-keyword">if</span> avg <span class="hl-keyword">is None</span>:</code>
-<code class="python">	     raise ValueError(</code>
+<code class="python">	     <span class="hl-keyword">raise</span> ValueError(</code>
 <code class="python">		     "Too little vocabulary for %s: %d" % (index, len(words)))</code>
 		</pre>
 			<div><pre>
@@ -667,95 +708,102 @@
         </style>
     </section>
 
-
-    <section class="slide atom">
-        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
-        <ul>
-            <li>Russian:        ?</li>
-        </ul>
+    <section class="slide vista" id="langs0">
+        <h2>#words</h2>
+        <style>
+            #langs0 {
+                background: url("pictures/why_mloncode_hard/langs/langs_0.png");
+            }
+            @media not print {
+                #langs0 {
+                    background: black url("pictures/why_mloncode_hard/langs/langs_0_neg.png");
+                }
+            }
+        </style>
     </section>
 
-    <section class="slide atom">
-        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
-        <ul>
-            <li>Russian:        150k</li>
-        </ul>
+    <section class="slide vista" id="langs1">
+        <h2>#words</h2>
+        <style>
+            #langs1 {
+                background: url("pictures/why_mloncode_hard/langs/langs_1.png");
+            }
+            @media not print {
+                #langs1 {
+                    background: black url("pictures/why_mloncode_hard/langs/langs_1_neg.png");
+                }
+            }
+        </style>
     </section>
 
-    <section class="slide atom">
-        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
-        <ul>
-            <li>Russian:        150k</li>
-            <li>English:        ?</li>
-        </ul>
+    <section class="slide vista" id="langs2">
+        <h2>#words</h2>
+        <style>
+            #langs2 {
+                background: url("pictures/why_mloncode_hard/langs/langs_2.png");
+            }
+            @media not print {
+                #langs2 {
+                    background: black url("pictures/why_mloncode_hard/langs/langs_2_neg.png");
+                }
+            }
+        </style>
     </section>
 
-    <section class="slide atom">
-        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
-        <ul>
-            <li>Russian:        150k</li>
-            <li>English:        470k</li>
-        </ul>
+    <section class="slide vista" id="langs3">
+        <h2>#words</h2>
+        <style>
+            #langs3 {
+                background: url("pictures/why_mloncode_hard/langs/langs_3.png");
+            }
+            @media not print {
+                #langs3 {
+                    background: black url("pictures/why_mloncode_hard/langs/langs_3_neg.png");
+                }
+            }
+        </style>
     </section>
 
-    <section class="slide atom">
-        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
-        <ul>
-            <li>Russian:        150k</li>
-            <li>English:        470k</li>
-            <li>Turkish:        ?</li>
-        </ul>
+    <section class="slide vista" id="langs4">
+        <h2>#words</h2>
+        <style>
+            #langs4 {
+                background: url("pictures/why_mloncode_hard/langs/langs_4.png");
+            }
+            @media not print {
+                #langs4 {
+                    background: black url("pictures/why_mloncode_hard/langs/langs_4_neg.png");
+                }
+            }
+        </style>
     </section>
 
-    <section class="slide atom">
-        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
-        <ul>
-            <li>Russian:        150k</li>
-            <li>English:        470k</li>
-            <li>Turkish:        616k</li>
-        </ul>
+    <section class="slide vista" id="langs5">
+        <h2>#words</h2>
+        <style>
+            #langs5 {
+                background: url("pictures/why_mloncode_hard/langs/langs_5.png");
+            }
+            @media not print {
+                #langs5 {
+                    background: black url("pictures/why_mloncode_hard/langs/langs_5_neg.png");
+                }
+            }
+        </style>
     </section>
 
-    <section class="slide atom">
-        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
-        <ul>
-            <li>Russian:        150k</li>
-            <li>English:        470k</li>
-            <li>Turkish:        616k</li>
-            <li>Korean:        ?</li>
-        </ul>
-    </section>
-
-    <section class="slide atom">
-        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
-        <ul>
-            <li>Russian:        150k</li>
-            <li>English:        470k</li>
-            <li>Turkish:        616k</li>
-            <li>Korean:        1100k</li>
-        </ul>
-    </section>
-
-    <section class="slide atom">
-        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
-        <ul>
-            <li>Russian:        150k</li>
-            <li>English:        470k</li>
-            <li>Turkish:        616k</li>
-            <li>Korean:        1100k</li>
-            <li>Code identifiers:        ?</li>
-        </ul>
-    </section>
-
-    <section class="slide atom">
-        <h2><a href="https://github.com/src-d/datasets/#public-git-archive">Number of words</a></h2>
-        <ul>
-            <li>Russian:        150k</li>
-            <li>English:        470k</li>
-            <li>Turkish:        616k</li>
-            <li>Korean:        1100k</li>
-            <li>Code identifiers:        49M</li>
-        </ul>
+    <section class="slide vista" id="langs6">
+        <h2>#words</h2>
+        <style>
+            #langs6 {
+                background: url("pictures/why_mloncode_hard/langs/langs_6.png");
+            }
+            @media not print {
+                #langs6 {
+                    background: black url("pictures/why_mloncode_hard/langs/langs_6_neg.png");
+                }
+            }
+        </style>
     </section>
 
     <section class="slide">
@@ -763,14 +811,22 @@
         <pre>
             <code>_tcp_socket_connect -> [tcp, socket, connect]</code>
             <code>AuthenticationError -> [authentication, error]</code>
-            <code>authentication, authenticate -> authenticate</code>
+            <code>set_visible -> [set, visible]</code>
         </pre>
     </section>
 
-    <!--TODO: tables & plots - too empty pages for number of words-->
-
-    <section class="slide">
-        <h2 class="shout">Code naturalness</h2>
+    <section class="slide vista vista-cover" id="natural-code">
+        <h2 class="shout black">Code naturalness</h2>
+        <style>
+            #natural-code {
+                background: url("pictures/why_mloncode_hard/natural.jpg");
+            }
+            @media not print {
+                #natural-code {
+                    background: black url("pictures/why_mloncode_hard/natural.jpg");
+                }
+            }
+        </style>
     </section>
 
     <section class="slide">
