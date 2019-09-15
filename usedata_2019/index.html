@@ -825,7 +825,7 @@
     </section>
 
     <section class="slide vista vista-cover" id="natural-code">
-        <h2 class="shout black">Code naturalness</h2>
+        <h2 class="shout">Code naturalness</h2>
         <style>
             #natural-code {
                 background: url("pictures/why_mloncode_hard/natural.jpg");
@@ -842,7 +842,7 @@
                 top: 0;
                 right: 0;
                 bottom: 0;
-                background-color: rgba(0, 0, 0, 0.2);
+                background-color: rgba(0, 0, 0, 0.4);
             }
         </style>
     </section>
@@ -903,9 +903,6 @@
         </ul>
     </section>
 
-
-    <!--TODO: Picture for basics. -->
-
     <section class="slide vista vista-cover" id="basics">
         <h2 class="shout">Basics</h2>
         <style>
@@ -924,17 +921,119 @@
                 top: 0;
                 right: 0;
                 bottom: 0;
-                background-color: rgba(0, 0, 0, 0.2);
+                background-color: rgba(0, 0, 0, 0.7);
             }
         </style>
     </section>
 
 
     <section class="slide">
-        <h2 class="shout">Placeholder: splitter</h2>
+        <h2 class="shout">Identifier splitter</h2>
     </section>
 
-    <section class="slide part">
+    <section class="slide">
+        <h2>Approaches</h2>
+        <ul>
+            <li>Heuristic</li>
+            <li>Machine Learning</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Heuristic - split by</h2>
+        <ul>
+            <li>underscore <code>set_name -> [set, name]</code></li>
+            <li>changing of cases <code>SetName -> [set, name]</code></li>
+            <li>etc</li>
+        </ul>
+
+        <h2 id="heuristic-res">Result: 49M -> 3M, but...</h2>
+        <style>
+        #heuristic-res {
+                position: absolute;
+                bottom: 170px;
+            }
+        </style>
+        <ul id="heuristic-res-2">
+            <li><code>BUFFERFLAG_CODECCONFIG -> [bufferflag, codecconfig]</code></li>
+            <li><code>metamodelength -> [metamodelength]</code></li>
+        </ul>
+        <style>
+        #heuristic-res-2 {
+                position: absolute;
+                bottom: 50px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2><a href="https://arxiv.org/pdf/1805.11651.pdf">Machine learning - CNN/LSTM</a></h2>
+        <ul>
+            <li><a href="https://github.com/src-d/datasets/tree/master/Identifiers">Data</a> - 49M of identifiers</li>
+            <li>Preprocessing</li>
+            <li>Train NN</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>FooBar -> X, y</h2>
+        <div style="float: left; width: 50%;">
+        <ul>
+            <li style="font-size:35px">f</li>
+            <li style="font-size:35px">o</li>
+            <li style="font-size:35px">o</li>
+            <li style="font-size:35px">b</li>
+            <li style="font-size:35px">a</li>
+            <li style="font-size:35px">r</li>
+        </ul>
+        </div>
+        <div style="float: right; width: 50%;">
+        <ul>
+            <li style="font-size:35px">0</li>
+            <li style="font-size:35px">0</li>
+            <li style="font-size:35px">0</li>
+            <li style="font-size:35px">1</li>
+            <li style="font-size:35px">0</li>
+            <li style="font-size:35px">0</li>
+        </ul>
+        </div>
+    </section>
+
+    <section class="slide vista" id="bilstm">
+        <style>
+            #bilstm {
+                background: url("pictures/basics/bilstm.png");
+            }
+            @media not print {
+                #bilstm {
+                    background: black url("pictures/basics/bilstm_neg.png");
+                }
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>BiLSTM</h2>
+        <h2 id="bilstm-res">Result: 49M -> 1M</h2>
+        <style>
+        #bilstm-res {
+                position: absolute;
+                bottom: 270px;
+            }
+        </style>
+        <ul id="bilstm-res-2">
+            <li><code>BUFFERFLAG_CODECCONFIG -> [buffer, flag, codec, config]</code></li>
+            <li><code>metamodelength -> [meta, mode, length]</code></li>
+        </ul>
+        <style>
+        #bilstm-res-2 {
+                position: absolute;
+                bottom: 150px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
         <h2 class="shout">Identifier embeddings</h2>
     </section>
 
@@ -949,17 +1048,16 @@
             <li>wibble</li>
             <li>dofoo</li>
             <li>quux</li>
-            <li>dfoo</li>
-            <li>testing</li>
-            <li>ifoo</li>
+            <li style="font-size:50px">testing</li>
+
         </ul>
     </section>
 
     <section class="slide">
         <h2>Analogies</h2>
-        <p>“bug” <span class="compare">-</span> “test” <span class="compare">+</span> “expect” <span class="compare">=</span> “suppress”</p>
-        <p>“database” <span class="compare">-</span> “query” <span class="compare">+</span> “tune” <span class="compare">=</span> “settings”</p>
-        <p>“send” <span class="compare">-</span> “receive” <span class="compare">+</span> “pop” <span class="compare">=</span> “push”</p>
+        <p style="font-size:35px">“send” <span class="compare">-</span> “receive” <span class="compare">+</span> “pop” <span class="compare">=</span> “push”</p>
+        <p style="font-size:35px">“database” <span class="compare">-</span> “query” <span class="compare">+</span> “tune” <span class="compare">=</span> “settings”</p>
+
         <div id="analogies" class="vista"></div>
         <style>
             .compare {
@@ -968,7 +1066,7 @@
             #analogies {
                 position: absolute;
                 bottom: 50px;
-                right: 50px;
+                left: 200px;
                 width: 500px;
                 height: 300px;
                 background-image: url("pictures/basics/analogy_black.png");
@@ -1645,24 +1743,23 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
 	</section>
 
     <section class="slide">
-		<h2>Word Mover's Distance</h2>
-		<p>Based on the <a href="http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf">paper</a>.</p>
-		<p>An application of Earth Mover's Distance to sentences.</p>
-		<p>Works on the nBOW model.</p>
-		<div class="vista" id="wmd"></div>
-		<style>
-			#wmd {
-				width: 320px;
-				height: 250px;
-				background: white url("pictures/similar_repo/wmd_black.png");
-			}
-			@media not print {
-				#wmd {
-					background: black url("pictures/similar_repo/wmd_white.png");
-				}
-			}
-		</style>
-	</section>
+        <h2><a href="http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf">Word Mover's Distance</a></h2>
+        <div class="vista padded-image" id="wmd2"></div>
+        <style>
+            .padded-image {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 180px;
+                bottom: 40px;
+            }
+        </style>
+        <style>
+            #wmd2 {
+                background-image: url("pictures/similar_repo/wmd_white.png");
+            }
+        </style>
+    </section>
 
 	<section class="slide">
 		<h2>WMD calculation in a nutshell</h2>
@@ -1678,8 +1775,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
 	</section>
 
 
-
-    <!--TODO: find image for similar repo - somebody is looking in mirror, bender and bad bender and so on-->
     <section class="slide">
         <h2 class="shout">Code review</h2>
     </section>
@@ -1759,11 +1854,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide">
         <h2>Candidates ranking</h2>
         <ul>
-            <li>Logistic regression model on tuples <code>(identifier, token, candidate)</code>:
+            <li>Binary classification model on tuples <code>(identifier, token, candidate)</code>:
                 <ul><li><code>label=1</code> if the candidate is the correct suggestion</li>
                     <li><code>label=0</code> otherwise</li></ul></li>
             <li>Group by the token and sort</li>
-            <li><a href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a> is used for the logistic regression</li>
+            <li><a href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a> is used for binary classification</li>
         </ul>
     </section>
 
@@ -1811,24 +1906,70 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
 		</ol>
 	</section>
 
-    <section class="slide vista vista-cover white" id="dev_token">
-        <!--<h2>Tokens per developer</h2>-->
-        <!--<img src="pictures/similar_devs/dev_token.png" id="dev_token">-->
-        <style>
-            #dev_token {
-                /*width: 95%;*/
-                /*position: absolute;*/
-                /*left: 25px;*/
-                /*top: 200px;*/
+    <section class="slide " id="dev_token2">
+        <p>From git history</p>
+        <table style="width:100%">
+          <tr>
+            <th>Dev\Files</th>
+            <th>File 1</th>
+            <th>File 2</th>
+            <th>File 3</th>
+          </tr>
+          <tr>
+            <td>Dev 1</td>
+            <td>0</td>
+            <td>0.1</td>
+            <td>0.8</td>
+          </tr>
+          <tr>
+            <td>Dev 2</td>
+            <td>0.4</td>
+            <td>0.1</td>
+            <td>0.5</td>
+          </tr>
+        </table>
+        <p>From head revision</p>
+        <table style="width:100%">
+          <tr>
+            <th>Files\Tokens</th>
+            <th>Token 1</th>
+            <th>Token 2</th>
+            <th>Token 3</th>
+          </tr>
+          <tr>
+            <td>File 1</td>
+            <td>0</td>
+            <td>0.1</td>
+            <td>0.8</td>
+          </tr>
+          <tr>
+            <td>File 2</td>
+            <td>0.4</td>
+            <td>0.1</td>
+            <td>0.56</td>
+          </tr>
+          <tr>
+            <td>File 3</td>
+            <td>0.43</td>
+            <td>0.18</td>
+            <td>0.9</td>
+          </tr>
+        </table>
+        <!--<style>-->
+            <!--#dev_token {-->
+                <!--/*width: 95%;*/-->
+                <!--/*position: absolute;*/-->
+                <!--/*left: 25px;*/-->
+                <!--/*top: 200px;*/-->
 
-                background-image: url("pictures/similar_devs/dev_token.png");
-                background-size: contain !important;
-            }
-        </style>
+                <!--background-image: url("pictures/similar_devs/dev_token.png");-->
+                <!--background-size: contain !important;-->
+            <!--}-->
+        <!--</style>-->
     </section>
 
-    <section class="slide vista vista-cover whiteЦр" id="developer_clustering">
-        <!--<h2>Tokens per developer</h2>-->
+    <section class="slide vista vista-cover white" id="developer_clustering">
+        <!--<p><a href="https://arxiv.org/pdf/1905.06782.pdf">IDENTIFYING COLLABORATORS IN LARGE CODEBASES</a></p>-->
         <!--<img src="pictures/similar_devs/developer_clustering.png" id="developer_clustering">-->
         <style>
             #developer_clustering {
@@ -1870,14 +2011,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         </style>
     </section>
 
-    <section class="slide vista" id="amloncode">
-        <style>
-            #amloncode {
-                background: url("pictures/amloncode.png") white;
-            }
-        </style>
-    </section>
-
 	<section class="slide">
         <h2>Thank you</h2>
         <ul class="no-bullets fa-bullets dense-fa">
@@ -1889,7 +2022,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
             <li><i class="fa fa-trophy monofa" aria-hidden="true"></i><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome #MLonCode</a></li>
         </ul>
         <div class="vista" id="qrcode"></div>
-        <a id="qrcode-link" href="https://bit.ly/2MAU7qG">bit.ly/2MAU7qG</a>
+        <a id="qrcode-link" href="https://bit.ly/2lOQAw0">https://bit.ly/2lOQAw0</a>
         <style>
             #qrcode {
                 width: 350px;
@@ -1897,11 +2030,11 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
                 position: absolute;
                 left: 550px;
                 top: 150px;
-                background-image: url("pictures/qrcode_black.svg");
+                background-image: url("pictures/qrcode_white.svg");
             }
             @media not print {
                 #qrcode {
-                    background-image: url("pictures/qrcode_white.svg");
+                    background-image: url("pictures/qrcode_black.svg");
                 }
             }
             #qrcode-link {

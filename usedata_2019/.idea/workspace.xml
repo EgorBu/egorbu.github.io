@@ -4,7 +4,6 @@
     <list default="true" id="5ff2685a-9ef9-47f0-9a64-a7077713c0ea" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pictures/what_mloncode/generate_lang_word_distr.py" beforeDir="false" afterPath="$PROJECT_DIR$/pictures/what_mloncode/generate_lang_word_distr.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,36 +12,44 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/usedata_2019$generate_lang_word_distr.coverage" NAME="generate_lang_word_distr Coverage Results" MODIFIED="1568124532384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pictures/what_mloncode" />
+    <SUITE FILE_PATH="coverage/usedata_2019$generate_lang_word_distr.coverage" NAME="generate_lang_word_distr Coverage Results" MODIFIED="1568502045062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pictures/what_mloncode" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1240980664">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.38" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="2029" />
-          <entry key="py" value="788" />
+          <entry key="html" value="3216" />
+          <entry key="py" value="1952" />
+          <entry key="svg" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="2029" />
-          <entry key="Python" value="788" />
+          <entry key="HTML" value="3216" />
+          <entry key="Python" value="1952" />
+          <entry key="SVG" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="2" />
+          <entry key="py" value="3" />
+          <entry key="svg" value="7" />
+          <entry key="yml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="2" />
+          <entry key="Python" value="3" />
+          <entry key="SVG" value="7" />
+          <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -52,11 +59,47 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="1643" column="43" selection-start-line="1643" selection-start-column="43" selection-end-line="1643" selection-end-column="43" />
+            <state relative-caret-position="829">
+              <caret line="2032" column="60" selection-start-line="2032" selection-start-column="48" selection-end-line="2032" selection-end-column="60" />
               <folding>
-                <element signature="e#55985#56007#0" expanded="true" />
+                <element signature="e#32588#32620#0" expanded="true" />
+                <element signature="e#32651#32673#0" expanded="true" />
+                <element signature="e#32697#32719#0" expanded="true" />
+                <element signature="e#32743#32765#0" expanded="true" />
+                <element signature="e#32789#32811#0" expanded="true" />
+                <element signature="e#32835#32857#0" expanded="true" />
+                <element signature="e#32881#32903#0" expanded="true" />
+                <element signature="e#32750#32783#0" expanded="true" />
+                <element signature="e#33017#33039#0" expanded="true" />
+                <element signature="e#33063#33085#0" expanded="true" />
+                <element signature="e#33109#33131#0" expanded="true" />
+                <element signature="e#33155#33177#0" expanded="true" />
+                <element signature="e#33201#33223#0" expanded="true" />
+                <element signature="e#33247#33269#0" expanded="true" />
+                <element signature="e#35062#35084#0" expanded="true" />
+                <element signature="e#35169#35191#0" expanded="true" />
+                <element signature="e#35330#35352#0" expanded="true" />
+                <element signature="e#68893#68911#0" expanded="true" />
+                <element signature="e#69398#69416#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pictures/why_mloncode_hard/langs/languages.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1406">
+              <caret line="6130" column="18" selection-start-line="6130" selection-start-column="18" selection-end-line="6130" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pictures/why_mloncode_hard/langs/n_langs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -64,8 +107,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pictures/what_mloncode/generate_lang_word_distr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="210" selection-start-line="210" selection-end-line="210" />
+            <state relative-caret-position="1122">
+              <caret line="114" column="41" selection-start-line="114" selection-start-column="41" selection-end-line="114" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+                <marker date="1568499658772" expanded="true" signature="928:2226" ph="..." />
+                <marker date="1568499658772" expanded="true" signature="2257:3657" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,7 +143,16 @@
       <find>Splitti</find>
       <find>Identifier e</find>
       <find>liter</find>
+      <find>What's</find>
+      <find>TODO</find>
+      <find>To</find>
+      <find>Par</find>
       <find>Chin</find>
+      <find>hl-literal</find>
+      <find>hl-keyword</find>
+      <find>keyword</find>
+      <find>Number of w</find>
+      <find>#ml</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -105,7 +162,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pictures/what_mloncode/aa.py" />
+        <option value="$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_1.svg" />
+        <option value="$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_2.svg" />
+        <option value="$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_3.svg" />
+        <option value="$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_4.svg" />
+        <option value="$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_5.svg" />
+        <option value="$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_6.svg" />
         <option value="$PROJECT_DIR$/pictures/what_mloncode/generate_lang_word_distr.py" />
+        <option value="$PROJECT_DIR$/pictures/why_mloncode_hard/langs/languages.yml" />
+        <option value="$PROJECT_DIR$/pictures/why_mloncode_hard/langs/n_langs.py" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
@@ -130,6 +195,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -148,16 +214,28 @@
               <item name="pictures" type="462c0819:PsiDirectoryNode" />
               <item name="what_mloncode" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="usedata_2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="usedata_2019" type="462c0819:PsiDirectoryNode" />
+              <item name="pictures" type="462c0819:PsiDirectoryNode" />
+              <item name="why_mloncode_hard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="usedata_2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="usedata_2019" type="462c0819:PsiDirectoryNode" />
+              <item name="pictures" type="462c0819:PsiDirectoryNode" />
+              <item name="why_mloncode_hard" type="462c0819:PsiDirectoryNode" />
+              <item name="langs" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../irinakhismatullina.github.io/2019-vienna-pydays" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../vmarkovtsev.github.io/techtalks-2017-moscow" />
     <property name="settings.editor.selected.configurable" value="PyScientificConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -218,7 +296,7 @@
     <frame x="122" y="-8" width="3078" height="1808" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.6813489" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15942514" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
@@ -241,30 +319,6 @@
       <window_info anchor="right" id="Data View" order="4" />
       <window_info anchor="right" id="Database" order="5" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.6813489" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="2" />
-      <window_info anchor="bottom" id="Find" order="3" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.3414322" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.39961636" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
-      <window_info anchor="right" auto_hide="true" x="122" y="-8" width="3078" height="1808" id="SciView" order="0" show_stripe_button="false" type="FLOATING" weight="0.32987967" />
-      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Data View" order="4" />
-      <window_info anchor="right" id="Database" order="5" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -273,24 +327,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pictures/MLCon_SE_2018_Template_1920x1080_46516_v1a.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pictures/MLCon_SE_2018_Template_1920x1080_46516_v1b.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pictures/swivel_after.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pictures/swivel_before.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pictures/MLCon_SE_2018_Template_2048x1536_46516_v1a.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pictures/ml.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/MLCon_SE_2018_Template_1920x1080_46516_v1a.png" />
+    <entry file="file://$PROJECT_DIR$/pictures/MLCon_SE_2018_Template_1920x1080_46516_v1b.png" />
+    <entry file="file://$PROJECT_DIR$/pictures/swivel_after.png" />
+    <entry file="file://$PROJECT_DIR$/pictures/swivel_before.png" />
+    <entry file="file://$PROJECT_DIR$/pictures/MLCon_SE_2018_Template_2048x1536_46516_v1a.png" />
+    <entry file="file://$PROJECT_DIR$/pictures/ml.png" />
     <entry file="file://$PROJECT_DIR$/pictures/cover.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -301,19 +343,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_1.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_2.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_4.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_5.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_3.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/why_mloncode_hard/pyramid_white_6.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/pictures/what_mloncode/generate_lang_word_distr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="210" selection-start-line="210" selection-end-line="210" />
+        <state relative-caret-position="1122">
+          <caret line="114" column="41" selection-start-line="114" selection-start-column="41" selection-end-line="114" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1568499658772" expanded="true" signature="928:2226" ph="..." />
+            <marker date="1568499658772" expanded="true" signature="2257:3657" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/why_mloncode_hard/langs/languages.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1406">
+          <caret line="6130" column="18" selection-start-line="6130" selection-start-column="18" selection-end-line="6130" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/why_mloncode_hard/langs/n_langs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="1643" column="43" selection-start-line="1643" selection-start-column="43" selection-end-line="1643" selection-end-column="43" />
+        <state relative-caret-position="829">
+          <caret line="2032" column="60" selection-start-line="2032" selection-start-column="48" selection-end-line="2032" selection-end-column="60" />
           <folding>
-            <element signature="e#55985#56007#0" expanded="true" />
+            <element signature="e#32588#32620#0" expanded="true" />
+            <element signature="e#32651#32673#0" expanded="true" />
+            <element signature="e#32697#32719#0" expanded="true" />
+            <element signature="e#32743#32765#0" expanded="true" />
+            <element signature="e#32789#32811#0" expanded="true" />
+            <element signature="e#32835#32857#0" expanded="true" />
+            <element signature="e#32881#32903#0" expanded="true" />
+            <element signature="e#32750#32783#0" expanded="true" />
+            <element signature="e#33017#33039#0" expanded="true" />
+            <element signature="e#33063#33085#0" expanded="true" />
+            <element signature="e#33109#33131#0" expanded="true" />
+            <element signature="e#33155#33177#0" expanded="true" />
+            <element signature="e#33201#33223#0" expanded="true" />
+            <element signature="e#33247#33269#0" expanded="true" />
+            <element signature="e#35062#35084#0" expanded="true" />
+            <element signature="e#35169#35191#0" expanded="true" />
+            <element signature="e#35330#35352#0" expanded="true" />
+            <element signature="e#68893#68911#0" expanded="true" />
+            <element signature="e#69398#69416#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,3 +1,44 @@
+# TODO:
+* number of words in language - DONE
+
+
+
+* why so many identifiers - bigger and remove normalization - DONE
+* code naturallness - image - DONE
+* Take away - reformulate - DONE
+* Basics - picture - DONE
+
+* Identifier splitter - everything - DONE
+
+* Identifier embeddings - image? - DONE
+
+* Nearest to "foo" - сократить и пошагово показывать - и показать, что testing появляется - крупнее текст - DONE
+* Analogies - крупнее текст - DONE
+
+* Candidates ranking - logistic regression -> binary classification - DONE
+* why so hard - add number of unique programming languages - DONE
+
+* word mover's distance - remove text - DONE
+
+
+
+* developer similarity - image - DONE
+
+* developer similarity results - image? - WONTFIX
+
+* developer similarity - engineering teams at gitlab - white background
+
+* remove - awesome ml on code - fix picture
+
+* short link - DONE
+* qr code -DONE
+
+
+
+
+
+
+
 ## сперва результаты потом подход
 
 ## больше ссы
@@ -19,6 +60,15 @@ https://en.wikipedia.org/wiki/List_of_dictionaries_by_number_of_words
 * data size
 http://localhost:63342/usedata_2019/index.html?_ijt=2ucguamd5td6hpfcc32a0tf45j#21
 
+
+https://github.com/niderhoff/nlp-datasets
+
+https://github.com/src-d/datasets/#public-git-archive
+
+https://gluon-cv.mxnet.io/build/examples_datasets/imagenet.html
+
+https://octoverse.github.com/
+
 * code tools
 http://localhost:63342/usedata_2019/index.html?_ijt=2ucguamd5td6hpfcc32a0tf45j#23
 до 
@@ -28,6 +78,10 @@ http://localhost:63342/usedata_2019/index.html?_ijt=2ucguamd5td6hpfcc32a0tf45j#d
 
 
 
+### Parse ast
+#### Code first
+https://github.com/src-d/wmd-relax/blob/98f9510fee8a5c4593378eef22a47baef69c241f/wmd/__init__.py
+#### ast next
 
 # Почему почти ни одна из задач не может быть решена без использования методов для обработки естественных языков? Какие сложности надо преодолеть на этом пути?
 ## количество слайдов 4 + 1 + 2 + 1 + 4 + (22) + 1
@@ -126,3 +180,27 @@ http://vmarkovtsev.github.io/techtalks-2017-moscow/
 
 https://arxiv.org/abs/1905.06782
 https://github.com/src-d/poc-pluralsight
+
+
+пирамида по частям
+
+агглютативные языки - примеры дать
+
+ast - рассказать побольше на примере
+
+PGA - рассказать про слайсы данных, что они очень сильно уменьшать размер данных для задачи конкретной
+
+number of words - bar chart
+
+какие еще языки бывают? 
+
+nearest to foo
+по слайдам - и рассказать 
+
+analogy - такое же - появление текста по частям
+может быть только woman quenn king man
+
+
+увеличить текст в среднем
+
+word movers distance - убрать все слова, кроме картинки
