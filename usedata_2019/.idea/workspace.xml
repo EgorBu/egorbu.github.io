@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ff2685a-9ef9-47f0-9a64-a7077713c0ea" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,14 +25,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="3216" />
+          <entry key="html" value="3250" />
           <entry key="py" value="1952" />
           <entry key="svg" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="3216" />
+          <entry key="HTML" value="3250" />
           <entry key="Python" value="1952" />
           <entry key="SVG" value="12" />
         </counts>
@@ -59,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="829">
-              <caret line="2032" column="60" selection-start-line="2032" selection-start-column="48" selection-end-line="2032" selection-end-column="60" />
+            <state relative-caret-position="306">
+              <caret line="192" column="11" selection-start-line="192" selection-start-column="11" selection-end-line="192" selection-end-column="11" />
               <folding>
                 <element signature="e#32588#32620#0" expanded="true" />
                 <element signature="e#32651#32673#0" expanded="true" />
@@ -389,8 +388,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="829">
-          <caret line="2032" column="60" selection-start-line="2032" selection-start-column="48" selection-end-line="2032" selection-end-column="60" />
+        <state relative-caret-position="306">
+          <caret line="192" column="11" selection-start-line="192" selection-start-column="11" selection-end-line="192" selection-end-column="11" />
           <folding>
             <element signature="e#32588#32620#0" expanded="true" />
             <element signature="e#32651#32673#0" expanded="true" />
