@@ -36,20 +36,22 @@
             z-index: 1;
             height: 100%;
         }
+        /*-webkit-print-color-adjust {*/
+            /*exact;*/
+        /*}*/
         :-webkit-full-screen .full section {
             /* fix buggy Chrome offsets */
             margin-left: -1px !important;
             margin-top: -1px !important;
         }
-        @media not print {
-            .slide {
-                color: white;
-                background: black;
-            }
-            .slide h2 {
-                color: #bababa;
-            }
+        .slide {
+            color: white;
+            background: black;
         }
+        .slide h2 {
+            color: #bababa;
+        }
+
         #fullscreen {
             float: right;
             height: 48px;
@@ -280,20 +282,6 @@
             <li>Code review</li>
             <li>Developer similarity</li>
         </ul>
-        <!--<style>-->
-            <!--#qrcode {-->
-                <!--float: right;-->
-                <!--display: flex;-->
-                <!--flex-direction: column;-->
-            <!--}-->
-            <!--#qrcode > a {-->
-                <!--text-align: center;-->
-            <!--}-->
-        <!--</style>-->
-        <!--<div id="qrcode">-->
-            <!--<img src="pictures/qrcode.svg">-->
-            <!--<a class="noaline" href="https://goo.gl/gtZbyc">goo.gl/gtZbyc</a>-->
-        <!--</div>-->
     </section>
 
     <section class="slide vista vista-cover dragons">
@@ -327,18 +315,11 @@
         </style>
     </section>
 
-
-
     <section class="slide" id="hello-humans">
         <h2 class="top">Stereotypes</h2>
         <img class="top" src="pictures/what_mloncode/hello.gif">
         <!--ffmpeg -i hello.mkv hello.gif-->
     </section>
-
-    <!--TODO: add slide about code generation-->
-    <!---->
-
-
 
     <section class="slide atom">
         <h2>  <a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome MLonCode</a></h2>
@@ -354,18 +335,10 @@
     <section class="slide vista" id="source-ml">
 		<style>
 			#source-ml {
-				background: white url("pictures/what_mloncode/source_ml.svg");
-			}
-			@media not print {
-				#source-ml {
 					background: black url("pictures/what_mloncode/source_ml.svg");
-				}
-			}
+            }
 		</style>
 	</section>
-
-
-
 
     <section class="slide vista" id="ml">
         <h2 class="shout small-shout">Why MLonCode hard?</h2>
@@ -385,7 +358,6 @@
         </style>
     </section>
 
-
     <section class="slide vista vista-cover" id="pipeline">
         <h2 class="shout">Data</h2>
         <style>
@@ -403,43 +375,6 @@
             }
         </style>
     </section>
-
-
-    <!--<section class="slide vista vista-cover" id="cover-wiki">-->
-        <!--&lt;!&ndash;<h2 class="black title">#MLonCode</h2>&ndash;&gt;-->
-        <!--&lt;!&ndash;<p class="black">source{d}</p>&ndash;&gt;-->
-
-        <!--<style>-->
-            <!--#cover-wiki {-->
-                <!--background: url("pictures/why_mloncode_hard/Wikipedia_article_size_in_gigabytes_negative.png") black;-->
-                <!--background-position-x: 68% !important;-->
-            <!--}-->
-        <!--</style>-->
-    <!--</section>-->
-
-    <!--<section class="slide vista " id="cover-imagenet">-->
-        <!--<h2 class="white title">150GB</h2>-->
-        <!--&lt;!&ndash;<p class="black">source{d}</p>&ndash;&gt;-->
-
-        <!--<style>-->
-            <!--#cover-imagenet {-->
-                <!--background: url("pictures/why_mloncode_hard/imagenet.png") black;-->
-                <!--background-position-x: 68% !important;-->
-                <!--background-size: contain !important;-->
-            <!--}-->
-            <!--.title {-->
-                <!--font-family: ShareTechMono !important;-->
-                <!--font-size: 350% !important;-->
-            <!--}-->
-            <!--#cover-imagenet h2 {-->
-                <!--margin:30px 0 0;-->
-                <!--text-align:center;-->
-                <!--font-size:70px;-->
-                <!--margin-bottom: 226px;-->
-            <!--}-->
-        <!--</style>-->
-    <!--</section>-->
-
 
     <section class="slide atom">
         <h2>Common datasets</h2>
@@ -468,7 +403,6 @@
             }
         </style>
     </section>
-    <!--TODO: prettify PGA & common datasets -->
 
     <section class="slide vista " id="tools">
         <h2 class="white shout">Tools</h2>
@@ -489,19 +423,13 @@
             }
         </style>
     </section>
-    <!--TODO: make text brighter-->
 
     <section class="slide vista" id="mloncode-pyramid-1">
         <style>
             #mloncode-pyramid-1 {
                 padding: 100px;
                 background-origin: content-box;
-                background-image: url("pictures/why_mloncode_hard/pyramid_black.svg");
-            }
-            @media not print {
-                #mloncode-pyramid-1 {
-                    background-image: url("pictures/why_mloncode_hard/pyramid_white_1.svg");
-                }
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_1.svg");
             }
         </style>
     </section>
@@ -511,12 +439,7 @@
             #mloncode-pyramid-2 {
                 padding: 100px;
                 background-origin: content-box;
-                background-image: url("pictures/why_mloncode_hard/pyramid_black.svg");
-            }
-            @media not print {
-                #mloncode-pyramid-2 {
-                    background-image: url("pictures/why_mloncode_hard/pyramid_white_2.svg");
-                }
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_2.svg");
             }
         </style>
     </section>
@@ -526,12 +449,7 @@
             #mloncode-pyramid-3 {
                 padding: 100px;
                 background-origin: content-box;
-                background-image: url("pictures/why_mloncode_hard/pyramid_black.svg");
-            }
-            @media not print {
-                #mloncode-pyramid-3 {
-                    background-image: url("pictures/why_mloncode_hard/pyramid_white_3.svg");
-                }
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_3.svg");
             }
         </style>
     </section>
@@ -541,12 +459,7 @@
             #mloncode-pyramid-4 {
                 padding: 100px;
                 background-origin: content-box;
-                background-image: url("pictures/why_mloncode_hard/pyramid_black.svg");
-            }
-            @media not print {
-                #mloncode-pyramid-4 {
-                    background-image: url("pictures/why_mloncode_hard/pyramid_white_4.svg");
-                }
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_4.svg");
             }
         </style>
     </section>
@@ -556,12 +469,7 @@
             #mloncode-pyramid-5 {
                 padding: 100px;
                 background-origin: content-box;
-                background-image: url("pictures/why_mloncode_hard/pyramid_black.svg");
-            }
-            @media not print {
-                #mloncode-pyramid-5 {
-                    background-image: url("pictures/why_mloncode_hard/pyramid_white_5.svg");
-                }
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_5.svg");
             }
         </style>
     </section>
@@ -571,12 +479,7 @@
             #mloncode-pyramid-6 {
                 padding: 100px;
                 background-origin: content-box;
-                background-image: url("pictures/why_mloncode_hard/pyramid_black.svg");
-            }
-            @media not print {
-                #mloncode-pyramid-6 {
-                    background-image: url("pictures/why_mloncode_hard/pyramid_white_6.svg");
-                }
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_6.svg");
             }
         </style>
     </section>
@@ -586,27 +489,10 @@
             #mloncode-pyramid-7 {
                 padding: 100px;
                 background-origin: content-box;
-                background-image: url("pictures/why_mloncode_hard/pyramid_black.svg");
-            }
-            @media not print {
-                #mloncode-pyramid-7 {
-                    background-image: url("pictures/why_mloncode_hard/pyramid_white.svg");
-                }
+                background-image: url("pictures/why_mloncode_hard/pyramid_white.svg");
             }
         </style>
     </section>
-
-
-    <!--<section class="slide">-->
-        <!--<pre>-->
-        <!--<code><span class="hl-keyword">def</span> <span class="hl-def">nearest_neighbors</span>(<span class="hl-reserved">self</span>, origin, k=10):</code>-->
-        <!--<code>        <span class="hl-comment"># origin can be either a text query or an id</span></code>-->
-        <!--<code>        <span class="hl-keyword">if</span> <span class="hl-reserved">isinstance</span>(origin, (<span class="hl-reserved">tuple</span>, <span class="hl-reserved">list</span>):</code>-->
-        <!--<code>            words, weights = origin</code>-->
-        <!--<code>            <span class="hl-keyword">if not</span> <span class="hl-reserved">isinstance</span>(words, (<span class="hl-reserved">list</span>, numpy.ndarray)):</code>-->
-        <!--<code>                words = <span class="hl-reserved">list</span>(words)</code>-->
-        <!--</pre>-->
-    <!--</section>-->
 
     <section class="slide">
 		<h2>Parsing</h2>
@@ -699,16 +585,13 @@
 		</style>
 	</section>
 
-    <section class="slide vista" id="ast">
+    <section class="slide vista black" id="ast">
         <h2>AST</h2>
         <style>
             #ast {
-                background: url("pictures/why_mloncode_hard/ast_black.svg");
-            }
-            @media not print {
-                #ast {
-                    background: black url("pictures/why_mloncode_hard/ast_white.svg");
-                }
+                background-color: rgba(0, 0, 0, 1) !important;
+                /*background-origin: content-box;*/
+                background: url("pictures/why_mloncode_hard/ast_white.svg");
             }
             #ast > h2 {
                 position: absolute;
@@ -721,12 +604,8 @@
         <h2>#words</h2>
         <style>
             #langs0 {
-                background: url("pictures/why_mloncode_hard/langs/langs_0.png");
-            }
-            @media not print {
-                #langs0 {
-                    background: black url("pictures/why_mloncode_hard/langs/langs_0_neg.png");
-                }
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_0_neg.png");
             }
         </style>
     </section>
@@ -735,12 +614,8 @@
         <h2>#words</h2>
         <style>
             #langs1 {
-                background: url("pictures/why_mloncode_hard/langs/langs_1.png");
-            }
-            @media not print {
-                #langs1 {
-                    background: black url("pictures/why_mloncode_hard/langs/langs_1_neg.png");
-                }
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_1_neg.png");
             }
         </style>
     </section>
@@ -749,12 +624,8 @@
         <h2>#words</h2>
         <style>
             #langs2 {
-                background: url("pictures/why_mloncode_hard/langs/langs_2.png");
-            }
-            @media not print {
-                #langs2 {
-                    background: black url("pictures/why_mloncode_hard/langs/langs_2_neg.png");
-                }
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_2_neg.png");
             }
         </style>
     </section>
@@ -763,12 +634,8 @@
         <h2>#words</h2>
         <style>
             #langs3 {
-                background: url("pictures/why_mloncode_hard/langs/langs_3.png");
-            }
-            @media not print {
-                #langs3 {
-                    background: black url("pictures/why_mloncode_hard/langs/langs_3_neg.png");
-                }
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_3_neg.png");
             }
         </style>
     </section>
@@ -777,12 +644,8 @@
         <h2>#words</h2>
         <style>
             #langs4 {
-                background: url("pictures/why_mloncode_hard/langs/langs_4.png");
-            }
-            @media not print {
-                #langs4 {
-                    background: black url("pictures/why_mloncode_hard/langs/langs_4_neg.png");
-                }
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_4_neg.png");
             }
         </style>
     </section>
@@ -791,12 +654,8 @@
         <h2>#words</h2>
         <style>
             #langs5 {
-                background: url("pictures/why_mloncode_hard/langs/langs_5.png");
-            }
-            @media not print {
-                #langs5 {
-                    background: black url("pictures/why_mloncode_hard/langs/langs_5_neg.png");
-                }
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_5_neg.png");
             }
         </style>
     </section>
@@ -805,12 +664,8 @@
         <h2>#words</h2>
         <style>
             #langs6 {
-                background: url("pictures/why_mloncode_hard/langs/langs_6.png");
-            }
-            @media not print {
-                #langs6 {
-                    background: black url("pictures/why_mloncode_hard/langs/langs_6_neg.png");
-                }
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_6_neg.png");
             }
         </style>
     </section>
@@ -829,11 +684,6 @@
         <style>
             #natural-code {
                 background: url("pictures/why_mloncode_hard/natural.jpg");
-            }
-            @media not print {
-                #natural-code {
-                    background: black url("pictures/why_mloncode_hard/natural.jpg");
-                }
             }
             #natural-code::before {
                 content: "";
@@ -909,11 +759,6 @@
             #basics {
                 background: url("pictures/basics/cover.jpeg");
             }
-            @media not print {
-                #basics {
-                    background: black url("pictures/basics/cover.jpeg");
-                }
-            }
             #basics::before {
                 content: "";
                 position: absolute;
@@ -925,7 +770,6 @@
             }
         </style>
     </section>
-
 
     <section class="slide">
         <h2 class="shout">Identifier splitter</h2>
@@ -1002,12 +846,8 @@
     <section class="slide vista" id="bilstm">
         <style>
             #bilstm {
-                background: url("pictures/basics/bilstm.png");
-            }
-            @media not print {
-                #bilstm {
-                    background: black url("pictures/basics/bilstm_neg.png");
-                }
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/basics/bilstm_neg.png");
             }
         </style>
     </section>
@@ -1069,12 +909,7 @@
                 left: 200px;
                 width: 500px;
                 height: 300px;
-                background-image: url("pictures/basics/analogy_black.png");
-            }
-            @media not print {
-                #analogies {
-                    background-image: url("pictures/basics/analogy_white.png");
-                }
+                background-image: url("pictures/basics/analogy_white.png");
             }
         </style>
     </section>
@@ -1210,12 +1045,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all1">
         <style>
             #all2all1 {
-                background-image: url("pictures/basics/all2all_1_black.svg");
-            }
-            @media not print {
-                #all2all1 {
-                    background-image: url("pictures/basics/all2all_1_white.svg");
-                }
+                background-image: url("pictures/basics/all2all_1_white.svg");
             }
         </style>
     </section>
@@ -1245,12 +1075,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all2">
         <style>
             #all2all2 {
-                background-image: url("pictures/basics/all2all_2_black.svg");
-            }
-            @media not print {
-                #all2all2 {
-                    background-image: url("pictures/basics/all2all_2_white.svg");
-                }
+                background-image: url("pictures/basics/all2all_2_white.svg");
             }
         </style>
     </section>
@@ -1280,12 +1105,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all3">
         <style>
             #all2all3 {
-                background-image: url("pictures/basics/all2all_3_black.svg");
-            }
-            @media not print {
-                #all2all3 {
-                    background-image: url("pictures/basics/all2all_3_white.svg");
-                }
+                background-image: url("pictures/basics/all2all_3_white.svg");
             }
         </style>
     </section>
@@ -1315,12 +1135,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all4">
         <style>
             #all2all4 {
-                background-image: url("pictures/basics/all2all_4_black.svg");
-            }
-            @media not print {
-                #all2all4 {
-                    background-image: url("pictures/basics/all2all_4_white.svg");
-                }
+                background-image: url("pictures/basics/all2all_4_white.svg");
             }
         </style>
     </section>
@@ -1350,12 +1165,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all5">
         <style>
             #all2all5 {
-                background-image: url("pictures/basics/all2all_5_black.svg");
-            }
-            @media not print {
-                #all2all5 {
-                    background-image: url("pictures/basics/all2all_5_white.svg");
-                }
+                background-image: url("pictures/basics/all2all_5_white.svg");
             }
         </style>
     </section>
@@ -1385,12 +1195,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all6">
         <style>
             #all2all6 {
-                background-image: url("pictures/basics/all2all_6_black.svg");
-            }
-            @media not print {
-                #all2all6 {
-                    background-image: url("pictures/basics/all2all_6_white.svg");
-                }
+                background-image: url("pictures/basics/all2all_6_white.svg");
             }
         </style>
     </section>
@@ -1420,12 +1225,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all7">
         <style>
             #all2all7 {
-                background-image: url("pictures/basics/all2all_7_black.svg");
-            }
-            @media not print {
-                #all2all7 {
-                    background-image: url("pictures/basics/all2all_7_white.svg");
-                }
+                background-image: url("pictures/basics/all2all_7_white.svg");
             }
         </style>
     </section>
@@ -1455,12 +1255,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all8">
         <style>
             #all2all8 {
-                background-image: url("pictures/basics/all2all_8_black.svg");
-            }
-            @media not print {
-                #all2all8 {
-                    background-image: url("pictures/basics/all2all_8_white.svg");
-                }
+                background-image: url("pictures/basics/all2all_8_white.svg");
             }
         </style>
     </section>
@@ -1490,12 +1285,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all9">
         <style>
             #all2all9 {
-                background-image: url("pictures/basics/all2all_9_black.svg");
-            }
-            @media not print {
-                #all2all9 {
-                    background-image: url("pictures/basics/all2all_9_white.svg");
-                }
+                background-image: url("pictures/basics/all2all_9_white.svg");
             }
         </style>
     </section>
@@ -1503,12 +1293,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     <section class="slide vista" id="all2all">
         <style>
             #all2all {
-                background-image: url("pictures/basics/all2all_black.svg");
-            }
-            @media not print {
-                #all2all {
-                    background-image: url("pictures/basics/all2all_white.svg");
-                }
+                background-image: url("pictures/basics/all2all_white.svg");
             }
         </style>
     </section>
@@ -1596,8 +1381,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         </style>
     </section>
 
-
-    <!--TODO: find image for similar repo - somebody is looking in mirror, bender and bad bender and so on-->
     <section class="slide">
         <h2 class="shout">Similar repository search</h2>
     </section>
@@ -1657,7 +1440,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
 		</ol>
 	</section>
 
-
     <section class="slide">
 		<h2>Training identifier embeddings</h2>
 		<table>
@@ -1699,17 +1481,12 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
 
 		<style>
 			#projector {
+                background-color: rgba(0, 0, 0, 1) !important;
 				background-position: right !important;
-				background: white url("pictures/similar_repo/projector_black.png");
-			}
-			@media not print {
-				#projector {
-					background: black url("pictures/similar_repo/projector_white.png");
-				}
+				background: white url("pictures/similar_repo/projector_white.png");
 			}
 		</style>
 	</section>
-
 
     <section class="slide">
 		<h2>Weighted nBOW</h2>
@@ -1773,7 +1550,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
 		</ol>
 		<p class="success">This allows to avoid 95% WMD evaluations on average.</p>
 	</section>
-
 
     <section class="slide">
         <h2 class="shout">Code review</h2>
@@ -1841,7 +1617,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         </style>
     </section>
 
-
     <section class="slide">
         <h2>Candidates generation</h2>
         <ol>
@@ -1889,7 +1664,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         Note: the test dataset is not a ground truth.
     </section>
 
-    <!--TODO: find image for similar repo - somebody is looking in mirror, bender and bad bender and so on-->
     <section class="slide">
         <h2 class="shout">Developer similarity</h2>
     </section>
@@ -1955,17 +1729,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
             <td>0.9</td>
           </tr>
         </table>
-        <!--<style>-->
-            <!--#dev_token {-->
-                <!--/*width: 95%;*/-->
-                <!--/*position: absolute;*/-->
-                <!--/*left: 25px;*/-->
-                <!--/*top: 200px;*/-->
-
-                <!--background-image: url("pictures/similar_devs/dev_token.png");-->
-                <!--background-size: contain !important;-->
-            <!--}-->
-        <!--</style>-->
     </section>
 
     <section class="slide " id="dev_token2">
@@ -1993,21 +1756,13 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     </section>
 
     <section class="slide vista vista-cover white" id="developer_clustering">
-        <!--<p><a href="https://arxiv.org/pdf/1905.06782.pdf">IDENTIFYING COLLABORATORS IN LARGE CODEBASES</a></p>-->
-        <!--<img src="pictures/similar_devs/developer_clustering.png" id="developer_clustering">-->
         <style>
             #developer_clustering {
-                /*width: 95%;*/
-                /*position: absolute;*/
-                /*left: 25px;*/
-                /*top: 200px;*/
                 background-image: url("pictures/similar_devs/developer_clustering.png");
                 background-size: contain !important;
             }
         </style>
     </section>
-
-    <!--___________________________________________________________________________________________-->
 
     <section class="slide">
         <h2>Summary</h2>
@@ -2054,12 +1809,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
                 position: absolute;
                 left: 550px;
                 top: 150px;
-                background-image: url("pictures/qrcode_white.svg");
-            }
-            @media not print {
-                #qrcode {
-                    background-image: url("pictures/qrcode_black.svg");
-                }
+                background-image: url("pictures/qrcode_black.svg");
             }
             #qrcode-link {
                 position: absolute;
