@@ -254,7 +254,7 @@
                 <li>Identifier splitter</li>
                 <li>Identifier embeddings</li>
                 <li>Developer similarity search & clustering</li>
-                <li>PR level insights - style & typos analyzer</li>
+                <li>Code review - style & typos analyzer</li>
                 <li>Code deduplication</li>
             </ul>
 
@@ -1302,178 +1302,180 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         </style>
     </section>
 
+
+
+    <!--<section class="slide">-->
+        <!--<h2 class="shout">Similar repository search</h2>-->
+    <!--</section>-->
+
+
+    <!--<section class="slide nn">-->
+		<!--<h2>torch/nn</h2>-->
+		<!--<ul class="no-bullets">-->
+			<!--<li><a href="https://github.com/intel-analytics/BigDL">intel-analytics/BigDL</a></li>-->
+			<!--<li><a href="https://github.com/pytorch/pytorch">pytorch/pytorch</a></li>-->
+			<!--<li><a href="https://github.com/clementfarabet/lua-&#45;&#45;nnx">clementfarabet/lua-&#45;&#45;nnx</a></li>-->
+			<!--<li><a href="https://github.com/Element-Research/dpnn">Element-Research/dpnn</a></li>-->
+			<!--<li><a href="https://github.com/aciditeam/torch-models">aciditeam/torch-models</a></li>-->
+			<!--<li><a href="https://github.com/sermanet/OverFeat">sermanet/OverFeat</a></li>-->
+			<!--<li><a href="https://github.com/naman14/Arcade">naman14/Arcade</a></li>-->
+			<!--<li><a href="https://github.com/hughperkins/clnn">hughperkins/clnn</a></li>-->
+			<!--<li><a href="https://github.com/itayhubara/BinaryNet">itayhubara/BinaryNet</a></li>-->
+			<!--<li><a href="https://github.com/google/FluidNet">google/FluidNet</a></li>-->
+		<!--</ul>-->
+		<!--<style>-->
+			<!--.nn ul {-->
+				<!--overflow: hidden;-->
+			<!--}-->
+			<!--.nn li {-->
+				<!--float: left;-->
+  				<!--display: inline;-->
+				<!--width: 50%;-->
+			<!--}-->
+		<!--</style>-->
+	<!--</section>-->
+
+	<!--<section class="slide nn">-->
+		<!--<h2>src-d/go-git</h2>-->
+		<!--<ul class="no-bullets">-->
+			<!--<li><a href="https://github.com/chrisparnin/autogit">chrisparnin/autogit</a></li>-->
+			<!--<li><a href="https://github.com/libgit2/git2go">libgit2/git2go</a></li>-->
+			<!--<li><a href="https://github.com/christkv/node-git">christkv/node-git</a></li>-->
+			<!--<li><a href="https://github.com/gitchain/gitchain">gitchain/gitchain</a></li>-->
+			<!--<li><a href="https://github.com/heroku/cli">heroku/cli</a></li>-->
+			<!--<li><a href="https://github.com/modocache/Gift">modocache/Gift</a></li>-->
+			<!--<li><a href="https://github.com/ChimeraCoder/gitgo">ChimeraCoder/gitgo</a></li>-->
+			<!--<li><a href="https://github.com/mojombo/grit">mojombo/grit</a></li>-->
+			<!--<li><a href="https://github.com/FriendCode/gittle">FriendCode/gittle</a></li>-->
+			<!--<li><a href="https://github.com/tsuru/gandalf">tsuru/gandalf</a></li>-->
+		<!--</ul>-->
+	<!--</section>-->
+
+    <!--<section class="slide">-->
+		<!--<h2>Pipeline</h2>-->
+		<!--<ol>-->
+			<!--<li>Clone the repositories.</li>-->
+			<!--<li>Classify and parse source code.</li>-->
+			<!--<li>Preprocess identifiers: split, normalize, filter, stem.</li>-->
+			<!--<li>Prepare embeddings - cooc matrix & Swivel.</li>-->
+			<!--<li>Weighted BOW per repository.</li>-->
+            <!--<li>WMD.</li>-->
+		<!--</ol>-->
+	<!--</section>-->
+
+    <!--<section class="slide">-->
+		<!--<h2>Training identifier embeddings</h2>-->
+		<!--<table>-->
+		<!--<tr>-->
+			<!--<th scope="col">Stage</th>-->
+			<!--<th>Time</th>-->
+			<!--<th>Resources</th>-->
+			<!--<th>Size on disk</th>-->
+		<!--</tr>-->
+		<!--<tr>-->
+			<!--<th scope="row">Cloning 143k repos</th>-->
+			<!--<td>3 days</td>-->
+			<!--<td>20x2 cores, 256 GB RAM</td>-->
+			<!--<td>2.6 TB</td>-->
+		<!--</tr>-->
+		<!--<tr>-->
+			<!--<th scope="row">Dataset</th>-->
+			<!--<td>4 days</td>-->
+			<!--<td>20x2 cores, 256 GB RAM</td>-->
+			<!--<td>2TB (31GB in xz)</td>-->
+		<!--</tr>-->
+		<!--<tr>-->
+			<!--<th scope="row">fastprep</th>-->
+			<!--<td>2 days</td>-->
+			<!--<td>16x2 cores, 256 GB RAM</td>-->
+			<!--<td>20 GB</td>-->
+		<!--</tr>-->
+		<!--<tr>-->
+			<!--<th scope="row">Swivel</th>-->
+			<!--<td>14 hours</td>-->
+			<!--<td>2 Titan X'2016 + 2 1080Ti</td>-->
+			<!--<td>5.6 GB</td>-->
+		<!--</tr>-->
+		<!--</table>-->
+	<!--</section>-->
+
+	<!--<section class="slide vista" id="projector">-->
+		<!--<h2>Embeddings</h2>-->
+
+		<!--<style>-->
+			<!--#projector {-->
+                <!--background-color: rgba(0, 0, 0, 1) !important;-->
+				<!--background-position: right !important;-->
+				<!--background: white url("pictures/similar_repo/projector_white.png");-->
+			<!--}-->
+		<!--</style>-->
+	<!--</section>-->
+
+    <!--<section class="slide">-->
+		<!--<h2>Weighted nBOW</h2>-->
+		<!--<p>Let's interpret every repository as the weighted bag-of-words.</p>-->
+		<!--<p>We calculate TF-IDF to weight the occurring identifiers.</p>-->
+		<!--<div id="tensorflow-nbow"><code class="inline-no-offset">tensorflow/tensorflow:</code>-->
+		<!--<pre class="pre">    tfreturn	67.780249-->
+  <!--oprequires	63.968142-->
+      <!--doblas	63.714424-->
+    <!--gputools	62.337396-->
+    <!--tfassign	61.545926-->
+    <!--opkernel	60.721556-->
+        <!--sycl	57.064558-->
+         <!--hlo	55.723587-->
+     <!--libxsmm	54.820668-->
+  <!--tfdisallow	53.666890</pre></div>-->
+		<!--<style>-->
+			<!--#tensorflow-nbow {-->
+				<!--display: flex;-->
+				<!--align-items: center;-->
+			<!--}-->
+			<!--#tensorflow-nbow > code {-->
+				<!--padding-right: 50px;-->
+			<!--}-->
+			<!--.pre {-->
+				<!--white-space: pre !important;-->
+				<!--font-family: monospace;-->
+				<!--line-height: 1.2em;-->
+			<!--}-->
+		<!--</style>-->
+	<!--</section>-->
+
+    <!--<section class="slide">-->
+        <!--<h2><a href="http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf">Word Mover's Distance</a></h2>-->
+        <!--<div class="vista padded-image" id="wmd2"></div>-->
+        <!--<style>-->
+            <!--.padded-image {-->
+                <!--position: absolute;-->
+                <!--left: 0;-->
+                <!--right: 0;-->
+                <!--top: 180px;-->
+                <!--bottom: 40px;-->
+            <!--}-->
+        <!--</style>-->
+        <!--<style>-->
+            <!--#wmd2 {-->
+                <!--background-image: url("pictures/similar_repo/wmd_white.png");-->
+            <!--}-->
+        <!--</style>-->
+    <!--</section>-->
+
+	<!--<section class="slide">-->
+		<!--<h2>WMD calculation in a nutshell</h2>-->
+		<!--<p class="important">WMD evaluation is O(N<sup>3</sup>), becomes slow on N≈100.</p>-->
+		<!--<ol>-->
+			<!--<li>Sort samples by centroid distance.</li>-->
+			<!--<li>Evaluate first k WMDs.</li>-->
+			<!--<li>For every subsequent sample, solve the relaxed LP which gives an upper estimation.</li>-->
+			<!--<li>If it is greater than the farthest among the k NN, go next.</li>-->
+			<!--<li>Otherwise, evaluate the WMD.</li>-->
+		<!--</ol>-->
+		<!--<p class="success">This allows to avoid 95% WMD evaluations on average.</p>-->
+	<!--</section>-->
+
     <section class="slide">
-        <h2 class="shout">Similar repository search</h2>
-    </section>
-
-
-    <section class="slide nn">
-		<h2>torch/nn</h2>
-		<ul class="no-bullets">
-			<li><a href="https://github.com/intel-analytics/BigDL">intel-analytics/BigDL</a></li>
-			<li><a href="https://github.com/pytorch/pytorch">pytorch/pytorch</a></li>
-			<li><a href="https://github.com/clementfarabet/lua---nnx">clementfarabet/lua---nnx</a></li>
-			<li><a href="https://github.com/Element-Research/dpnn">Element-Research/dpnn</a></li>
-			<li><a href="https://github.com/aciditeam/torch-models">aciditeam/torch-models</a></li>
-			<li><a href="https://github.com/sermanet/OverFeat">sermanet/OverFeat</a></li>
-			<li><a href="https://github.com/naman14/Arcade">naman14/Arcade</a></li>
-			<li><a href="https://github.com/hughperkins/clnn">hughperkins/clnn</a></li>
-			<li><a href="https://github.com/itayhubara/BinaryNet">itayhubara/BinaryNet</a></li>
-			<li><a href="https://github.com/google/FluidNet">google/FluidNet</a></li>
-		</ul>
-		<style>
-			.nn ul {
-				overflow: hidden;
-			}
-			.nn li {
-				float: left;
-  				display: inline;
-				width: 50%;
-			}
-		</style>
-	</section>
-
-	<section class="slide nn">
-		<h2>src-d/go-git</h2>
-		<ul class="no-bullets">
-			<li><a href="https://github.com/chrisparnin/autogit">chrisparnin/autogit</a></li>
-			<li><a href="https://github.com/libgit2/git2go">libgit2/git2go</a></li>
-			<li><a href="https://github.com/christkv/node-git">christkv/node-git</a></li>
-			<li><a href="https://github.com/gitchain/gitchain">gitchain/gitchain</a></li>
-			<li><a href="https://github.com/heroku/cli">heroku/cli</a></li>
-			<li><a href="https://github.com/modocache/Gift">modocache/Gift</a></li>
-			<li><a href="https://github.com/ChimeraCoder/gitgo">ChimeraCoder/gitgo</a></li>
-			<li><a href="https://github.com/mojombo/grit">mojombo/grit</a></li>
-			<li><a href="https://github.com/FriendCode/gittle">FriendCode/gittle</a></li>
-			<li><a href="https://github.com/tsuru/gandalf">tsuru/gandalf</a></li>
-		</ul>
-	</section>
-
-    <section class="slide">
-		<h2>Pipeline</h2>
-		<ol>
-			<li>Clone the repositories.</li>
-			<li>Classify and parse source code.</li>
-			<li>Preprocess identifiers: split, normalize, filter, stem.</li>
-			<li>Prepare embeddings - cooc matrix & Swivel.</li>
-			<li>Weighted BOW per repository.</li>
-            <li>WMD.</li>
-		</ol>
-	</section>
-
-    <section class="slide">
-		<h2>Training identifier embeddings</h2>
-		<table>
-		<tr>
-			<th scope="col">Stage</th>
-			<th>Time</th>
-			<th>Resources</th>
-			<th>Size on disk</th>
-		</tr>
-		<tr>
-			<th scope="row">Cloning 143k repos</th>
-			<td>3 days</td>
-			<td>20x2 cores, 256 GB RAM</td>
-			<td>2.6 TB</td>
-		</tr>
-		<tr>
-			<th scope="row">Dataset</th>
-			<td>4 days</td>
-			<td>20x2 cores, 256 GB RAM</td>
-			<td>2TB (31GB in xz)</td>
-		</tr>
-		<tr>
-			<th scope="row">fastprep</th>
-			<td>2 days</td>
-			<td>16x2 cores, 256 GB RAM</td>
-			<td>20 GB</td>
-		</tr>
-		<tr>
-			<th scope="row">Swivel</th>
-			<td>14 hours</td>
-			<td>2 Titan X'2016 + 2 1080Ti</td>
-			<td>5.6 GB</td>
-		</tr>
-		</table>
-	</section>
-
-	<section class="slide vista" id="projector">
-		<h2>Embeddings</h2>
-
-		<style>
-			#projector {
-                background-color: rgba(0, 0, 0, 1) !important;
-				background-position: right !important;
-				background: white url("pictures/similar_repo/projector_white.png");
-			}
-		</style>
-	</section>
-
-    <section class="slide">
-		<h2>Weighted nBOW</h2>
-		<p>Let's interpret every repository as the weighted bag-of-words.</p>
-		<p>We calculate TF-IDF to weight the occurring identifiers.</p>
-		<div id="tensorflow-nbow"><code class="inline-no-offset">tensorflow/tensorflow:</code>
-		<pre class="pre">    tfreturn	67.780249
-  oprequires	63.968142
-      doblas	63.714424
-    gputools	62.337396
-    tfassign	61.545926
-    opkernel	60.721556
-        sycl	57.064558
-         hlo	55.723587
-     libxsmm	54.820668
-  tfdisallow	53.666890</pre></div>
-		<style>
-			#tensorflow-nbow {
-				display: flex;
-				align-items: center;
-			}
-			#tensorflow-nbow > code {
-				padding-right: 50px;
-			}
-			.pre {
-				white-space: pre !important;
-				font-family: monospace;
-				line-height: 1.2em;
-			}
-		</style>
-	</section>
-
-    <section class="slide">
-        <h2><a href="http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf">Word Mover's Distance</a></h2>
-        <div class="vista padded-image" id="wmd2"></div>
-        <style>
-            .padded-image {
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 180px;
-                bottom: 40px;
-            }
-        </style>
-        <style>
-            #wmd2 {
-                background-image: url("pictures/similar_repo/wmd_white.png");
-            }
-        </style>
-    </section>
-
-	<section class="slide">
-		<h2>WMD calculation in a nutshell</h2>
-		<p class="important">WMD evaluation is O(N<sup>3</sup>), becomes slow on N≈100.</p>
-		<ol>
-			<li>Sort samples by centroid distance.</li>
-			<li>Evaluate first k WMDs.</li>
-			<li>For every subsequent sample, solve the relaxed LP which gives an upper estimation.</li>
-			<li>If it is greater than the farthest among the k NN, go next.</li>
-			<li>Otherwise, evaluate the WMD.</li>
-		</ol>
-		<p class="success">This allows to avoid 95% WMD evaluations on average.</p>
-	</section>
-
-    <section class="slide">
-        <h2 class="shout">Code review</h2>
+        <h2 class="shout">Code review: Typos</h2>
     </section>
 
     <section class="slide vista vista-cover" id="issues">
@@ -1585,6 +1587,344 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         Note: the test dataset is not a ground truth.
     </section>
 
+
+    <section class="slide">
+        <h2 class="shout">Code review: Style</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Code Style</h2>
+        <img src="pictures/code_review/style/lookout_stg_comment.png" class="lookout-comment">
+        <style>
+            .lookout-comment {
+                position: absolute;
+                top: 200px;
+                left: 150px;
+                width: 650px;
+            }
+        </style>
+    </section>
+
+
+    <section class="slide" id="classes">
+        <h2>What is code style?</h2>
+        <table cellpadding="30">
+            <tr>
+                <td class="label">␣</td>
+                <td class="description">space</td>
+            </tr>
+            <tr>
+                <td class="label">→</td>
+                <td class="description">tabulation</td>
+            </tr>
+            <tr>
+                <td class="label">&#8626</td>
+                <td class="description">newline</td>
+            </tr>
+            <tr>
+                <td class="label">␣+/-</td>
+                <td class="description">spaced indentation increase/decrease</td>
+            </tr>
+            <tr>
+                <td class="label">→+/-</td>
+                <td class="description">tabulated indentation increase/decrease</td>
+            </tr>
+            <tr>
+                <td class="label">'/"</td>
+                <td class="description">single/double quotes</td>
+            </tr>
+            <tr>
+                <td class="label">&#8709</td>
+                <td class="description">empty gaps between non-label nodes, NOOP</td>
+            </tr>
+        </table>
+        <style>
+            .label {
+                text-align: center;
+                width: 10%;
+                padding-left: 0 !important;
+            }
+            .description {
+                text-align: left;
+                width: 90%;
+            }
+            #classes table, #classes td {
+                margin-left: 0px;
+                border-collapse: collapse;
+            }
+        </style>
+    </section>
+
+
+    <section class="slide">
+        <h2>"White box" is the key</h2>
+        <ul>
+            <li>Builds trust with the users</li>
+            <li>Provides interpretability</li>
+            <li>Allows editing</li>
+            <li>Allows blacklisting</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Labels predicted</h2>
+        <p>We concatenate common classes together.</p>
+        <ul class="no-bullets">
+            <li>␣"</li>
+            <li>␣+␣+␣+␣+</li>
+            <li>'&#8626</li>
+            <li>&#8626→-&#8626</li>
+            <li>&#8709</li>
+        </ul>
+        <p>No BPE or similar reduction is required.</p>
+    </section>
+
+    <section class="slide" class="annotated-snippet">
+        <h2>Annotated code snippet</h2>
+        <pre><code><span style="color: green">&#8709</span>function<span style="color: green">&#9251</span>classesToArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8677</span>   if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>isArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8709</span>return<span style="color: green">&#9251</span>value<span style="color: green">&#8709</span>;<span style="color: green">&#8709</span>}</code>
+             <code>    if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>typeof<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>===<span style="color: green">&#9251"</span>string<span style="color: green">"&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8677</span>       return<span style="color: green">&#9251</span>value<span style="color: green">&#8709</span>.<span style="color: green">&#8709</span>match(<span style="color: green">&#9251</span>rnothtml<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>||<span style="color: green">&#9251</span>[]<span style="color: green">&#8709</span>;<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8676</span>   }<span style="color: green">&#8626</span></code>
+             <code>    return<span style="color: green">&#9251</span>[]<span style="color: green">&#8709</span>;<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8676</span>}<span style="color: green">&#8709</span></code>
+        </pre>
+        <style>
+            .annotated-snippet pre {
+                color: #bababa;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Augmented token stream</h2>
+        <img src="pictures/code_review/style/vnodes.svg" id="vnodes" class="diagram diagram-right">
+        <pre><code>a = b * 2</code></pre>
+        <style>
+            .diagram {
+                height: 350px;
+            }
+            .diagram-right {
+                float: right;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Machine Learning</h2>
+        <img src="pictures/code_review/style/features.svg" class="diagram center">
+    </section>
+
+    <section class="slide">
+        <h2>Machine Learning</h2>
+        <ul>
+            <li>Feature selection (univariate, ANOVA F-criterion)</li>
+            <li>Hyperparameter optimization (Bayesian)</li>
+            <li>80% + 20% split</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Rules</h2>
+        <img src="pictures/code_review/style/rules.svg" class="diagram diagram-right">
+        <ul>
+            <li><code>a&le;5 Λ b&le;1 Λ <span class="oline">c</span> ⇒ &alpha;</code></li>
+            <li><code>a&le;5 Λ 1&lt;b&lt;4 ⇒ &beta;</code></li>
+            <li><code>5&lt;a&lt;10 Λ <span class="oline">c</span> ⇒ &gamma;</code></li>
+            <li><code>a&gt;5 Λ c Λ b&gt;2 ⇒ &alpha;</code></li>
+        </ul>
+        <style>
+            .oline {
+                text-decoration: overline;
+            }
+        </style>
+    </section>
+
+    <style>
+        .rules-opt code {
+            display: inline-block !important;
+            width: auto !important;
+        }
+        .bad {
+            color: coral;
+        }
+        .good {
+            color: lightgreen;
+        }
+        .opt-desc {
+            float: right;
+            font-family: "Source Sans Pro", sans-serif;
+        }
+        .rules-opt-result {
+            margin-bottom: 0;
+        }
+    </style>
+
+    <section class="slide rules-opt">
+        <h2>Rules optimization</h2>
+        <pre><code><span class="bad">a&gt;5</span> Λ c Λ b&gt;2 Λ <span class="oline">d</span> Λ <span class="bad">a&gt;10</span> ⇒ &alpha;</code><span class="opt-desc">(merge)</span><br>
+<code><span class="good">a&gt;10</span> Λ c Λ <span class="bad">b&gt;2</span> Λ <span class="oline">d</span> ⇒ &alpha;</code><span class="opt-desc">(redundant)</span><br>
+<code>a&gt;10 Λ c Λ <span class="oline bad">d</span> ⇒ &alpha;</code><span class="opt-desc">(feature exclusion)</span><br>
+<code><span class="bad">a&gt;10 Λ c ⇒ &alpha;</span></code><span class="opt-desc">(confidence threshold)</span></pre>
+        <h4 class="rules-opt-result">Result</h4>
+        <ul>
+            <li>-90% rules with no quality loss</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Redundant attributes elimination</h2>
+        <ul>
+            <li>Trigger imbalance: &lt;5% activation rate</li>
+            <li>For each attribute comparison build the set of <span class="bold">false positives</span></li>
+            <li>Build graph by thresholding Jaccard similarity between each pair (0.98)</li>
+            <li>Run multilevel community detection</li>
+            <li>Leave only one representative (greedily)</li>
+        </ul>
+        <style>
+            .bold {
+                font-weight: bold;
+            }
+        </style>
+    </section>
+
+    <section class="slide" class="annotated-snippet">
+        <h2>Annotated code snippet</h2>
+        <pre><code><span style="color: green">&#8709</span><span class="focus">function</span><span style="color: green">&#9251</span>classesToArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8677</span>   if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>isArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span><span class="focus">)</span><span style="color: green">&#9251</span><span class="focus">{</span><span style="color: red">&#8709</span><span class="focus">return</span><span style="color: green">&#9251</span><span class="focus">value</span><span style="color: green">&#8709</span>;<span style="color: green">&#8709</span>}</code>
+             <code>    if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>typeof<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>===<span style="color: green">&#9251"</span>string<span style="color: green">"&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8677</span>       return<span style="color: green">&#9251</span>value<span style="color: green">&#8709</span>.<span style="color: green">&#8709</span>match(<span style="color: green">&#9251</span>rnothtml<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>||<span style="color: green">&#9251</span>[]<span style="color: green">&#8709</span>;<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8676</span>   }<span style="color: green">&#8626</span></code>
+             <code>    return<span style="color: green">&#9251</span>[]<span style="color: green">&#8709</span>;<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8676</span>}<span style="color: green">&#8709</span></code>
+        </pre>
+        <style>
+            .focus {
+                border: 1px solid white;
+                background-color: #333333;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Rule example</h2>
+        <div id="rule-y">
+            <div>
+                y = &#8709<br>
+                ŷ = &#8626→+
+            </div>
+            <div>
+                Confidence: 0.975<br>
+                Support: 3230
+            </div>
+        </div>
+        <hr>
+        <ul class="no-bullets">
+            <li>-1.value = {</li>
+            <li>-3.value not in {else}</li>
+            <li>+1.internal_type not in {StringLiteral}</li>
+            <li>+2.roles not in {LITERAL, COMMENT}</li>
+            <li>ˆ1.roles in {IF, STATEMENT}</li>
+        </ul>
+        <style>
+            #rule-y {
+                display: flex;
+            }
+            #rule-y > div {
+                flex: 1;
+            }
+            #rule-y ~ ul {
+                font-family: monospace;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Inference</h2>
+        <ol>
+            <li>Apply rules
+                <ul>
+                    <li>Fixes to old code?</li>
+                    <li>AST breakage?</li>
+                    <li>Identification?</li>
+                </ul>
+            </li>
+            <li>Generate code
+                <ul>
+                    <li>Indentation?</li>
+                    <li>Multiple lines?</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <section class="slide" id="results">
+        <h2>Results</h2>
+        <table cellpadding="10">
+            <tbody>
+                <tr>
+                    <th scope="col"></th>
+                    <th class="stats">train samples</th>
+                    <th class="stats">rules</th>
+                    <th class="stats">precision</th>
+                    <th class="stats">prediction rate</th>
+                </tr>
+                <tr>
+                    <th scope="row">node</th>
+                    <td class="stats">374,298</td>
+                    <td class="stats">641</td>
+                    <td class="stats">0.965</td>
+                    <td class="stats">0.951</td>
+                </tr>
+                <tr>
+                    <th scope="row">jquery</th>
+                    <td class="stats">197,072</td>
+                    <td class="stats">391</td>
+                    <td class="stats">0.972</td>
+                    <td class="stats">0.959</td>
+                </tr>
+                <tr>
+                    <th scope="row">axios</th>
+                    <td class="stats">21,130</td>
+                    <td class="stats">143</td>
+                    <td class="stats">0.940</td>
+                    <td class="stats">0.951</td>
+                </tr>
+                <tr>
+                    <th scope="row">carlo</th>
+                    <td class="stats">5,529</td>
+                    <td class="stats">78</td>
+                    <td class="stats">0.878</td>
+                    <td class="stats">0.931</td>
+                </tr>
+                <tr>
+                    <td colspan="100%">&nbsp</td>
+                </tr>
+                <tr>
+                    <th scope="row">w. average</th>
+                    <td class="stats">--</td>
+                    <td class="stats">--</td>
+                    <td class="stats">0.943</td>
+                    <td class="stats">0.947</td>
+                </tr>
+            </tbody>
+        </table>
+        <style>
+            .stats {
+                text-align: right !important;
+            }
+        </style>
+    </section>
+
+
+
+
+
+
+
+
+
+
     <section class="slide">
         <h2 class="shout">Developer similarity</h2>
     </section>
@@ -1686,13 +2026,55 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     </section>
 
     <section class="slide atom">
-        <h2>  <a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome MLonCode</a></h2>
+        <h2> Active participant of <a href="https://github.com/src-d/reading-club">Reading Club</a></h2>
+
+        <p>Discuss papers at the intersection</p>
+        <ul>
+                <li>Software Engineering</li>
+                <li>Programming Languages</li>
+                <li>Natural Language Processing</li>
+                <li>especially related to applications of Machine Learning to Code</li>
+            </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2> Creator & maintainer of <a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome MLonCode</a></h2>
 
         <ul>
-            <li>Program Synthesis</li>
-            <li>Program Translation</li>
-            <li>Code Suggestion and Completion</li>
-            <li>Program Repair and Bug Detection</li>
+            <li>4.4k stars</li>
+            <li>Contains:</li>
+            <ul>
+                <li>Articles</li>
+                <li>Datasets</li>
+                <li>Software</li>
+                <li>Conferences</li>
+                <li>Competitions</li>
+            </ul>
+
+        </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2><a href="https://egorbu.github.io">Conferences</a></h2>
+
+        <ul>
+            <li>Machine Learning on Source Code, Moscow, usedata.ru</li>
+            <li>Machine Learning on Source Code, Munich, hack_ai</li>
+            <li>Machine Learning on Source Code, Munich, mlconference.ai</li>
+            <li>Fighting with high-dimensional not-so-small data - M3, London</li>
+            <li>Technological Stack for Machine Learning on Source Code</li>
+            <li>Embedding the GitHub contribution graph, Moscow</li>
+            <li>Extending Jupyter with Google Cloud Storage file system backend, Barcelona</li>
+            </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2>Articles</h2>
+
+        <ul>
+            <li>"Identifying collaborators in large codebases", ML4SE '19</li>
+            <li>"STYLE-ANALYZER: fixing code style inconsistencies with interpretable unsupervised algorithms", MSR '19</li>
+            <li>"Splitting source code identifiers using Bidirectional LSTM Recurrent Neural Network", FLOC 2018</li>
         </ul>
     </section>
 
