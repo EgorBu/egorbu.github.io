@@ -183,26 +183,9 @@
     <section class="slide atom">
         <h2>Plan</h2>
         <ul>
-            <li>What's ML on Code?</li>
+            <li>Intro</li>
             <li>Tools</li>
-            <li>Basic</li>
-            <li>bblfsh</li>
-            <li>Scalability</li>
-            <li>SQL for git</li>
-            <li>UBER TOOL</li>
-            <li>Everything else</li>
-        </ul>
-    </section>
-
-    <section class="slide atom">
-        <h2>Experience: ~6 years ML, ~10 years coding</h2>
-
-        <ul>
-            <li>source{d} - ML on Code</li>
-            <li>Samsung -  demography prediction, recommendations</li>
-            <li>CROC - unmanned air vehicles, robotics, computer vision</li>
-            <li>KOMPAS - navigation equipment for space rockets</li>
-            <li>University - robotics competition EUROBOT</li>
+            <li>Projects</li>
         </ul>
     </section>
 
@@ -226,20 +209,23 @@
     </section>
 
     <section class="slide atom">
-        <h2>source{d}</h2>
+        <h2>source{d} existed for ~4 years</h2>
 
         <ul>
-            <li>MLonCode - short overview</li>
-            <li>Projects</li>
-            <ul>
-                <li>Identifier splitter</li>
-                <li>Identifier embeddings</li>
-                <li>Developer similarity search & clustering</li>
-                <li>Code review - style & typos analyzer</li>
-                <li>Code deduplication</li>
-            </ul>
+            <li>Initially - hiring based on your GitHub contribution</li>
+            <li>Build technological stack for Machine Learning on Source code</li>
+            <li>PR level insights & GitHub integration</li>
+            <li>Analytic tools for working with Source Code</li>
+        </ul>
+    </section>
 
-            <li>Other: conferences, awesome lists, reading club</li>
+    <section class="slide atom">
+        <h2>source{d} concepts</h2>
+
+        <ul>
+            <li>Process code at GitHub scale</li>
+            <li>... couple of years ...</li>
+            <li>Process code at medium organization scale</li>
         </ul>
     </section>
 
@@ -274,12 +260,6 @@
         </style>
     </section>
 
-    <section class="slide" id="hello-humans">
-        <h2 class="top">Stereotypes</h2>
-        <img class="top" src="pictures/what_mloncode/hello.gif">
-        <!--ffmpeg -i hello.mkv hello.gif-->
-    </section>
-
     <section class="slide vista" id="source-ml">
 		<style>
 			#source-ml {
@@ -289,7 +269,7 @@
 	</section>
 
     <section class="slide vista" id="ml">
-        <h2 class="shout small-shout">Why MLonCode hard?</h2>
+        <h2 class="shout small-shout">Why * on Code hard?</h2>
         <style>
             #ml {
                 background-image: url("pictures/why_mloncode_hard/cover.jpg");
@@ -397,6 +377,65 @@
     </section>
 
     <section class="slide">
+        <h2>Discover - <a href="https://github.com/src-d/rovers">rovers</a></h2>
+        <ul>
+            <li>Retrieve repository URLs from multiple repository hosting providers</li>
+            <li>Store URLs and metadata to a PostgreSQL database</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Clone - <a href="https://github.com/src-d/gitcollector">gitcollector</a></h2>
+        <ul>
+            <li>Download and update git repositories at large scale</li>
+            <li>Data efficient storage format <a href="https://github.com/src-d/go-siva">siva</a></li>
+        </ul>
+    </section>
+
+    <section class="slide vista" id="gitcollector">
+        <style>
+            #gitcollector {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/tools/gitcollector_neg.png");
+
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Classify - <a href="https://github.com/src-d/enry">enry</a></h2>
+        <ul>
+            <li>Programming language detector and toolbox to ignore binary or vendored files</li>
+            <li>~10x faster than <a href="https://github.com/github/linguist">linguist</a> </li>
+        </ul>
+    </section>
+
+    <section class="slide vista" id="enry">
+        <style>
+            #enry {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/tools/enry.png");
+
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Parsing - <a href="https://github.com/bblfsh">bblfsh</a></h2>
+        <ul>
+            <li>Extendable - there are 400+ PL in the world</li>
+            <li>Scalable - design with idea of processing all source code in the world</li>
+            <li>Extract  AST in universal format</li>
+            <ul>
+                <li>Universal API - no boiler plate for processing different languages</li>
+                <li>Universal roles - unification of roles among different languages</li>
+            </ul>
+        </ul>
+    </section>
+
+    <section class="slide">
 		<h2>Parsing</h2>
 		<div id="what-is-sc-0">
 		<pre>
@@ -501,6 +540,35 @@
             }
         </style>
     </section>
+
+    <section class="slide vista black" id="bblfsh">
+        <style>
+            #bblfsh {
+                background-color: rgba(0, 0, 0, 1) !important;
+                /*background-origin: content-box;*/
+                background: url("pictures/tools/bblfsh-architecture-overview-neg.png");
+            }
+            #bblfsh > h2 {
+                position: absolute;
+                bottom: 50px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Analyze</h2>
+        <ul>
+            <li><a href="https://github.com/src-d/jgit-spark-connector">jgit-spark-connector</a></li>
+            <li><a href="https://github.com/src-d/gitbase">gitbase</a></li>
+            <li><a href="https://github.com/src-d/source-ce">source-ce</a></li>
+        </ul>
+    </section>
+
+
+
+
+
+
 
     <section class="slide vista" id="langs0">
         <h2>#words</h2>
