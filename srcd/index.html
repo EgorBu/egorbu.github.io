@@ -186,6 +186,7 @@
             <li>Intro</li>
             <li>Tools</li>
             <li>Projects</li>
+            <li>Community</li>
         </ul>
     </section>
 
@@ -426,6 +427,7 @@
         <h2>Parsing - <a href="https://github.com/bblfsh">bblfsh</a></h2>
         <ul>
             <li>Extendable - there are 400+ PL in the world</li>
+            <li>Languages - <a href="https://doc.bblf.sh/languages.html">~10 supported</a></li>
             <li>Scalable - design with idea of processing all source code in the world</li>
             <li>Extract  AST in universal format</li>
             <ul>
@@ -561,165 +563,79 @@
             <li><a href="https://github.com/src-d/jgit-spark-connector">jgit-spark-connector</a></li>
             <li><a href="https://github.com/src-d/gitbase">gitbase</a></li>
             <li><a href="https://github.com/src-d/source-ce">source-ce</a></li>
+            <li><a href="https://github.com/src-d/hercules">hercules at some level</a></li>
         </ul>
     </section>
 
-
-
-
-
-
-
-    <section class="slide vista" id="langs0">
-        <h2>#words</h2>
-        <style>
-            #langs0 {
-                background-color: rgba(0, 0, 0, 1) !important;
-                background: url("pictures/why_mloncode_hard/langs/langs_0_neg.png");
-            }
-        </style>
-    </section>
-
-    <section class="slide vista" id="langs1">
-        <h2>#words</h2>
-        <style>
-            #langs1 {
-                background-color: rgba(0, 0, 0, 1) !important;
-                background: url("pictures/why_mloncode_hard/langs/langs_1_neg.png");
-            }
-        </style>
-    </section>
-
-    <section class="slide vista" id="langs2">
-        <h2>#words</h2>
-        <style>
-            #langs2 {
-                background-color: rgba(0, 0, 0, 1) !important;
-                background: url("pictures/why_mloncode_hard/langs/langs_2_neg.png");
-            }
-        </style>
-    </section>
-
-    <section class="slide vista" id="langs3">
-        <h2>#words</h2>
-        <style>
-            #langs3 {
-                background-color: rgba(0, 0, 0, 1) !important;
-                background: url("pictures/why_mloncode_hard/langs/langs_3_neg.png");
-            }
-        </style>
-    </section>
-
-    <section class="slide vista" id="langs4">
-        <h2>#words</h2>
-        <style>
-            #langs4 {
-                background-color: rgba(0, 0, 0, 1) !important;
-                background: url("pictures/why_mloncode_hard/langs/langs_4_neg.png");
-            }
-        </style>
-    </section>
-
-    <section class="slide vista" id="langs5">
-        <h2>#words</h2>
-        <style>
-            #langs5 {
-                background-color: rgba(0, 0, 0, 1) !important;
-                background: url("pictures/why_mloncode_hard/langs/langs_5_neg.png");
-            }
-        </style>
-    </section>
-
-    <section class="slide vista" id="langs6">
-        <h2>#words</h2>
-        <style>
-            #langs6 {
-                background-color: rgba(0, 0, 0, 1) !important;
-                background: url("pictures/why_mloncode_hard/langs/langs_6_neg.png");
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>Why so many identifiers?</h2>
-        <pre>
-            <code>_tcp_socket_connect -> [tcp, socket, connect]</code>
-            <code>AuthenticationError -> [authentication, error]</code>
-            <code>set_visible -> [set, visible]</code>
-        </pre>
-    </section>
-
-    <section class="slide vista vista-cover" id="natural-code">
-        <h2 class="shout">Code naturalness</h2>
-        <style>
-            #natural-code {
-                background: url("pictures/why_mloncode_hard/natural.jpg");
-            }
-            #natural-code::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                background-color: rgba(0, 0, 0, 0.4);
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-<pre><code><span class="hl-keyword">class</span> <span class="box">???</span>:</code>
-<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, dbname, user, password, host, port):</code>
-<code>        <span class="hl-comment"># ...</span></code>
-<code>    <span class="hl-keyword">def</span> <span class="hl-def">query</span>(<span class="hl-reserved">self</span>, sql):</code>
-<code>        <span class="hl-comment"># ...</span></code>
-<code>    <span class="hl-keyword">def</span> <span class="hl-def">close</span>(<span class="hl-reserved">self</span>):</code>
-<code>        <span class="hl-comment"># ...</span></code>
-</pre>
-        <style>
-            .hl-keyword {
-                color: #cc8242;
-                font-weight: bold;
-            }
-            .hl-def {
-                color: #ffc66d;
-            }
-            .hl-reserved {
-                color: #94558D;
-            }
-            .hl-string {
-                color: #6a8759;
-            }
-            .hl-comment {
-                color: #707070;
-            }
-            .box {
-                border: 1px solid white;
-                padding: 0.05em 0.1em;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <pre><code><span class="hl-keyword">class</span> <span class="box">Database</span>:</code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, dbname, user, password, host, port):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">query</span>(<span class="hl-reserved">self</span>, sql):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        <code>    <span class="hl-keyword">def</span> <span class="hl-def">close</span>(<span class="hl-reserved">self</span>):</code>
-        <code>        <span class="hl-comment"># ...</span></code>
-        </pre>
-    </section>
-
      <section class="slide">
-        <h2>Take away</h2>
+        <h2>Analyze - <a href="https://github.com/src-d/jgit-spark-connector">jgit-spark-connector</a></h2>
         <ul>
-            <li>Identifier ~ combinations of words</li>
-            <li>Raw code is text</li>
-            <li>Parsed code is AST</li>
-            <li>Non-linear structure of AST</li>
-            <li>Code naturalness</li>
-            <li>370 programming languages</li>
+            <li>Scalability - project-wise</li>
+            <li>Can: checkout/classify/filter/parse/analyze</li>
+            <li>Bottleneck - huge repos</li>
+            <li>Can't: traverse history, diff</li>
+        </ul>
+    </section>
+
+    <section class="slide vista black" id="jgit-spark">
+        <style>
+            #jgit-spark {
+                background-color: rgba(0, 0, 0, 1) !important;
+                /*background-origin: content-box;*/
+                background: url("pictures/tools/jgit_spark_white.png");
+            }
+            #jgit-spark > h2 {
+                position: absolute;
+                bottom: 50px;
+            }
+        </style>
+    </section>
+
+
+    <section class="slide">
+        <h2>Analyze - <a href="https://github.com/src-d/gitbase">gitbase</a></h2>
+        <ul>
+            <li>SQL for git</li>
+            <li>Can: checkout/classify/filter/parse/analyze/diffs/traverse history</li>
+            <li>In Yoda voice: With huge flexibity, come huge restrictions</li>
+            <li>Bottleneck - honestly - a lot of them</li>
+            <li>Main pain point - SLOW</li>
+            <li><a href="https://github.com/src-d/gitbase/blob/master/docs/using-gitbase/examples.md">Query examples</a></li>
+        </ul>
+    </section>
+
+    <section class="slide vista black" id="gitbase">
+        <style>
+            #gitbase {
+                background-color: rgba(0, 0, 0, 1) !important;
+                /*background-origin: content-box;*/
+                background: url("pictures/tools/gitbase-schema.png");
+            }
+            #gitbase > h2 {
+                position: absolute;
+                bottom: 50px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Analyze - <a href="https://github.com/src-d/source-ce">source-ce</a></h2>
+        <ul>
+            <li>UBER tool - gitbase + UI + etc</li>
+            <li>The same limitations as gibase - SLOW</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Other tools</h2>
+        <ul>
+            <li>General usage - <a href="https://github.com/src-d/go-license-detector">go-license-detector</a>, <a href="https://github.com/src-d/identity-matching">identity-matching</a></li>
+            <li>General usage - <a href="https://github.com/src-d/ghsync">GitHub API v3 > PostgreSQL</a></li>
+            <li>ML - <a href="https://github.com/src-d/ml">ml</a>, <a href="https://github.com/src-d/ml-mining">ml-mining</a>, <a href="https://github.com/src-d/ml-core">ml-core</a></li>
+            <li>ML models - <a href="https://github.com/src-d/models">models</a>, <a href="https://github.com/src-d/modelforge">modelforge</a></li>
+            <li>Code deduplication - <a href="https://github.com/src-d/apollo">research</a>, <a href="https://github.com/src-d/apollo">prod</a></li>
+            <li>Demos - <a href="https://github.com/src-d/vecino">similar repos search by meaning</a>, <a href="https://github.com/src-d/tmsc">show topics per repo</a></li>
+            <li>Analysis - <a href="https://github.com/src-d/hercules">several hardcoded analysis</a></li>
         </ul>
     </section>
 
@@ -741,107 +657,6 @@
         </style>
     </section>
 
-    <section class="slide">
-        <h2 class="shout">Identifier splitter</h2>
-    </section>
-
-    <section class="slide">
-        <h2>Approaches</h2>
-        <ul>
-            <li>Heuristic</li>
-            <li>Machine Learning</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Heuristic - split by</h2>
-        <ul>
-            <li>underscore <code>set_name -> [set, name]</code></li>
-            <li>changing of cases <code>SetName -> [set, name]</code></li>
-            <li>etc</li>
-        </ul>
-
-        <h2 id="heuristic-res">Result: 49M -> 3M, but...</h2>
-        <style>
-        #heuristic-res {
-                position: absolute;
-                bottom: 170px;
-            }
-        </style>
-        <ul id="heuristic-res-2">
-            <li><code>BUFFERFLAG_CODECCONFIG -> [bufferflag, codecconfig]</code></li>
-            <li><code>metamodelength -> [metamodelength]</code></li>
-        </ul>
-        <style>
-        #heuristic-res-2 {
-                position: absolute;
-                bottom: 50px;
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2><a href="https://arxiv.org/pdf/1805.11651.pdf">Machine learning - CNN/LSTM</a></h2>
-        <ul>
-            <li><a href="https://github.com/src-d/datasets/tree/master/Identifiers">Data</a> - 49M of identifiers</li>
-            <li>Preprocessing</li>
-            <li>Train NN</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>FooBar -> X, y</h2>
-        <div style="float: left; width: 50%;">
-        <ul>
-            <li style="font-size:35px">f</li>
-            <li style="font-size:35px">o</li>
-            <li style="font-size:35px">o</li>
-            <li style="font-size:35px">b</li>
-            <li style="font-size:35px">a</li>
-            <li style="font-size:35px">r</li>
-        </ul>
-        </div>
-        <div style="float: right; width: 50%;">
-        <ul>
-            <li style="font-size:35px">0</li>
-            <li style="font-size:35px">0</li>
-            <li style="font-size:35px">0</li>
-            <li style="font-size:35px">1</li>
-            <li style="font-size:35px">0</li>
-            <li style="font-size:35px">0</li>
-        </ul>
-        </div>
-    </section>
-
-    <section class="slide vista" id="bilstm">
-        <style>
-            #bilstm {
-                background-color: rgba(0, 0, 0, 1) !important;
-                background: url("pictures/basics/bilstm_neg.png");
-            }
-        </style>
-    </section>
-
-    <section class="slide">
-        <h2>BiLSTM</h2>
-        <h2 id="bilstm-res">Result: 49M -> 1M</h2>
-        <style>
-        #bilstm-res {
-                position: absolute;
-                bottom: 270px;
-            }
-        </style>
-        <ul id="bilstm-res-2">
-            <li><code>BUFFERFLAG_CODECCONFIG -> [buffer, flag, codec, config]</code></li>
-            <li><code>metamodelength -> [meta, mode, length]</code></li>
-        </ul>
-        <style>
-        #bilstm-res-2 {
-                position: absolute;
-                bottom: 150px;
-            }
-        </style>
-    </section>
 
     <section class="slide">
         <h2 class="shout">Identifier embeddings</h2>
@@ -1351,178 +1166,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         </style>
     </section>
 
-
-
-    <!--<section class="slide">-->
-        <!--<h2 class="shout">Similar repository search</h2>-->
-    <!--</section>-->
-
-
-    <!--<section class="slide nn">-->
-		<!--<h2>torch/nn</h2>-->
-		<!--<ul class="no-bullets">-->
-			<!--<li><a href="https://github.com/intel-analytics/BigDL">intel-analytics/BigDL</a></li>-->
-			<!--<li><a href="https://github.com/pytorch/pytorch">pytorch/pytorch</a></li>-->
-			<!--<li><a href="https://github.com/clementfarabet/lua-&#45;&#45;nnx">clementfarabet/lua-&#45;&#45;nnx</a></li>-->
-			<!--<li><a href="https://github.com/Element-Research/dpnn">Element-Research/dpnn</a></li>-->
-			<!--<li><a href="https://github.com/aciditeam/torch-models">aciditeam/torch-models</a></li>-->
-			<!--<li><a href="https://github.com/sermanet/OverFeat">sermanet/OverFeat</a></li>-->
-			<!--<li><a href="https://github.com/naman14/Arcade">naman14/Arcade</a></li>-->
-			<!--<li><a href="https://github.com/hughperkins/clnn">hughperkins/clnn</a></li>-->
-			<!--<li><a href="https://github.com/itayhubara/BinaryNet">itayhubara/BinaryNet</a></li>-->
-			<!--<li><a href="https://github.com/google/FluidNet">google/FluidNet</a></li>-->
-		<!--</ul>-->
-		<!--<style>-->
-			<!--.nn ul {-->
-				<!--overflow: hidden;-->
-			<!--}-->
-			<!--.nn li {-->
-				<!--float: left;-->
-  				<!--display: inline;-->
-				<!--width: 50%;-->
-			<!--}-->
-		<!--</style>-->
-	<!--</section>-->
-
-	<!--<section class="slide nn">-->
-		<!--<h2>src-d/go-git</h2>-->
-		<!--<ul class="no-bullets">-->
-			<!--<li><a href="https://github.com/chrisparnin/autogit">chrisparnin/autogit</a></li>-->
-			<!--<li><a href="https://github.com/libgit2/git2go">libgit2/git2go</a></li>-->
-			<!--<li><a href="https://github.com/christkv/node-git">christkv/node-git</a></li>-->
-			<!--<li><a href="https://github.com/gitchain/gitchain">gitchain/gitchain</a></li>-->
-			<!--<li><a href="https://github.com/heroku/cli">heroku/cli</a></li>-->
-			<!--<li><a href="https://github.com/modocache/Gift">modocache/Gift</a></li>-->
-			<!--<li><a href="https://github.com/ChimeraCoder/gitgo">ChimeraCoder/gitgo</a></li>-->
-			<!--<li><a href="https://github.com/mojombo/grit">mojombo/grit</a></li>-->
-			<!--<li><a href="https://github.com/FriendCode/gittle">FriendCode/gittle</a></li>-->
-			<!--<li><a href="https://github.com/tsuru/gandalf">tsuru/gandalf</a></li>-->
-		<!--</ul>-->
-	<!--</section>-->
-
-    <!--<section class="slide">-->
-		<!--<h2>Pipeline</h2>-->
-		<!--<ol>-->
-			<!--<li>Clone the repositories.</li>-->
-			<!--<li>Classify and parse source code.</li>-->
-			<!--<li>Preprocess identifiers: split, normalize, filter, stem.</li>-->
-			<!--<li>Prepare embeddings - cooc matrix & Swivel.</li>-->
-			<!--<li>Weighted BOW per repository.</li>-->
-            <!--<li>WMD.</li>-->
-		<!--</ol>-->
-	<!--</section>-->
-
-    <!--<section class="slide">-->
-		<!--<h2>Training identifier embeddings</h2>-->
-		<!--<table>-->
-		<!--<tr>-->
-			<!--<th scope="col">Stage</th>-->
-			<!--<th>Time</th>-->
-			<!--<th>Resources</th>-->
-			<!--<th>Size on disk</th>-->
-		<!--</tr>-->
-		<!--<tr>-->
-			<!--<th scope="row">Cloning 143k repos</th>-->
-			<!--<td>3 days</td>-->
-			<!--<td>20x2 cores, 256 GB RAM</td>-->
-			<!--<td>2.6 TB</td>-->
-		<!--</tr>-->
-		<!--<tr>-->
-			<!--<th scope="row">Dataset</th>-->
-			<!--<td>4 days</td>-->
-			<!--<td>20x2 cores, 256 GB RAM</td>-->
-			<!--<td>2TB (31GB in xz)</td>-->
-		<!--</tr>-->
-		<!--<tr>-->
-			<!--<th scope="row">fastprep</th>-->
-			<!--<td>2 days</td>-->
-			<!--<td>16x2 cores, 256 GB RAM</td>-->
-			<!--<td>20 GB</td>-->
-		<!--</tr>-->
-		<!--<tr>-->
-			<!--<th scope="row">Swivel</th>-->
-			<!--<td>14 hours</td>-->
-			<!--<td>2 Titan X'2016 + 2 1080Ti</td>-->
-			<!--<td>5.6 GB</td>-->
-		<!--</tr>-->
-		<!--</table>-->
-	<!--</section>-->
-
-	<!--<section class="slide vista" id="projector">-->
-		<!--<h2>Embeddings</h2>-->
-
-		<!--<style>-->
-			<!--#projector {-->
-                <!--background-color: rgba(0, 0, 0, 1) !important;-->
-				<!--background-position: right !important;-->
-				<!--background: white url("pictures/similar_repo/projector_white.png");-->
-			<!--}-->
-		<!--</style>-->
-	<!--</section>-->
-
-    <!--<section class="slide">-->
-		<!--<h2>Weighted nBOW</h2>-->
-		<!--<p>Let's interpret every repository as the weighted bag-of-words.</p>-->
-		<!--<p>We calculate TF-IDF to weight the occurring identifiers.</p>-->
-		<!--<div id="tensorflow-nbow"><code class="inline-no-offset">tensorflow/tensorflow:</code>-->
-		<!--<pre class="pre">    tfreturn	67.780249-->
-  <!--oprequires	63.968142-->
-      <!--doblas	63.714424-->
-    <!--gputools	62.337396-->
-    <!--tfassign	61.545926-->
-    <!--opkernel	60.721556-->
-        <!--sycl	57.064558-->
-         <!--hlo	55.723587-->
-     <!--libxsmm	54.820668-->
-  <!--tfdisallow	53.666890</pre></div>-->
-		<!--<style>-->
-			<!--#tensorflow-nbow {-->
-				<!--display: flex;-->
-				<!--align-items: center;-->
-			<!--}-->
-			<!--#tensorflow-nbow > code {-->
-				<!--padding-right: 50px;-->
-			<!--}-->
-			<!--.pre {-->
-				<!--white-space: pre !important;-->
-				<!--font-family: monospace;-->
-				<!--line-height: 1.2em;-->
-			<!--}-->
-		<!--</style>-->
-	<!--</section>-->
-
-    <!--<section class="slide">-->
-        <!--<h2><a href="http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf">Word Mover's Distance</a></h2>-->
-        <!--<div class="vista padded-image" id="wmd2"></div>-->
-        <!--<style>-->
-            <!--.padded-image {-->
-                <!--position: absolute;-->
-                <!--left: 0;-->
-                <!--right: 0;-->
-                <!--top: 180px;-->
-                <!--bottom: 40px;-->
-            <!--}-->
-        <!--</style>-->
-        <!--<style>-->
-            <!--#wmd2 {-->
-                <!--background-image: url("pictures/similar_repo/wmd_white.png");-->
-            <!--}-->
-        <!--</style>-->
-    <!--</section>-->
-
-	<!--<section class="slide">-->
-		<!--<h2>WMD calculation in a nutshell</h2>-->
-		<!--<p class="important">WMD evaluation is O(N<sup>3</sup>), becomes slow on N≈100.</p>-->
-		<!--<ol>-->
-			<!--<li>Sort samples by centroid distance.</li>-->
-			<!--<li>Evaluate first k WMDs.</li>-->
-			<!--<li>For every subsequent sample, solve the relaxed LP which gives an upper estimation.</li>-->
-			<!--<li>If it is greater than the farthest among the k NN, go next.</li>-->
-			<!--<li>Otherwise, evaluate the WMD.</li>-->
-		<!--</ol>-->
-		<!--<p class="success">This allows to avoid 95% WMD evaluations on average.</p>-->
-	<!--</section>-->
-
     <section class="slide">
         <h2 class="shout">Code review: Typos</h2>
     </section>
@@ -1588,54 +1231,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
             }
         </style>
     </section>
-
-    <section class="slide">
-        <h2>Candidates generation</h2>
-        <ol>
-            <li>Find candidates with the <a href="https://github.com/ne3x7/pysymspell/">SymSpell</a></li>
-            <li>Identifier to which the token belongs - a context</li>
-            <li>Features: based on the frequencies, embeddings, similarity and edit distance between the elements</li>
-        </ol>
-    </section>
-
-    <section class="slide">
-        <h2>Candidates ranking</h2>
-        <ul>
-            <li>Binary classification model on tuples <code>(identifier, token, candidate)</code>:
-                <ul><li><code>label=1</code> if the candidate is the correct suggestion</li>
-                    <li><code>label=0</code> otherwise</li></ul></li>
-            <li>Group by the token and sort</li>
-            <li><a href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a> is used for binary classification</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Suggestions</h2>
-        <ul>
-            <li>Suggested token itself - not correcting</li>
-            <li>Otherwise return corrections</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Training and testing</h2>
-        <ul>
-            <li>Train and test datasets are sampled from the dataset of identifiers</li>
-            <li>Random artificial typos</li>
-            <li><span style="font-weight: 900">Dataset itself contains typos</span></li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Results on a token level</h2>
-        <ul>
-            <li><span style="color: greenyellow">Detection precision</span> - 98%</li>
-            <li><span style="color: greenyellow">Detection recall</span> - 82%</li>
-            <li><span style="color: greenyellow">Top3 correction accuracy</span> - 95%</li>
-        </ul>
-        Note: the test dataset is not a ground truth.
-    </section>
-
 
     <section class="slide">
         <h2 class="shout">Code review: Style</h2>
@@ -1765,15 +1360,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     </section>
 
     <section class="slide">
-        <h2>Machine Learning</h2>
-        <ul>
-            <li>Feature selection (univariate, ANOVA F-criterion)</li>
-            <li>Hyperparameter optimization (Bayesian)</li>
-            <li>80% + 20% split</li>
-        </ul>
-    </section>
-
-    <section class="slide">
         <h2>Rules</h2>
         <img src="pictures/code_review/style/rules.svg" class="diagram diagram-right">
         <ul>
@@ -1819,22 +1405,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         <ul>
             <li>-90% rules with no quality loss</li>
         </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Redundant attributes elimination</h2>
-        <ul>
-            <li>Trigger imbalance: &lt;5% activation rate</li>
-            <li>For each attribute comparison build the set of <span class="bold">false positives</span></li>
-            <li>Build graph by thresholding Jaccard similarity between each pair (0.98)</li>
-            <li>Run multilevel community detection</li>
-            <li>Leave only one representative (greedily)</li>
-        </ul>
-        <style>
-            .bold {
-                font-weight: bold;
-            }
-        </style>
     </section>
 
     <section class="slide" class="annotated-snippet">
@@ -1906,72 +1476,6 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
             </li>
         </ol>
     </section>
-
-    <section class="slide" id="results">
-        <h2>Results</h2>
-        <table cellpadding="10">
-            <tbody>
-                <tr>
-                    <th scope="col"></th>
-                    <th class="stats">train samples</th>
-                    <th class="stats">rules</th>
-                    <th class="stats">precision</th>
-                    <th class="stats">prediction rate</th>
-                </tr>
-                <tr>
-                    <th scope="row">node</th>
-                    <td class="stats">374,298</td>
-                    <td class="stats">641</td>
-                    <td class="stats">0.965</td>
-                    <td class="stats">0.951</td>
-                </tr>
-                <tr>
-                    <th scope="row">jquery</th>
-                    <td class="stats">197,072</td>
-                    <td class="stats">391</td>
-                    <td class="stats">0.972</td>
-                    <td class="stats">0.959</td>
-                </tr>
-                <tr>
-                    <th scope="row">axios</th>
-                    <td class="stats">21,130</td>
-                    <td class="stats">143</td>
-                    <td class="stats">0.940</td>
-                    <td class="stats">0.951</td>
-                </tr>
-                <tr>
-                    <th scope="row">carlo</th>
-                    <td class="stats">5,529</td>
-                    <td class="stats">78</td>
-                    <td class="stats">0.878</td>
-                    <td class="stats">0.931</td>
-                </tr>
-                <tr>
-                    <td colspan="100%">&nbsp</td>
-                </tr>
-                <tr>
-                    <th scope="row">w. average</th>
-                    <td class="stats">--</td>
-                    <td class="stats">--</td>
-                    <td class="stats">0.943</td>
-                    <td class="stats">0.947</td>
-                </tr>
-            </tbody>
-        </table>
-        <style>
-            .stats {
-                text-align: right !important;
-            }
-        </style>
-    </section>
-
-
-
-
-
-
-
-
 
 
     <section class="slide">
@@ -2074,9 +1578,16 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
         </style>
     </section>
 
-    <section class="slide atom">
-        <h2> Active participant of <a href="https://github.com/src-d/reading-club">Reading Club</a></h2>
+    <section class="slide">
+        <h2 class="shout"><a href="https://www.slideshare.net/sourcedtech/deduplication-on-large-amounts-of-code">Code deduplication</a></h2>
+    </section>
 
+    <section class="slide vista">
+        <h2 class="shout small-shout">Community</h2>
+    </section>
+
+    <section class="slide atom">
+        <h2><a href="https://github.com/src-d/reading-club">Reading Club</a></h2>
         <p>Discuss papers at the intersection</p>
         <ul>
                 <li>Software Engineering</li>
@@ -2087,7 +1598,7 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     </section>
 
     <section class="slide atom">
-        <h2> Creator & maintainer of <a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome MLonCode</a></h2>
+        <h2><a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome MLonCode</a></h2>
 
         <ul>
             <li>4.4k stars</li>
@@ -2104,42 +1615,14 @@ distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \
     </section>
 
     <section class="slide atom">
-        <h2><a href="https://egorbu.github.io">Conferences</a></h2>
-
+        <h2>Other materials about source{d}</h2>
         <ul>
-            <li>Machine Learning on Source Code, Moscow, usedata.ru</li>
-            <li>Machine Learning on Source Code, Munich, hack_ai</li>
-            <li>Machine Learning on Source Code, Munich, mlconference.ai</li>
-            <li>Fighting with high-dimensional not-so-small data - M3, London</li>
-            <li>Technological Stack for Machine Learning on Source Code</li>
-            <li>Embedding the GitHub contribution graph, Moscow</li>
-            <li>Extending Jupyter with Google Cloud Storage file system backend, Barcelona</li>
-            </ul>
-    </section>
-
-    <section class="slide atom">
-        <h2>Articles</h2>
-
-        <ul>
-            <li>"Identifying collaborators in large codebases", ML4SE '19</li>
-            <li>"STYLE-ANALYZER: fixing code style inconsistencies with interpretable unsupervised algorithms", MSR '19</li>
-            <li>"Splitting source code identifiers using Bidirectional LSTM Recurrent Neural Network", FLOC 2018</li>
+            <li><a href="https://www.slideshare.net/sourcedtech">slideshare</a></li>
+            <li>GitHub pages of <a href="vmarkovtsev.github.io/">Vadim</a>, <a href="egorbu.github.io/">Egor</a></li>
+            <li><a href="https://github.com/src-d">GitHub</a></li>
+            <li><a href="https://twitter.com/sourcedtech">Twitter</a></li>
         </ul>
     </section>
-
-
-    <section class="slide atom">
-        <h2>Not mentioned</h2>
-
-        <ul>
-            <li>Code deduplication at scale</li>
-            <li>Identity matching of developers & bot detection</li>
-            <li><a href="https://velesnet.ml/">VELES</a> - distributed NN trainings before tensorflow was released</li>
-            <li>Demography prediction & recommendations for TV users</li>
-            <li>Robots - UAV, mobile robots</li>
-        </ul>
-    </section>
-
 
 
 	<div class="progress"></div>
