@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>source{d}</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <meta property="og:url" content="http://egorbu.github.io/srcd" />
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+</head>
+<body class="shower list">
+
+	<header class="caption">
+		<button type="button" id="fullscreen" title="Go fullscreen" onclick="fullscreen()"><i class="fa fa-arrows-alt"></i></button>
+		<h1>source{d}</h1>
+        <p><a href="https://github.com/src-d">GitHub</a>, <a href="https://twitter.com/sourcedtech">twitter</a>.</p>
+	</header>
+
+	<style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+        -webkit-full-screen {
+            z-index: 1;
+            height: 100%;
+        }
+        /*-webkit-print-color-adjust {*/
+            /*exact;*/
+        /*}*/
+        :-webkit-full-screen .full section {
+            /* fix buggy Chrome offsets */
+            margin-left: -1px !important;
+            margin-top: -1px !important;
+        }
+        .slide {
+            color: white;
+            background: black;
+        }
+        .slide h2 {
+            color: #bababa;
+        }
+
+        #fullscreen {
+            float: right;
+            height: 48px;
+            width: 48px;
+            background: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            border: none;
+            color: #3c3d40;
+            position: fixed;
+            right: 20px;
+        }
+        #fullscreen:hover {
+            color: #bababa;
+        }
+        #fullscreen:focus {
+            outline: none;
+        }
+        #fullscreen > i {
+            font-size: 36px;
+            text-align: center;
+        }
+        .slide p {
+            line-height: 1.25;
+        }
+        .slide::after {
+            display: none;
+        }
+        .center {
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h2.bottom {
+            position: absolute;
+            bottom: 50px;
+        }
+        .important {
+            color: red;
+        }
+        .mono {
+            font-family: monospace;
+        }
+        .success {
+            color: green;
+        }
+        .vista {
+            background-size: contain !important;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+        }
+        .vista-cover {
+            background-size: cover !important;
+        }
+        i.fa {
+            font-style: normal;
+        }
+        ul.no-bullets > li::before {
+            display: none;
+            text-indent: 0;
+        }
+        ul.no-bullets > li {
+            text-indent: 0;
+        }
+		code.inline:before, code.inline-no-offset:before {
+			display: none;
+		}
+		code.inline, code.inline-no-offset {
+			padding: 0;
+		}
+		code.inline-no-offset {
+			margin-left: 0 !important;
+			padding-left: 50px !important;
+		}
+		.part-teaser {
+			text-align: center;
+			vertical-align: middle;
+			line-height: 400px !important;
+		}
+		.slide a {
+			background: none;
+            color: white !important;
+            font-weight: bold;
+		}
+		.slide a:hover {
+			background: linear-gradient(to top,currentColor .09em,transparent .09em) repeat-x;
+		}
+        img.obj-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .fa {
+            display: inline;
+        }
+        ul.two-cols {
+            overflow: hidden;
+        }
+        ul.two-cols > li::before {
+            width: initial;
+        }
+        ul.no-bullets > li::before {
+            display: none;
+            text-indent: 0;
+        }
+        ul.two-cols > li {
+            text-indent: 0;
+            float: left;
+            width: 50%;
+        }
+        .monofa {
+            width: 1.5em;
+            margin-right: 0.5em;
+            display: inline-block;
+            text-align: center;
+        }
+        .fa-bullets > li {
+            margin-left: -2em;
+        }
+        .white {
+            color: white !important;
+        }
+        .black {
+            color: #202020 !important;
+        }
+        .part {
+            background: radial-gradient(circle at center, #d2c098 0, black 130%);
+        }
+        .part > h2 {
+            font-family: "CartaMarinaBold";
+            color: black;
+        }
+        @font-face {
+            font-family: "ShareTechMono";
+            src: url("fonts/ShareTechMono-Regular.ttf") format("ttf");
+            src: url("fonts/ShareTechMono-Regular.woff2") format("woff2");
+        }
+    </style>
+
+    <section class="slide atom">
+        <h2>Plan</h2>
+        <ul>
+            <li>What's ML on Code?</li>
+            <li>Tools</li>
+            <li>Basic</li>
+            <li>bblfsh</li>
+            <li>Scalability</li>
+            <li>SQL for git</li>
+            <li>UBER TOOL</li>
+            <li>Everything else</li>
+        </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2>Experience: ~6 years ML, ~10 years coding</h2>
+
+        <ul>
+            <li>source{d} - ML on Code</li>
+            <li>Samsung -  demography prediction, recommendations</li>
+            <li>CROC - unmanned air vehicles, robotics, computer vision</li>
+            <li>KOMPAS - navigation equipment for space rockets</li>
+            <li>University - robotics competition EUROBOT</li>
+        </ul>
+    </section>
+
+    <section class="slide vista" id="sourced">
+        <h2 class="shout small-shout">source{d}</h2>
+        <style>
+            #sourced {
+                background-image: url("pictures/source{d}/header_main.svg");
+            }
+            #sourced::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                background-size: cover !important;
+            }
+        </style>
+    </section>
+
+    <section class="slide atom">
+        <h2>source{d}</h2>
+
+        <ul>
+            <li>MLonCode - short overview</li>
+            <li>Projects</li>
+            <ul>
+                <li>Identifier splitter</li>
+                <li>Identifier embeddings</li>
+                <li>Developer similarity search & clustering</li>
+                <li>Code review - style & typos analyzer</li>
+                <li>Code deduplication</li>
+            </ul>
+
+            <li>Other: conferences, awesome lists, reading club</li>
+        </ul>
+    </section>
+
+    <section class="slide vista vista-cover dragons">
+        <div></div>
+        <h2>What's MLonCode?</h2>
+        <style>
+            @font-face {
+              font-family: CartaMarinaBold;
+              src: url("fonts/Carta Marina Bold.woff2") format("woff2")
+            }
+            .dragons {
+                background: url("pictures/what_mloncode/here_be_dragons.jpg") #000;
+            }
+            .dragons h2 {
+                position: absolute;
+                left: 507px;
+                top: 147px;
+                width: 280px;
+                text-align: center;
+                color: #000;
+                font-family: CartaMarinaBold;
+            }
+            .dragons div {
+                position: absolute;
+                left: 527px;
+                width: 240px;
+                height: 240px;
+                top: 72px;
+                background: radial-gradient(circle at center, #bababa 0, rgba(186, 186, 186, 0) 75%)
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="hello-humans">
+        <h2 class="top">Stereotypes</h2>
+        <img class="top" src="pictures/what_mloncode/hello.gif">
+        <!--ffmpeg -i hello.mkv hello.gif-->
+    </section>
+
+    <section class="slide vista" id="source-ml">
+		<style>
+			#source-ml {
+					background: black url("pictures/what_mloncode/source_ml.svg");
+            }
+		</style>
+	</section>
+
+    <section class="slide vista" id="ml">
+        <h2 class="shout small-shout">Why MLonCode hard?</h2>
+        <style>
+            #ml {
+                background-image: url("pictures/why_mloncode_hard/cover.jpg");
+            }
+            #ml::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.75);
+            }
+        </style>
+    </section>
+
+    <section class="slide vista " id="tools">
+        <h2 class="white shout">Tools</h2>
+        <style>
+            #tools {
+                background-image: url("pictures/why_mloncode_hard/tools.png");
+                background-size: cover !important;
+                filter: brightness(70%)
+            }
+            #tools::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="mloncode-pyramid-1">
+        <style>
+            #mloncode-pyramid-1 {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_1.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="mloncode-pyramid-2">
+        <style>
+            #mloncode-pyramid-2 {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_2.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="mloncode-pyramid-3">
+        <style>
+            #mloncode-pyramid-3 {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_3.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="mloncode-pyramid-4">
+        <style>
+            #mloncode-pyramid-4 {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_4.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="mloncode-pyramid-5">
+        <style>
+            #mloncode-pyramid-5 {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_5.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="mloncode-pyramid-6">
+        <style>
+            #mloncode-pyramid-6 {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/why_mloncode_hard/pyramid_white_6.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="mloncode-pyramid-7">
+        <style>
+            #mloncode-pyramid-7 {
+                padding: 100px;
+                background-origin: content-box;
+                background-image: url("pictures/why_mloncode_hard/pyramid_white.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+		<h2>Parsing</h2>
+		<div id="what-is-sc-0">
+		<pre>
+            <code class="python">def nearest_neighbors(self, origin, k=10,</code>
+            <code class="python">                      skipped_stop=0.99, throw=True):</code>
+<code class="python">    # origin can be either a text query or an id</code>
+<code class="python">    if isinstance(origin, (tuple, list):</code>
+<code class="python">	     words, weights = origin</code>
+<code class="python">	     weights = numpy.array(weights, dtype=numpy.float32)</code>
+            <code class="python">	     index = None</code>
+<code class="python">	     avg = self._get_centroid(words, weights, force=True)</code>
+<code class="python">    else:</code>
+<code class="python">	     index = origin</code>
+<code class="python">	     words, weights = self._get_vocabulary(index)</code>
+<code class="python">	     avg = self._get_centroid_by_index(index)</code>
+            <code class="python">    if avg is None:</code>
+<code class="python">	     raise ValueError(</code>
+<code class="python">		     "Too little vocabulary for %s: %d" % (index, len(words)))</code>
+        </pre></div>
+
+        <style>
+			#what-is-sc-0 {
+				display: flex;
+			}
+			#what-is-sc-0 > pre {
+				font-size: 0.5em;
+				margin-right: 100px;
+			}
+			#what-is-sc-0 > div > pre {
+				border: 1px solid white;
+				border-radius: 5px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			#what-is-sc-0 > div > pre > code {
+				padding: 0 20px !important;
+			}
+		</style>
+	</section>
+
+
+    <section class="slide">
+		<h2>Parsing</h2>
+		<div id="what-is-sc">
+		<pre>
+            <code class="python"><span class="hl-keyword">def</span> <span class="hl-def">nearest_neighbors</span>(<span class="hl-reserved">self</span>, origin, k=<span class="hl-literal">10</span>,</code>
+            <code class="python">                      skipped_stop=<span class="hl-literal">0.99</span>, throw=<span class="hl-keyword">True</span>):</code>
+<code class="python">    <span class="hl-comment"># origin can be either a text query or an id</span></code>
+<code class="python">    <span class="hl-keyword">if</span> <span class="hl-reserved">isinstance</span>(origin, (<span class="hl-reserved">tuple</span>, <span class="hl-reserved">list</span>):</code>
+<code class="python">	     words, weights = origin</code>
+<code class="python">	     weights = numpy.array(weights, dtype=numpy.float32)</code>
+            <code class="python">	     index = <span class="hl-keyword">None</span></code>
+<code class="python">	     avg = <span class="hl-reserved">self</span>._get_centroid(words, weights, force=<span class="hl-keyword">True</span>)</code>
+<code class="python">    <span class="hl-keyword">else:</span></code>
+<code class="python">	     index = origin</code>
+<code class="python">	     words, weights = <span class="hl-reserved">self</span>._get_vocabulary(index)</code>
+<code class="python">	     avg = <span class="hl-reserved">self</span>._get_centroid_by_index(index)</code>
+            <code class="python">    <span class="hl-keyword">if</span> avg <span class="hl-keyword">is None</span>:</code>
+<code class="python">	     <span class="hl-keyword">raise</span> ValueError(</code>
+<code class="python">		     "Too little vocabulary for %s: %d" % (index, len(words)))</code>
+		</pre>
+			<div><pre>
+				<code class="inline-no-offset"><span class="hl-keyword">⬤</span> keywords</code>
+				<code class="inline-no-offset"><span class="hl-title">⬤</span> identifiers</code>
+				<code class="inline-no-offset"><span class="hl-literal">⬤</span> literals</code>
+				<code class="inline-no-offset"><span class="hl-string">⬤</span> strings</code>
+				<code class="inline-no-offset"><span class="hl-comment">⬤</span> comments</code>
+                <code class="inline-no-offset"><span class="hl-reserved">⬤</span> reserved</code>
+			</pre></div>
+			</div>
+		<style>
+			#what-is-sc {
+				display: flex;
+			}
+			#what-is-sc > pre {
+				font-size: 0.5em;
+				margin-right: 100px;
+			}
+			#what-is-sc > div > pre {
+				border: 1px solid white;
+				border-radius: 5px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+			#what-is-sc > div > pre > code {
+				padding: 0 20px !important;
+			}
+		</style>
+	</section>
+
+    <section class="slide vista black" id="ast">
+        <h2>AST</h2>
+        <style>
+            #ast {
+                background-color: rgba(0, 0, 0, 1) !important;
+                /*background-origin: content-box;*/
+                background: url("pictures/why_mloncode_hard/ast_white.svg");
+            }
+            #ast > h2 {
+                position: absolute;
+                bottom: 50px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="langs0">
+        <h2>#words</h2>
+        <style>
+            #langs0 {
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_0_neg.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="langs1">
+        <h2>#words</h2>
+        <style>
+            #langs1 {
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_1_neg.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="langs2">
+        <h2>#words</h2>
+        <style>
+            #langs2 {
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_2_neg.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="langs3">
+        <h2>#words</h2>
+        <style>
+            #langs3 {
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_3_neg.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="langs4">
+        <h2>#words</h2>
+        <style>
+            #langs4 {
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_4_neg.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="langs5">
+        <h2>#words</h2>
+        <style>
+            #langs5 {
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_5_neg.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="langs6">
+        <h2>#words</h2>
+        <style>
+            #langs6 {
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/why_mloncode_hard/langs/langs_6_neg.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Why so many identifiers?</h2>
+        <pre>
+            <code>_tcp_socket_connect -> [tcp, socket, connect]</code>
+            <code>AuthenticationError -> [authentication, error]</code>
+            <code>set_visible -> [set, visible]</code>
+        </pre>
+    </section>
+
+    <section class="slide vista vista-cover" id="natural-code">
+        <h2 class="shout">Code naturalness</h2>
+        <style>
+            #natural-code {
+                background: url("pictures/why_mloncode_hard/natural.jpg");
+            }
+            #natural-code::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+<pre><code><span class="hl-keyword">class</span> <span class="box">???</span>:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, dbname, user, password, host, port):</code>
+<code>        <span class="hl-comment"># ...</span></code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">query</span>(<span class="hl-reserved">self</span>, sql):</code>
+<code>        <span class="hl-comment"># ...</span></code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">close</span>(<span class="hl-reserved">self</span>):</code>
+<code>        <span class="hl-comment"># ...</span></code>
+</pre>
+        <style>
+            .hl-keyword {
+                color: #cc8242;
+                font-weight: bold;
+            }
+            .hl-def {
+                color: #ffc66d;
+            }
+            .hl-reserved {
+                color: #94558D;
+            }
+            .hl-string {
+                color: #6a8759;
+            }
+            .hl-comment {
+                color: #707070;
+            }
+            .box {
+                border: 1px solid white;
+                padding: 0.05em 0.1em;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <pre><code><span class="hl-keyword">class</span> <span class="box">Database</span>:</code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, dbname, user, password, host, port):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">query</span>(<span class="hl-reserved">self</span>, sql):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        <code>    <span class="hl-keyword">def</span> <span class="hl-def">close</span>(<span class="hl-reserved">self</span>):</code>
+        <code>        <span class="hl-comment"># ...</span></code>
+        </pre>
+    </section>
+
+     <section class="slide">
+        <h2>Take away</h2>
+        <ul>
+            <li>Identifier ~ combinations of words</li>
+            <li>Raw code is text</li>
+            <li>Parsed code is AST</li>
+            <li>Non-linear structure of AST</li>
+            <li>Code naturalness</li>
+            <li>370 programming languages</li>
+        </ul>
+    </section>
+
+    <section class="slide vista vista-cover" id="projects">
+        <h2 class="shout">Projects</h2>
+        <style>
+            #projects {
+                background: url("pictures/basics/cover.jpeg");
+            }
+            #projects::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Identifier splitter</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Approaches</h2>
+        <ul>
+            <li>Heuristic</li>
+            <li>Machine Learning</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Heuristic - split by</h2>
+        <ul>
+            <li>underscore <code>set_name -> [set, name]</code></li>
+            <li>changing of cases <code>SetName -> [set, name]</code></li>
+            <li>etc</li>
+        </ul>
+
+        <h2 id="heuristic-res">Result: 49M -> 3M, but...</h2>
+        <style>
+        #heuristic-res {
+                position: absolute;
+                bottom: 170px;
+            }
+        </style>
+        <ul id="heuristic-res-2">
+            <li><code>BUFFERFLAG_CODECCONFIG -> [bufferflag, codecconfig]</code></li>
+            <li><code>metamodelength -> [metamodelength]</code></li>
+        </ul>
+        <style>
+        #heuristic-res-2 {
+                position: absolute;
+                bottom: 50px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2><a href="https://arxiv.org/pdf/1805.11651.pdf">Machine learning - CNN/LSTM</a></h2>
+        <ul>
+            <li><a href="https://github.com/src-d/datasets/tree/master/Identifiers">Data</a> - 49M of identifiers</li>
+            <li>Preprocessing</li>
+            <li>Train NN</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>FooBar -> X, y</h2>
+        <div style="float: left; width: 50%;">
+        <ul>
+            <li style="font-size:35px">f</li>
+            <li style="font-size:35px">o</li>
+            <li style="font-size:35px">o</li>
+            <li style="font-size:35px">b</li>
+            <li style="font-size:35px">a</li>
+            <li style="font-size:35px">r</li>
+        </ul>
+        </div>
+        <div style="float: right; width: 50%;">
+        <ul>
+            <li style="font-size:35px">0</li>
+            <li style="font-size:35px">0</li>
+            <li style="font-size:35px">0</li>
+            <li style="font-size:35px">1</li>
+            <li style="font-size:35px">0</li>
+            <li style="font-size:35px">0</li>
+        </ul>
+        </div>
+    </section>
+
+    <section class="slide vista" id="bilstm">
+        <style>
+            #bilstm {
+                background-color: rgba(0, 0, 0, 1) !important;
+                background: url("pictures/basics/bilstm_neg.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>BiLSTM</h2>
+        <h2 id="bilstm-res">Result: 49M -> 1M</h2>
+        <style>
+        #bilstm-res {
+                position: absolute;
+                bottom: 270px;
+            }
+        </style>
+        <ul id="bilstm-res-2">
+            <li><code>BUFFERFLAG_CODECCONFIG -> [buffer, flag, codec, config]</code></li>
+            <li><code>metamodelength -> [meta, mode, length]</code></li>
+        </ul>
+        <style>
+        #bilstm-res-2 {
+                position: absolute;
+                bottom: 150px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Identifier embeddings</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Nearest to “foo”</h2>
+        <ul class="two-cols">
+            <li>afoo</li>
+            <li>qux</li>
+            <li>myfoo</li>
+            <li>baz</li>
+            <li>mfoo</li>
+            <li>wibble</li>
+            <li>dofoo</li>
+            <li>quux</li>
+            <li style="font-size:50px">testing</li>
+
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Analogies</h2>
+        <p style="font-size:35px">“send” <span class="compare">-</span> “receive” <span class="compare">+</span> “pop” <span class="compare">=</span> “push”</p>
+        <p style="font-size:35px">“database” <span class="compare">-</span> “query” <span class="compare">+</span> “tune” <span class="compare">=</span> “settings”</p>
+
+        <div id="analogies" class="vista"></div>
+        <style>
+            .compare {
+                color: #fff01f;
+            }
+            #analogies {
+                position: absolute;
+                bottom: 50px;
+                left: 200px;
+                width: 500px;
+                height: 300px;
+                background-image: url("pictures/basics/analogy_white.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <div class="math-center">
+            <p class="skip">
+\(
+\begin{split}
+V_1 \Leftrightarrow & \,\texttt{"foo"} \\
+\\
+V_2 \Leftrightarrow & \,\texttt{"bar"} \\
+\\
+V_3 \Leftrightarrow & \,\texttt{"integrate"}
+\end{split}
+\)
+            </p><p class="skip">
+\(
+distance(V_1, V_2) < distance(V_1, V_3)
+\)
+            </p><p>
+\(
+distance(V_i, V_j) = \arccos \frac{V_i \cdot V_j}{\left\lVert V_i \right\rVert \left\lVert V_j \right\rVert}
+\)
+            </p>
+        </div>
+        <div class="math-label" id="scalar-product">Scalar product</div>
+        <div class="math-label" id="norm">Norm</div>
+        <div class="math-label" id="frac"></div>
+        <style>
+            .math-center {
+                font-size: 1.4em;
+            }
+            p.skip {
+                margin-bottom: 50px;
+            }
+            @font-face {
+              font-family: "Over the Rainbow";
+              src: url("fonts/Over the Rainbow.ttf") format("ttf");
+              src: url("fonts/Over the Rainbow.woff2") format("woff2");
+            }
+            .math-label {
+                position: absolute;
+                font-family: "Over the Rainbow";
+                font-size: 32px;
+                color: #fff01f;
+            }
+            #scalar-product {
+                bottom: 95px;
+                right: 100px;
+            }
+            #norm {
+                right: 168px;
+                bottom: 50px;
+            }
+            #frac {
+                height: 2px;
+                width: 210px;
+                background-color: #fff01f;
+                bottom: 104px;
+                right: 95px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout math-shout">How to estimate \(V_i \cdot V_j\) ?</h2>
+        <style>
+        .math-shout > span {
+            font-weight: inherit !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+        }
+        </style>
+    </section>
+
+    <section class="slide">
+        <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Splitting and normalization</h2>
+        <pre>
+            <code>_tcp_socket_connect -> [tcp, socket, connect]</code>
+            <code>AuthenticationError -> [authentication, error]</code>
+            <code>authentication, authenticate -> authenticate</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">database, connect<sup>2</sup>, user<sup>2</sup>, password<sup>2</sup>, host<sup>2</sup>, port<sup>2</sup>, tcp, socket<sup>2</sup>, authenticate<sup>2</sup>, error, close </p>
+        <div class="context ctx1"></div>
+        <style>
+            .keywords {
+                font-family: monospace;
+            }
+            .keywords::before {
+                content: ">>>";
+                position: absolute;
+                margin-left: -2.2em;
+            }
+            .context {
+                position: absolute;
+                border: 5px dashed #979a9e;
+                border-radius: 10px;
+            }
+            .ctx1 {
+                width: 760px;
+                height: 392px;
+                top: 110px;
+                left: 93px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all1">
+        <style>
+            #all2all1 {
+                background-image: url("pictures/basics/all2all_1_white.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">connect<sup>2</sup>, user<sup>2</sup>, password<sup>2</sup>, host<sup>2</sup>, port<sup>2</sup>, tcp, socket<sup>2</sup>, authenticate<sup>2</sup>, error, close </p>
+        <div class="context ctx2"></div>
+        <style>
+            .ctx2 {
+                width: 700px;
+                height: 352px;
+                top: 156px;
+                left: 153px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all2">
+        <style>
+            #all2all2 {
+                background-image: url("pictures/basics/all2all_2_white.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">connect, user, password, host, port</p>
+        <div class="context ctx3"></div>
+        <style>
+            .ctx3 {
+                width: 700px;
+                height: 50px;
+                top: 156px;
+                left: 153px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all3">
+        <style>
+            #all2all3 {
+                background-image: url("pictures/basics/all2all_3_white.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">tcp, socket, connect, host, port</p>
+        <div class="context ctx4"></div>
+        <style>
+            .ctx4 {
+                width: 555px;
+                height: 50px;
+                top: 207px;
+                left: 213px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all4">
+        <style>
+            #all2all4 {
+                background-image: url("pictures/basics/all2all_4_white.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">authenticate<sup>2</sup>, user, password, error, socket, close</p>
+        <div class="context ctx5"></div>
+        <style>
+            .ctx5 {
+                width: 585px;
+                height: 245px;
+                top: 258px;
+                left: 213px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all5">
+        <style>
+            #all2all5 {
+                background-image: url("pictures/basics/all2all_5_white.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">authenticate, user, password</p>
+        <div class="context ctx6"></div>
+        <style>
+            .ctx6 {
+                width: 528px;
+                height: 50px;
+                top: 307px;
+                left: 270px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all6">
+        <style>
+            #all2all6 {
+                background-image: url("pictures/basics/all2all_6_white.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">authenticate, error, socket, close</p>
+        <div class="context ctx7"></div>
+        <style>
+            .ctx7 {
+                width: 492px;
+                height: 147px;
+                top: 357px;
+                left: 213px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all7">
+        <style>
+            #all2all7 {
+                background-image: url("pictures/basics/all2all_7_white.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">authenticate, error</p>
+        <div class="context ctx8"></div>
+        <style>
+            .ctx8 {
+                width: 492px;
+                height: 50px;
+                top: 357px;
+                left: 213px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all8">
+        <style>
+            #all2all8 {
+                background-image: url("pictures/basics/all2all_8_white.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+            <pre><code><span class="hl-keyword">class</span> Database:</code>
+<code>    <span class="hl-keyword">def</span> <span class="hl-def">connect</span>(<span class="hl-reserved">self</span>, user, password, host, port):</code>
+<code>        <span class="hl-reserved">self</span>._tcp_socket_connect(host, port)</code>
+<code>        <span class="hl-keyword">try</span>:</code>
+<code>            <span class="hl-reserved">self</span>._authenticate(user, password)</code>
+<code>        <span class="hl-keyword">except</span> AuthenticationError <span class="hl-keyword">as</span> e:</code>
+<code>            <span class="hl-reserved">self</span>.socket.close()</code>
+<code>            <span class="hl-keyword">raise</span> e <span class="hl-keyword">from None</span></code>
+        </pre>
+        <p class="keywords">socket, close</p>
+        <div class="context ctx9"></div>
+        <style>
+            .ctx9 {
+                width: 302px;
+                height: 50px;
+                top: 407px;
+                left: 272px;
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all9">
+        <style>
+            #all2all9 {
+                background-image: url("pictures/basics/all2all_9_white.svg");
+            }
+        </style>
+    </section>
+
+    <section class="slide vista" id="all2all">
+        <style>
+            #all2all {
+                background-image: url("pictures/basics/all2all_white.svg");
+            }
+        </style>
+    </section>
+    <section class="slide">
+        <h2>Incidence matrix \(C_{ij}\)</h2>
+        <ul>
+            <li>\(C_{ij} =\) number of times \(i\) and \(j\) were together <i class="fa fa-heart inline" aria-hidden="true"></i></li>
+            <li>Also known as the <span class="bold">co-occurrence matrix</span></li>
+        </ul>
+        <style>
+            .inline {
+                display: inline;
+            }
+            .bold {
+                font-weight: bold;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="pmi">
+        <h2>Pointwise Mutual Information (PMI)</h2>
+        $$
+        V_i \cdot V_j = PMI_{ij} = \log\frac{C_{ij} \sum C}{\sum_{k = 1}^N C_{ik}\sum_{k = 1}^N C_{jk}}
+        $$
+        <style>
+            #pmi {
+                display: flex;
+                flex-direction: column;
+            }
+            #pmi > span {
+                margin-top: 100px;
+                font-size: 1.5em;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Representation Learning on Explicit Matrix</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout small-shout">Stochastic Gradient Descent</h2>
+    </section>
+
+    <section class="slide">
+        <div class="vista padded-image" id="swivel-before"></div>
+        <style>
+            .padded-image {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 40px;
+                bottom: 40px;
+            }
+        </style>
+        <style>
+            #swivel-before {
+                background-image: url("pictures/basics/swivel_before.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <div class="vista padded-image" id="swivel-after"></div>
+        <style>
+            #swivel-after {
+                background-image: url("pictures/basics/swivel_after.png");
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Swivel</h2>
+        <ul class="no-bullets fa-bullets">
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Multi-GPU</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Multi-node</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i>Quality tricks</li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i><a href="https://arxiv.org/abs/1602.02215"><span class="italic">Swivel: Improving Embeddings by Noticing What's Missing</span> by Shazeer et.al.</a></li>
+            <li><i class="fa fa-check monofa" aria-hidden="true"></i><a href="https://github.com/src-d/tensorflow-swivel">Tensorflow implementation</a></li>
+        </ul>
+        <style>
+            .italic {
+                font-style: italic;
+            }
+        </style>
+    </section>
+
+
+
+    <!--<section class="slide">-->
+        <!--<h2 class="shout">Similar repository search</h2>-->
+    <!--</section>-->
+
+
+    <!--<section class="slide nn">-->
+		<!--<h2>torch/nn</h2>-->
+		<!--<ul class="no-bullets">-->
+			<!--<li><a href="https://github.com/intel-analytics/BigDL">intel-analytics/BigDL</a></li>-->
+			<!--<li><a href="https://github.com/pytorch/pytorch">pytorch/pytorch</a></li>-->
+			<!--<li><a href="https://github.com/clementfarabet/lua-&#45;&#45;nnx">clementfarabet/lua-&#45;&#45;nnx</a></li>-->
+			<!--<li><a href="https://github.com/Element-Research/dpnn">Element-Research/dpnn</a></li>-->
+			<!--<li><a href="https://github.com/aciditeam/torch-models">aciditeam/torch-models</a></li>-->
+			<!--<li><a href="https://github.com/sermanet/OverFeat">sermanet/OverFeat</a></li>-->
+			<!--<li><a href="https://github.com/naman14/Arcade">naman14/Arcade</a></li>-->
+			<!--<li><a href="https://github.com/hughperkins/clnn">hughperkins/clnn</a></li>-->
+			<!--<li><a href="https://github.com/itayhubara/BinaryNet">itayhubara/BinaryNet</a></li>-->
+			<!--<li><a href="https://github.com/google/FluidNet">google/FluidNet</a></li>-->
+		<!--</ul>-->
+		<!--<style>-->
+			<!--.nn ul {-->
+				<!--overflow: hidden;-->
+			<!--}-->
+			<!--.nn li {-->
+				<!--float: left;-->
+  				<!--display: inline;-->
+				<!--width: 50%;-->
+			<!--}-->
+		<!--</style>-->
+	<!--</section>-->
+
+	<!--<section class="slide nn">-->
+		<!--<h2>src-d/go-git</h2>-->
+		<!--<ul class="no-bullets">-->
+			<!--<li><a href="https://github.com/chrisparnin/autogit">chrisparnin/autogit</a></li>-->
+			<!--<li><a href="https://github.com/libgit2/git2go">libgit2/git2go</a></li>-->
+			<!--<li><a href="https://github.com/christkv/node-git">christkv/node-git</a></li>-->
+			<!--<li><a href="https://github.com/gitchain/gitchain">gitchain/gitchain</a></li>-->
+			<!--<li><a href="https://github.com/heroku/cli">heroku/cli</a></li>-->
+			<!--<li><a href="https://github.com/modocache/Gift">modocache/Gift</a></li>-->
+			<!--<li><a href="https://github.com/ChimeraCoder/gitgo">ChimeraCoder/gitgo</a></li>-->
+			<!--<li><a href="https://github.com/mojombo/grit">mojombo/grit</a></li>-->
+			<!--<li><a href="https://github.com/FriendCode/gittle">FriendCode/gittle</a></li>-->
+			<!--<li><a href="https://github.com/tsuru/gandalf">tsuru/gandalf</a></li>-->
+		<!--</ul>-->
+	<!--</section>-->
+
+    <!--<section class="slide">-->
+		<!--<h2>Pipeline</h2>-->
+		<!--<ol>-->
+			<!--<li>Clone the repositories.</li>-->
+			<!--<li>Classify and parse source code.</li>-->
+			<!--<li>Preprocess identifiers: split, normalize, filter, stem.</li>-->
+			<!--<li>Prepare embeddings - cooc matrix & Swivel.</li>-->
+			<!--<li>Weighted BOW per repository.</li>-->
+            <!--<li>WMD.</li>-->
+		<!--</ol>-->
+	<!--</section>-->
+
+    <!--<section class="slide">-->
+		<!--<h2>Training identifier embeddings</h2>-->
+		<!--<table>-->
+		<!--<tr>-->
+			<!--<th scope="col">Stage</th>-->
+			<!--<th>Time</th>-->
+			<!--<th>Resources</th>-->
+			<!--<th>Size on disk</th>-->
+		<!--</tr>-->
+		<!--<tr>-->
+			<!--<th scope="row">Cloning 143k repos</th>-->
+			<!--<td>3 days</td>-->
+			<!--<td>20x2 cores, 256 GB RAM</td>-->
+			<!--<td>2.6 TB</td>-->
+		<!--</tr>-->
+		<!--<tr>-->
+			<!--<th scope="row">Dataset</th>-->
+			<!--<td>4 days</td>-->
+			<!--<td>20x2 cores, 256 GB RAM</td>-->
+			<!--<td>2TB (31GB in xz)</td>-->
+		<!--</tr>-->
+		<!--<tr>-->
+			<!--<th scope="row">fastprep</th>-->
+			<!--<td>2 days</td>-->
+			<!--<td>16x2 cores, 256 GB RAM</td>-->
+			<!--<td>20 GB</td>-->
+		<!--</tr>-->
+		<!--<tr>-->
+			<!--<th scope="row">Swivel</th>-->
+			<!--<td>14 hours</td>-->
+			<!--<td>2 Titan X'2016 + 2 1080Ti</td>-->
+			<!--<td>5.6 GB</td>-->
+		<!--</tr>-->
+		<!--</table>-->
+	<!--</section>-->
+
+	<!--<section class="slide vista" id="projector">-->
+		<!--<h2>Embeddings</h2>-->
+
+		<!--<style>-->
+			<!--#projector {-->
+                <!--background-color: rgba(0, 0, 0, 1) !important;-->
+				<!--background-position: right !important;-->
+				<!--background: white url("pictures/similar_repo/projector_white.png");-->
+			<!--}-->
+		<!--</style>-->
+	<!--</section>-->
+
+    <!--<section class="slide">-->
+		<!--<h2>Weighted nBOW</h2>-->
+		<!--<p>Let's interpret every repository as the weighted bag-of-words.</p>-->
+		<!--<p>We calculate TF-IDF to weight the occurring identifiers.</p>-->
+		<!--<div id="tensorflow-nbow"><code class="inline-no-offset">tensorflow/tensorflow:</code>-->
+		<!--<pre class="pre">    tfreturn	67.780249-->
+  <!--oprequires	63.968142-->
+      <!--doblas	63.714424-->
+    <!--gputools	62.337396-->
+    <!--tfassign	61.545926-->
+    <!--opkernel	60.721556-->
+        <!--sycl	57.064558-->
+         <!--hlo	55.723587-->
+     <!--libxsmm	54.820668-->
+  <!--tfdisallow	53.666890</pre></div>-->
+		<!--<style>-->
+			<!--#tensorflow-nbow {-->
+				<!--display: flex;-->
+				<!--align-items: center;-->
+			<!--}-->
+			<!--#tensorflow-nbow > code {-->
+				<!--padding-right: 50px;-->
+			<!--}-->
+			<!--.pre {-->
+				<!--white-space: pre !important;-->
+				<!--font-family: monospace;-->
+				<!--line-height: 1.2em;-->
+			<!--}-->
+		<!--</style>-->
+	<!--</section>-->
+
+    <!--<section class="slide">-->
+        <!--<h2><a href="http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf">Word Mover's Distance</a></h2>-->
+        <!--<div class="vista padded-image" id="wmd2"></div>-->
+        <!--<style>-->
+            <!--.padded-image {-->
+                <!--position: absolute;-->
+                <!--left: 0;-->
+                <!--right: 0;-->
+                <!--top: 180px;-->
+                <!--bottom: 40px;-->
+            <!--}-->
+        <!--</style>-->
+        <!--<style>-->
+            <!--#wmd2 {-->
+                <!--background-image: url("pictures/similar_repo/wmd_white.png");-->
+            <!--}-->
+        <!--</style>-->
+    <!--</section>-->
+
+	<!--<section class="slide">-->
+		<!--<h2>WMD calculation in a nutshell</h2>-->
+		<!--<p class="important">WMD evaluation is O(N<sup>3</sup>), becomes slow on N≈100.</p>-->
+		<!--<ol>-->
+			<!--<li>Sort samples by centroid distance.</li>-->
+			<!--<li>Evaluate first k WMDs.</li>-->
+			<!--<li>For every subsequent sample, solve the relaxed LP which gives an upper estimation.</li>-->
+			<!--<li>If it is greater than the farthest among the k NN, go next.</li>-->
+			<!--<li>Otherwise, evaluate the WMD.</li>-->
+		<!--</ol>-->
+		<!--<p class="success">This allows to avoid 95% WMD evaluations on average.</p>-->
+	<!--</section>-->
+
+    <section class="slide">
+        <h2 class="shout">Code review: Typos</h2>
+    </section>
+
+    <section class="slide vista vista-cover" id="issues">
+        <!--<img src="pictures/code_review/typos_issues.png" id="issues">-->
+        <style>
+            #issues {
+                /*background-color: white;*/
+                /*position: relative;*/
+                /*!*top: -81px;*!*/
+                /*!*left: -100px;*!*/
+                /*width: calc(100% + 200px);*/
+                /*height: calc(100% + 81px);*/
+                /*border: 0;*/
+                /*object-fit: cover !important;*/
+                background-image: url("pictures/code_review/typos_issues.png");
+                background-size: cover !important;
+        }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Typos correction inside code identifiers</h2>
+        <pre><code><span style="color: #cc8242">class</span> <span style="background-color: orangered">ClasName</span>:</code>
+<code>    <span style="color: #bbb429">@classmethod</span></code>
+            <code>    <span style="color: #cc8242">def</span> <span style="color: #ffc66d">function_name</span>(<span style="color: #94558D;">cls</span>) <span style="color: #f92672">-&gt;</span> str:</code>
+            <code>        <span><span style="background-color: orangered">varyable_name</span></span> = <span style="color: seagreen">"Hello, I'm ClassName object!"</span></code>
+            <code>        <span style="color: #cc8242">return</span> <span style="background-color: orangered">varyable_name</span></code></pre>
+    </section>
+
+    <section class="slide vista" id="tc">
+        <h2>Typos correction</h2>
+        <p style="font-size: 30px"><span style="color: orangered">funktion</span>&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;<span style="color: limegreen">function</span></p>
+        <p style="font-size: 30px"><span style="color: orangered">GetValu</span>&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;<span style="color: limegreen">GetValue</span></p>
+        <p style="font-size: 30px"><span style="color: orangered">str_lenght</span>&nbsp;&nbsp;<span>➙</span>&nbsp;&nbsp;<span style="color: limegreen">str_length</span></p>
+        <style>
+            #tc span {
+                position: relative;
+                top: 2px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Typos correction inside code identifiers</h2>
+        <pre><code><span style="color: #cc8242">class</span> <span style="background-color: green">ClassName</span>:</code>
+<code>    <span style="color: #bbb429">@classmethod</span></code>
+            <code>    <span style="color: #cc8242">def</span> <span style="color: #ffc66d">function_name</span>(<span style="color: #94558D;">cls</span>) <span style="color: #f92672">-&gt;</span> str:</code>
+            <code>        <span><span style="background-color: green">variable_name</span></span> = <span style="color: seagreen">"Hello, I'm ClassName object!"</span></code>
+            <code>        <span style="color: #cc8242">return</span> <span style="background-color: green">variable_name</span></code></pre>
+    </section>
+
+    <section class="slide">
+        <h2>The correction pipeline</h2>
+        <img src="pictures/code_review/typos_analyzer.png" id="typos_analyzer">
+        <style>
+            #typos_analyzer {
+                width: 95%;
+                position: absolute;
+                left: 25px;
+                top: 200px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Candidates generation</h2>
+        <ol>
+            <li>Find candidates with the <a href="https://github.com/ne3x7/pysymspell/">SymSpell</a></li>
+            <li>Identifier to which the token belongs - a context</li>
+            <li>Features: based on the frequencies, embeddings, similarity and edit distance between the elements</li>
+        </ol>
+    </section>
+
+    <section class="slide">
+        <h2>Candidates ranking</h2>
+        <ul>
+            <li>Binary classification model on tuples <code>(identifier, token, candidate)</code>:
+                <ul><li><code>label=1</code> if the candidate is the correct suggestion</li>
+                    <li><code>label=0</code> otherwise</li></ul></li>
+            <li>Group by the token and sort</li>
+            <li><a href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a> is used for binary classification</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Suggestions</h2>
+        <ul>
+            <li>Suggested token itself - not correcting</li>
+            <li>Otherwise return corrections</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Training and testing</h2>
+        <ul>
+            <li>Train and test datasets are sampled from the dataset of identifiers</li>
+            <li>Random artificial typos</li>
+            <li><span style="font-weight: 900">Dataset itself contains typos</span></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Results on a token level</h2>
+        <ul>
+            <li><span style="color: greenyellow">Detection precision</span> - 98%</li>
+            <li><span style="color: greenyellow">Detection recall</span> - 82%</li>
+            <li><span style="color: greenyellow">Top3 correction accuracy</span> - 95%</li>
+        </ul>
+        Note: the test dataset is not a ground truth.
+    </section>
+
+
+    <section class="slide">
+        <h2 class="shout">Code review: Style</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Code Style</h2>
+        <img src="pictures/code_review/style/lookout_stg_comment.png" class="lookout-comment">
+        <style>
+            .lookout-comment {
+                position: absolute;
+                top: 200px;
+                left: 150px;
+                width: 650px;
+            }
+        </style>
+    </section>
+
+
+    <section class="slide" id="classes">
+        <h2>What is code style?</h2>
+        <table cellpadding="30">
+            <tr>
+                <td class="label">␣</td>
+                <td class="description">space</td>
+            </tr>
+            <tr>
+                <td class="label">→</td>
+                <td class="description">tabulation</td>
+            </tr>
+            <tr>
+                <td class="label">&#8626</td>
+                <td class="description">newline</td>
+            </tr>
+            <tr>
+                <td class="label">␣+/-</td>
+                <td class="description">spaced indentation increase/decrease</td>
+            </tr>
+            <tr>
+                <td class="label">→+/-</td>
+                <td class="description">tabulated indentation increase/decrease</td>
+            </tr>
+            <tr>
+                <td class="label">'/"</td>
+                <td class="description">single/double quotes</td>
+            </tr>
+            <tr>
+                <td class="label">&#8709</td>
+                <td class="description">empty gaps between non-label nodes, NOOP</td>
+            </tr>
+        </table>
+        <style>
+            .label {
+                text-align: center;
+                width: 10%;
+                padding-left: 0 !important;
+            }
+            .description {
+                text-align: left;
+                width: 90%;
+            }
+            #classes table, #classes td {
+                margin-left: 0px;
+                border-collapse: collapse;
+            }
+        </style>
+    </section>
+
+
+    <section class="slide">
+        <h2>"White box" is the key</h2>
+        <ul>
+            <li>Builds trust with the users</li>
+            <li>Provides interpretability</li>
+            <li>Allows editing</li>
+            <li>Allows blacklisting</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Labels predicted</h2>
+        <p>We concatenate common classes together.</p>
+        <ul class="no-bullets">
+            <li>␣"</li>
+            <li>␣+␣+␣+␣+</li>
+            <li>'&#8626</li>
+            <li>&#8626→-&#8626</li>
+            <li>&#8709</li>
+        </ul>
+        <p>No BPE or similar reduction is required.</p>
+    </section>
+
+    <section class="slide" class="annotated-snippet">
+        <h2>Annotated code snippet</h2>
+        <pre><code><span style="color: green">&#8709</span>function<span style="color: green">&#9251</span>classesToArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8677</span>   if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>isArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8709</span>return<span style="color: green">&#9251</span>value<span style="color: green">&#8709</span>;<span style="color: green">&#8709</span>}</code>
+             <code>    if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>typeof<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>===<span style="color: green">&#9251"</span>string<span style="color: green">"&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8677</span>       return<span style="color: green">&#9251</span>value<span style="color: green">&#8709</span>.<span style="color: green">&#8709</span>match(<span style="color: green">&#9251</span>rnothtml<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>||<span style="color: green">&#9251</span>[]<span style="color: green">&#8709</span>;<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8676</span>   }<span style="color: green">&#8626</span></code>
+             <code>    return<span style="color: green">&#9251</span>[]<span style="color: green">&#8709</span>;<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8676</span>}<span style="color: green">&#8709</span></code>
+        </pre>
+        <style>
+            .annotated-snippet pre {
+                color: #bababa;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Augmented token stream</h2>
+        <img src="pictures/code_review/style/vnodes.svg" id="vnodes" class="diagram diagram-right">
+        <pre><code>a = b * 2</code></pre>
+        <style>
+            .diagram {
+                height: 350px;
+            }
+            .diagram-right {
+                float: right;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Machine Learning</h2>
+        <img src="pictures/code_review/style/features.svg" class="diagram center">
+    </section>
+
+    <section class="slide">
+        <h2>Machine Learning</h2>
+        <ul>
+            <li>Feature selection (univariate, ANOVA F-criterion)</li>
+            <li>Hyperparameter optimization (Bayesian)</li>
+            <li>80% + 20% split</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Rules</h2>
+        <img src="pictures/code_review/style/rules.svg" class="diagram diagram-right">
+        <ul>
+            <li><code>a&le;5 Λ b&le;1 Λ <span class="oline">c</span> ⇒ &alpha;</code></li>
+            <li><code>a&le;5 Λ 1&lt;b&lt;4 ⇒ &beta;</code></li>
+            <li><code>5&lt;a&lt;10 Λ <span class="oline">c</span> ⇒ &gamma;</code></li>
+            <li><code>a&gt;5 Λ c Λ b&gt;2 ⇒ &alpha;</code></li>
+        </ul>
+        <style>
+            .oline {
+                text-decoration: overline;
+            }
+        </style>
+    </section>
+
+    <style>
+        .rules-opt code {
+            display: inline-block !important;
+            width: auto !important;
+        }
+        .bad {
+            color: coral;
+        }
+        .good {
+            color: lightgreen;
+        }
+        .opt-desc {
+            float: right;
+            font-family: "Source Sans Pro", sans-serif;
+        }
+        .rules-opt-result {
+            margin-bottom: 0;
+        }
+    </style>
+
+    <section class="slide rules-opt">
+        <h2>Rules optimization</h2>
+        <pre><code><span class="bad">a&gt;5</span> Λ c Λ b&gt;2 Λ <span class="oline">d</span> Λ <span class="bad">a&gt;10</span> ⇒ &alpha;</code><span class="opt-desc">(merge)</span><br>
+<code><span class="good">a&gt;10</span> Λ c Λ <span class="bad">b&gt;2</span> Λ <span class="oline">d</span> ⇒ &alpha;</code><span class="opt-desc">(redundant)</span><br>
+<code>a&gt;10 Λ c Λ <span class="oline bad">d</span> ⇒ &alpha;</code><span class="opt-desc">(feature exclusion)</span><br>
+<code><span class="bad">a&gt;10 Λ c ⇒ &alpha;</span></code><span class="opt-desc">(confidence threshold)</span></pre>
+        <h4 class="rules-opt-result">Result</h4>
+        <ul>
+            <li>-90% rules with no quality loss</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Redundant attributes elimination</h2>
+        <ul>
+            <li>Trigger imbalance: &lt;5% activation rate</li>
+            <li>For each attribute comparison build the set of <span class="bold">false positives</span></li>
+            <li>Build graph by thresholding Jaccard similarity between each pair (0.98)</li>
+            <li>Run multilevel community detection</li>
+            <li>Leave only one representative (greedily)</li>
+        </ul>
+        <style>
+            .bold {
+                font-weight: bold;
+            }
+        </style>
+    </section>
+
+    <section class="slide" class="annotated-snippet">
+        <h2>Annotated code snippet</h2>
+        <pre><code><span style="color: green">&#8709</span><span class="focus">function</span><span style="color: green">&#9251</span>classesToArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8677</span>   if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>isArray<span style="color: green">&#8709</span>(<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span><span class="focus">)</span><span style="color: green">&#9251</span><span class="focus">{</span><span style="color: red">&#8709</span><span class="focus">return</span><span style="color: green">&#9251</span><span class="focus">value</span><span style="color: green">&#8709</span>;<span style="color: green">&#8709</span>}</code>
+             <code>    if<span style="color: green">&#9251</span>(<span style="color: green">&#9251</span>typeof<span style="color: green">&#9251</span>value<span style="color: green">&#9251</span>===<span style="color: green">&#9251"</span>string<span style="color: green">"&#9251</span>)<span style="color: green">&#9251</span>{<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8677</span>       return<span style="color: green">&#9251</span>value<span style="color: green">&#8709</span>.<span style="color: green">&#8709</span>match(<span style="color: green">&#9251</span>rnothtml<span style="color: green">&#9251</span>)<span style="color: green">&#9251</span>||<span style="color: green">&#9251</span>[]<span style="color: green">&#8709</span>;<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8676</span>   }<span style="color: green">&#8626</span></code>
+             <code>    return<span style="color: green">&#9251</span>[]<span style="color: green">&#8709</span>;<span style="color: green">&#8626</span></code>
+             <code><span style="color: green">&#8676</span>}<span style="color: green">&#8709</span></code>
+        </pre>
+        <style>
+            .focus {
+                border: 1px solid white;
+                background-color: #333333;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Rule example</h2>
+        <div id="rule-y">
+            <div>
+                y = &#8709<br>
+                ŷ = &#8626→+
+            </div>
+            <div>
+                Confidence: 0.975<br>
+                Support: 3230
+            </div>
+        </div>
+        <hr>
+        <ul class="no-bullets">
+            <li>-1.value = {</li>
+            <li>-3.value not in {else}</li>
+            <li>+1.internal_type not in {StringLiteral}</li>
+            <li>+2.roles not in {LITERAL, COMMENT}</li>
+            <li>ˆ1.roles in {IF, STATEMENT}</li>
+        </ul>
+        <style>
+            #rule-y {
+                display: flex;
+            }
+            #rule-y > div {
+                flex: 1;
+            }
+            #rule-y ~ ul {
+                font-family: monospace;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Inference</h2>
+        <ol>
+            <li>Apply rules
+                <ul>
+                    <li>Fixes to old code?</li>
+                    <li>AST breakage?</li>
+                    <li>Identification?</li>
+                </ul>
+            </li>
+            <li>Generate code
+                <ul>
+                    <li>Indentation?</li>
+                    <li>Multiple lines?</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <section class="slide" id="results">
+        <h2>Results</h2>
+        <table cellpadding="10">
+            <tbody>
+                <tr>
+                    <th scope="col"></th>
+                    <th class="stats">train samples</th>
+                    <th class="stats">rules</th>
+                    <th class="stats">precision</th>
+                    <th class="stats">prediction rate</th>
+                </tr>
+                <tr>
+                    <th scope="row">node</th>
+                    <td class="stats">374,298</td>
+                    <td class="stats">641</td>
+                    <td class="stats">0.965</td>
+                    <td class="stats">0.951</td>
+                </tr>
+                <tr>
+                    <th scope="row">jquery</th>
+                    <td class="stats">197,072</td>
+                    <td class="stats">391</td>
+                    <td class="stats">0.972</td>
+                    <td class="stats">0.959</td>
+                </tr>
+                <tr>
+                    <th scope="row">axios</th>
+                    <td class="stats">21,130</td>
+                    <td class="stats">143</td>
+                    <td class="stats">0.940</td>
+                    <td class="stats">0.951</td>
+                </tr>
+                <tr>
+                    <th scope="row">carlo</th>
+                    <td class="stats">5,529</td>
+                    <td class="stats">78</td>
+                    <td class="stats">0.878</td>
+                    <td class="stats">0.931</td>
+                </tr>
+                <tr>
+                    <td colspan="100%">&nbsp</td>
+                </tr>
+                <tr>
+                    <th scope="row">w. average</th>
+                    <td class="stats">--</td>
+                    <td class="stats">--</td>
+                    <td class="stats">0.943</td>
+                    <td class="stats">0.947</td>
+                </tr>
+            </tbody>
+        </table>
+        <style>
+            .stats {
+                text-align: right !important;
+            }
+        </style>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <section class="slide">
+        <h2 class="shout">Developer similarity</h2>
+    </section>
+
+    <section class="slide">
+		<h2>Pipeline</h2>
+		<ol>
+			<li>Clone the organization.</li>
+			<li>Classify and parse source code.</li>
+			<li>Extract identifiers per file.</li>
+			<li>Extract experience per developer - languages, files, etc.</li>
+			<li>Topic modeling.</li>
+            <li>Usage: KD-tree, clustering and so on.</li>
+		</ol>
+	</section>
+
+    <section class="slide " id="dev_token">
+        <p>From git history</p>
+        <table style="width:100%">
+          <tr>
+            <th>Dev\Files</th>
+            <th>File 1</th>
+            <th>File 2</th>
+            <th>File 3</th>
+          </tr>
+          <tr>
+            <td>Dev 1</td>
+            <td>0</td>
+            <td>0.1</td>
+            <td>0.8</td>
+          </tr>
+          <tr>
+            <td>Dev 2</td>
+            <td>0.4</td>
+            <td>0.1</td>
+            <td>0.5</td>
+          </tr>
+        </table>
+        <p>From head revision</p>
+        <table style="width:100%">
+          <tr>
+            <th>Files\Tokens</th>
+            <th>Token 1</th>
+            <th>Token 2</th>
+            <th>Token 3</th>
+          </tr>
+          <tr>
+            <td>File 1</td>
+            <td>0</td>
+            <td>0.1</td>
+            <td>0.8</td>
+          </tr>
+          <tr>
+            <td>File 2</td>
+            <td>0.4</td>
+            <td>0.1</td>
+            <td>0.56</td>
+          </tr>
+          <tr>
+            <td>File 3</td>
+            <td>0.43</td>
+            <td>0.18</td>
+            <td>0.9</td>
+          </tr>
+        </table>
+    </section>
+
+    <section class="slide " id="dev_token2">
+        <p>Result after multiplication</p>
+        <table style="width:100%">
+          <tr>
+            <th>Dev\Token</th>
+            <th>Token 1</th>
+            <th>Token 2</th>
+            <th>Token 3</th>
+          </tr>
+          <tr>
+            <td>Dev 1</td>
+            <td>0</td>
+            <td>0.1</td>
+            <td>0.8</td>
+          </tr>
+          <tr>
+            <td>Dev 2</td>
+            <td>0.4</td>
+            <td>0.1</td>
+            <td>0.5</td>
+          </tr>
+        </table>
+    </section>
+
+    <section class="slide vista vista-cover white" id="developer_clustering">
+        <style>
+            #developer_clustering {
+                background-image: url("pictures/similar_devs/developer_clustering.png");
+                background-size: contain !important;
+            }
+        </style>
+    </section>
+
+    <section class="slide atom">
+        <h2> Active participant of <a href="https://github.com/src-d/reading-club">Reading Club</a></h2>
+
+        <p>Discuss papers at the intersection</p>
+        <ul>
+                <li>Software Engineering</li>
+                <li>Programming Languages</li>
+                <li>Natural Language Processing</li>
+                <li>especially related to applications of Machine Learning to Code</li>
+            </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2> Creator & maintainer of <a href="https://github.com/src-d/awesome-machine-learning-on-source-code">Awesome MLonCode</a></h2>
+
+        <ul>
+            <li>4.4k stars</li>
+            <li>Contains:</li>
+            <ul>
+                <li>Articles</li>
+                <li>Datasets</li>
+                <li>Software</li>
+                <li>Conferences</li>
+                <li>Competitions</li>
+            </ul>
+
+        </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2><a href="https://egorbu.github.io">Conferences</a></h2>
+
+        <ul>
+            <li>Machine Learning on Source Code, Moscow, usedata.ru</li>
+            <li>Machine Learning on Source Code, Munich, hack_ai</li>
+            <li>Machine Learning on Source Code, Munich, mlconference.ai</li>
+            <li>Fighting with high-dimensional not-so-small data - M3, London</li>
+            <li>Technological Stack for Machine Learning on Source Code</li>
+            <li>Embedding the GitHub contribution graph, Moscow</li>
+            <li>Extending Jupyter with Google Cloud Storage file system backend, Barcelona</li>
+            </ul>
+    </section>
+
+    <section class="slide atom">
+        <h2>Articles</h2>
+
+        <ul>
+            <li>"Identifying collaborators in large codebases", ML4SE '19</li>
+            <li>"STYLE-ANALYZER: fixing code style inconsistencies with interpretable unsupervised algorithms", MSR '19</li>
+            <li>"Splitting source code identifiers using Bidirectional LSTM Recurrent Neural Network", FLOC 2018</li>
+        </ul>
+    </section>
+
+
+    <section class="slide atom">
+        <h2>Not mentioned</h2>
+
+        <ul>
+            <li>Code deduplication at scale</li>
+            <li>Identity matching of developers & bot detection</li>
+            <li><a href="https://velesnet.ml/">VELES</a> - distributed NN trainings before tensorflow was released</li>
+            <li>Demography prediction & recommendations for TV users</li>
+            <li>Robots - UAV, mobile robots</li>
+        </ul>
+    </section>
+
+
+
+	<div class="progress"></div>
+
+	<script src="shower/shower.min.js"></script>
+    <script async src="https://use.fontawesome.com/72adc0539b.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML"></script>
+	<script>
+    function fullscreen() {
+        if (!document.fullscreenElement && !document.mozFullScreenElement &&
+			!document.webkitFullscreenElement) {
+            var body = document.getElementsByTagName("html")[0];
+            if (body.requestFullscreen) {
+                body.requestFullscreen();
+            } else if (body.mozRequestFullScreen) {
+                body.mozRequestFullScreen();
+            } else if (body.webkitRequestFullScreen) {
+                body.webkitRequestFullScreen();
+            }
+            document.getElementById("fullscreen").title = "Return";
+        } else {
+            if (document.cancelFullScreen) {
+                document.cancelFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }
+            document.getElementById("fullscreen").title = "Go fullscreen";
+        }
+    }
+    </script>
+</body>
+</html>
